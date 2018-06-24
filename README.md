@@ -14,7 +14,7 @@ Add Entry  | Edit Entry
 Delete Entry |
 ![Delete Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/delete-entry.jpg) |
 
-## User Cases
+## Use Cases
 1. User should be able to create a list of items that they want to track.
 2. User should be able to create a 'Place' which can hold multiple items.
 3. User should be able to create an 'Area' which holds multiple places.
@@ -22,8 +22,8 @@ Delete Entry |
 5. User should be able to able to search for items,places and areas.
 6. User should be able to delete the items,places and areas.
 
-???### UI Flow
-![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
+### UI Flow
+![UI Flow handwritten draft](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/User-flow-WhereIsIt_1.jpg)
 
 ???### Wireframe _main
 ![Wireframe _Main](https://github.com/KatiLong/node-capstone/blob/master/github-images/wireframe-v1.jpg)

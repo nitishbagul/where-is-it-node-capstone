@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WhereIsIt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Easily track items that are likely to get lost">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <main class="welcome-page">
+        <section class="main-content">
+            <header>
+                <h1>WhereIsIt</h1>
+                <p>Tell us once where it is and we will never forget</p>
+            </header>
+            <button>Login</button>
+            <span>Or</span>
+            <button>Register</button>
+            <ul>
+                <li>Add a list of items to track</li>
+                <li>Add a place to hold items</li>
+                <li>Move items between the places</li>
+                <li>Easily find items and their location</li>
+            </ul>
+            <button>Know more</button>
+        </section>
+    </main>
+
+    <main class="login-page">
+        <section class="main-content">
+            <header>
+                <h1>WhereIsIt</h1>
+                <p>Tell us once where it is and we will never forget</p>
+            </header>
+            <div class="log-in-container">
+                <form class="login-form" action="/login/" method="post">
+                    <h2 class="log-in-text">Log in</h2>
+                    <fieldset name="user-info" class="user-info">
+
+                        <label for="username">Username</label>
+                        <input role="textbox" type="text" name="username" id="username" required>
+
+                        <label for="password">Password</label>
+                        <input role="textbox" type="password" name="pwd" id="password" required>
+
+                        <button role="button" type="submit" class="log-in-button">Log In</button>
+
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <main class="register-page">
+        <section class="main-content">
+            <header>
+                <h1>WhereIsIt</h1>
+                <p>Tell us once where it is and we will never forget</p>
+            </header>
+            <div class="register-container">
+                <form class="register-form" action="/register/" method="post">
+                    <h2 class="register-text">Register</h2>
+                    <fieldset name="user-info" class="user-info">
+
+                        <label for="email">Email</label>
+                        <input role="textbox" placeholder="foo@bar.com" type="email" name="email" id="email" required>
+
+                        <label for="username">Username</label>
+                        <input role="textbox" type="text" name="username" id="username" required>
+
+                        <label for="password">Password</label>
+                        <input role="textbox" type="password" name="pwd" id="password" required>
+
+                        <button role="button" type="submit" class="register-button">Register</button>
+
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <main class="welcome-user-page">
+        <header>
+            <div class="topnav">
+                <span class="logo-text">WhereIsIT</span>
+                <span class="logout-text">Nitish|Logout</span>
+            </div>
+            <header>
+                <ul class="welcome-menu-container">
+                    <li><button class="my-items-button">My Items</button></li>
+                    <li><button class="my-places-button">My Places</button></li>
+                    <li><button class="my-areas-button">My Areas</button></li>
+                    <li><button class="my-categories-button">My Categories</button></li>
+                </ul>
+    </main>
+
+    <main class="items-page">
+        <header>
+            <div class="topnav">
+                <span class="logo-text">WhereIsIT</span>
+                <span class="logout-text">Nitish|Logout</span>
+            </div>
+        </header>
+        <h1 class="entity-heading">Items</h1>
+        <section class="items-content">
+            <div class="nav-buttons">
+                <button class="home-button">Back to home</button>
+                <button class="create-new-button">+ Create</button>
+            </div>
+            <form id="item-lookup-form">
+                <span>Find My</span>
+                <input id="searchfield" type="text" name="searchfield" placeholder="spare car key">
+                <button id="search-item">Search</button>
+            </form>
+            <button class="show-all-button">Show All</button>
+
+            <section class="items-result">
+
+                <div>
+                    <table class="search-items-table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Car Key-spare</th>
+                        </tr>
+                        <tr>
+                            <td>Place</td>
+                            <td>Cupboard/C2</td>
+                        </tr>
+                        <tr>
+                            <td>Area</td>
+                            <td>Bedroom</td>
+                        </tr>
+                        <tr>
+                            <td><button class="update-item-button">Update</button></td>
+                            <td><button class="delete-item-button">Delete</button></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table class="search-items-table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Swiss Knife</th>
+                        </tr>
+                        <tr>
+                            <td>Place</td>
+                            <td>Moving Drawer/D2</td>
+                        </tr>
+                        <tr>
+                            <td>Area</td>
+                            <td>Kitchen</td>
+                        </tr>
+                        <tr>
+                            <td><button class="update-item-button">Update</button></td>
+                            <td><button class="delete-item-button">Delete</button></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <table class="all-items-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Place</th>
+                        <th>Area</th>
+                    </tr>
+                    <tr>
+                        <td>Car Key-spare</td>
+                        <td>Cupboard/C2</td>
+                        <td>Bedroom</td>
+                    </tr>
+                    <tr>
+                        <td>Macy's memebership card</td>
+                        <td>Drawer/D1</td>
+                        <td>Bedroom</td>
+                    </tr>
+                    <tr>
+                        <td>Sam's birthday gift</td>
+                        <td>Cupboard/C1</td>
+                        <td>Living Room</td>
+                    </tr>
+                    <tr>
+                        <td>Swiss Knife</td>
+                        <td>Moving Drawer/D2</td>
+                        <td>Kitchen</td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+
+        <div class="move-item-popup">
+            <h3>Moving Item: Swiss Knife </h3>
+            <select>
+                            <option value="0">Select an Area:</option>
+                            <option value="1">Garage</option>
+                            <option value="2">Bedroom</option>
+                        </select>
+            <select>
+                            <option value="0">Select a place:</option>
+                            <option value="1">Moving Drawer/D4</option>
+                            <option value="2">Cupboard/C2</option>
+                        </select>
+            <button class="save-button">Save</button>
+        </div>
+
+        <div class="create-item-popup">
+            <h3>Create Item</h3>
+            <select>
+                            <option value="0">Select an Area:</option>
+                            <option value="1">Garage</option>
+                            <option value="2">Bedroom</option>
+                        </select>
+            <select>
+                            <option value="0">Select a place:</option>
+                            <option value="1">Moving Drawer/D4</option>
+                            <option value="2">Cupboard/C2</option>
+                        </select>
+            <select>
+                            <option value="0">Select a category:</option>
+                            <option value="1">Travel</option>
+                            <option value="2">Personal Care</option>
+                            <option value="1">Travel</option>
+                            <option value="2">Personal Care</option>
+                        </select>
+            <button class="save-button">Save</button>
+        </div>
+    </main>
+
+
+    <main class="places-page">
+        <header>
+            <div class="topnav">
+                <span class="logo-text">WhereIsIT</span>
+                <span class="logout-text">Nitish|Logout</span>
+            </div>
+        </header>
+        <div class="message-top-bar">
+            <span class="no-entity-text">No Places found. Make sure you at least have one area before creating places</span>
+        </div>
+        <h1 class="entity-heading">Places</h1>
+        <section class="places-content">
+            <div class="nav-buttons">
+                <button class="home-button">Back to home</button>
+                <button class="create-new-button">+ Create</button>
+            </div>
+
+            <form action="#" id="places-search-form">
+                <div class="wrapper-input">
+                    <label for="query"><h3>Search my places</h3></label>
+                    <input type="text" id="query" class="js-query" aria-label="search">
+                </div>
+                <button type="submit" id="search-places-button">Search</button>
+            </form>
+            <button class="show-all-button">Show All</button>
+        </section>
+    </main>
+
+    <main class="areas-page">
+        <header>
+            <div class="topnav">
+                <span class="logo-text">WhereIsIT</span>
+                <span class="logout-text">Nitish|Logout</span>
+            </div>
+        </header>
+        <div class="message-top-bar">
+            <span class="no-entity-text">No areas found. Make sure you at least have one area before creating places or items</span>
+        </div>
+        <h1 class="entity-heading">Areas</h1>
+        <section class="places-content">
+            <div class="nav-buttons">
+                <button class="home-button">Back to home</button>
+                <button class="create-new-button">+ Create</button>
+            </div>
+            <div class="areas-list">
+                <button class="area-container">Living Room</button>
+                <div class="area-contents">
+                    Contains: Cupboard/C1, Drawer/D1, Book shelf
+                </div>
+
+                <button class="area-container">Garage</button>
+                <div class="area-contents">
+                    Contains: Section/C1, small shelf
+                </div>
+
+                <button class="area-container">Bedroom</button>
+                <div class="area-contents">
+                    Contains: Drawer/D2, Wardrobe/W1
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

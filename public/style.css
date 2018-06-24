@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+.welcome-page,
+.login-page,
+.register-page,
+.welcome-user-page,
+.items-page,
+.places-page,
+.areas-page {
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.main-content {
+    border: 1px solid blue;
+    width: 90%;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.log-in-container,
+.register-container {
+    width: 400px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.log-in-text,
+.register-text {
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
+    color: #525654;
+}
+
+.user-info {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+#username,
+#password,
+#email {
+    display: block;
+    margin-bottom: 15px;
+    width: 320px;
+    height: 55px;
+    border: 2px solid #c4c6c5;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.log-in-button,
+.register-button {
+    margin-top: 15px;
+    width: 320px;
+    margin-bottom: 50px;
+    height: 55px;
+    background-color: #35ce59;
+    text-decoration-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.welcome-text {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.welcome-menu-container {
+    border: 1px solid red;
+    list-style: none;
+    text-align: center;
+}
+
+.welcome-menu-container > li {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav span {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 17px;
+    display: inline-block;
+    padding: 10px 10px;
+    height: 30px;
+}
+
+*.logout-text {
+    float: right;
+}
+
+/*Headings for sections like Items,Places,Areas*/
+
+.entity-heading {
+    display: block;
+    text-align: center;
+}
+
+.home-button,
+.create-new-button {
+    display: inline-block;
+}
+
+.create-new-button {
+    float: right;
+}
+
+.items-content,
+.places-content {
+    padding: 5px 5px;
+    border: 1px solid blue;
+}
+
+#item-lookup-form,
+#places-search-form {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#searchfield {
+    border: none;
+    border-bottom: 3px solid gray;
+    border-radius: 0px;
+    padding: 8px 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    background: none;
+    width: 200px;
+}
+
+#search-item {
+    border: 3px solid ghostwhite;
+    padding: 8px 13px;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    position: relative;
+    left: -3px;
+    border-radius: 0;
+}
+
+.show-all-button {
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.items-result {
+    text-align: center;
+    border: 2px solid red;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.move-item-popup,
+.create-item-popup {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid brown;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.move-item-popup *,
+.create-item-popup * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.save-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Places-Page properties*/
+
+.message-top-bar {
+    overflow: hidden;
+    background-color: #35ce59;
+}
+
+.no-entity-text {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px 10px;
+}
+
+.areas-list {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.area-container {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 50%;
+    border: 1px solid black;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active,
+.area-container:hover {
+    background-color: #ccc;
+}
+
+.area-contents {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
