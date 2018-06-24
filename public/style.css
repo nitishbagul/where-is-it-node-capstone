@@ -22,7 +22,8 @@
 .welcome-user-page,
 .items-page,
 .places-page,
-.areas-page {
+.areas-page,
+.categories-page {
     border: 1px solid black;
     width: 100%;
     margin-top: 25px;
