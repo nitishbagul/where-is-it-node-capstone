@@ -172,6 +172,8 @@ label {
     display: inline-block;
     line-height: normal;
     padding: 3px 5px;
+    float: right;
+    margin-top: 30px;
 }
 
 .nav-logo h2 {
@@ -238,7 +240,6 @@ label {
 
 .items-menu,
 .places-menu {
-    border: 1px solid green;
     padding: 5px;
     margin-bottom: 5px;
     text-align: center;
@@ -251,7 +252,6 @@ label {
 .places-menu-buttons {
     text-align: right;
     position: relative;
-    border: 1px solid brown;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 10px;
@@ -284,14 +284,12 @@ label {
 .items-content,
 .places-content {
     padding: 5px 5px;
-    border: 1px solid blue;
+
 }
 
 #item-lookup-form {
     display: block;
     margin-top: 50px;
-
-    border: 1px solid black;
 }
 
 #item-lookup-form span {
@@ -321,7 +319,6 @@ label {
 .items-result,
 .places-result {
     text-align: center;
-    border: 2px solid red;
 }
 
 
@@ -425,15 +422,12 @@ label {
 }
 
 .single-item-container {
-    border: 1px solid yellow;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-.item-options-container {
-    border: 1px solid green;
-}
+.item-options-container {}
 
 .single-item-container .all-items-table {
     margin-bottom: 0px;
@@ -498,7 +492,6 @@ label {
 
 @media (max-width: 580px) {
     .items-menu-buttons {
-        border: 1px solid brown;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-right: 15px;
