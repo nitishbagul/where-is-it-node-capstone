@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Easily track items that are likely to get lost">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -105,27 +105,64 @@
                 </div>
 
             </div>
+        </header>
+        <section class="content-area">
 
-            <section class="content-area">
+            <h1 class="entity-heading">Items</h1>
+            <section class="items-content">
+                <div class="items-menu">
+                    <div class="items-menu-buttons">
+                        <button class="create-new-button">Create</button>
+                        <button class="show-all-button">Show All</button>
+                    </div>
+                    <form id="item-lookup-form">
+                        <span>Find My</span>
+                        <input id="searchfield" type="text" name="searchfield" placeholder="spare car key">
+                        <button id="search-item">Search</button>
+                    </form>
+                </div>
 
-                <h1 class="entity-heading">Items</h1>
-                <section class="items-content">
-                    <div class="items-menu">
-                        <div class="items-menu-buttons">
-                            <button class="create-new-button">Create</button>
-                            <button class="show-all-button">Show All</button>
-                        </div>
-                        <form id="item-lookup-form">
-                            <span>Find My</span>
-                            <input id="searchfield" type="text" name="searchfield" placeholder="spare car key">
-                            <button id="search-item">Search</button>
-                        </form>
+
+                <section class="items-result">
+
+                    <div class="js-all-result-area">
+                        <table class="all-items-table">
+                            <tr>
+                                <th>Name</th>
+                                <th>Place</th>
+                                <th>Area</th>
+                                <th>Category</th>
+                            </tr>
+                            <tr>
+                                <td data-th="Name">Car Key-spare</td>
+                                <td data-th="Place">Cupboard/C2</td>
+                                <td data-th="Area">Bedroom</td>
+                                <td data-th="Category">IMP-stuff</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Name">Macy's memebership card</td>
+                                <td data-th="Place">Drawer/D1</td>
+                                <td data-th="Area">Bedroom</td>
+                                <td data-th="Category">Shopping</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Name">Sam's birthday gift</td>
+                                <td data-th="Place">Cupboard/C1</td>
+                                <td data-th="Area">Living Room</td>
+                                <td data-th="Category">General</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Name">Swiss Knife</td>
+                                <td data-th="Place">Moving Drawer/D2</td>
+                                <td data-th="Area">Kitchen</td>
+                                <td data-th="Category">Tools</td>
+                            </tr>
+                        </table>
                     </div>
 
+                    <div class="js-single-result-area">
 
-                    <section class="items-result">
-
-                        <div class="js-all-result-area">
+                        <div class="single-item-container">
                             <table class="all-items-table">
                                 <tr>
                                     <th>Name</th>
@@ -139,93 +176,57 @@
                                     <td data-th="Area">Bedroom</td>
                                     <td data-th="Category">IMP-stuff</td>
                                 </tr>
-                                <tr>
-                                    <td data-th="Name">Macy's memebership card</td>
-                                    <td data-th="Place">Drawer/D1</td>
-                                    <td data-th="Area">Bedroom</td>
-                                    <td data-th="Category">Shopping</td>
-                                </tr>
-                                <tr>
-                                    <td data-th="Name">Sam's birthday gift</td>
-                                    <td data-th="Place">Cupboard/C1</td>
-                                    <td data-th="Area">Living Room</td>
-                                    <td data-th="Category">General</td>
-                                </tr>
-                                <tr>
-                                    <td data-th="Name">Swiss Knife</td>
-                                    <td data-th="Place">Moving Drawer/D2</td>
-                                    <td data-th="Area">Kitchen</td>
-                                    <td data-th="Category">Tools</td>
-                                </tr>
                             </table>
-                        </div>
-
-                        <div class="js-single-result-area">
-                            <div class="single-item-container">
-                                <table class="all-items-table">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Place</th>
-                                        <th>Area</th>
-                                        <th>Category</th>
-                                    </tr>
-                                    <tr>
-                                        <td data-th="Name">Car Key-spare</td>
-                                        <td data-th="Place">Cupboard/C2</td>
-                                        <td data-th="Area">Bedroom</td>
-                                        <td data-th="Category">IMP-stuff</td>
-                                    </tr>
-                                </table>
-                                <div class="item-options-container">
-                                    <button>Move</button>
-                                    <button>Delete</button>
-                                </div>
+                            <div class="item-options-container">
+                                <button>Move</button>
+                                <button>Delete</button>
                             </div>
-
-                    </section>
-
+                        </div>
+                    </div>
                 </section>
 
-                <div class="js-item-popup-list">
-                    <div class="move-item-popup">
-                        <h3>Moving Item: Swiss Knife </h3>
-                        <select>
-                                    <option value="0">Select an Area:</option>
-                                    <option value="1">Garage</option>
-                                    <option value="2">Bedroom</option>
-                                </select>
-                        <select>
-                                    <option value="0">Select a place:</option>
-                                    <option value="1">Moving Drawer/D4</option>
-                                    <option value="2">Cupboard/C2</option>
-                                </select>
-                        <button class="save-button">Save</button>
-                    </div>
+            </section>
 
-                    <div class="create-item-popup">
-                        <h3>Create Item</h3>
-                        <select>
+            <div class="js-item-popup-list">
+                <div class="move-item-popup">
+                    <h3>Moving Item: Swiss Knife </h3>
+                    <select>
                                     <option value="0">Select an Area:</option>
                                     <option value="1">Garage</option>
                                     <option value="2">Bedroom</option>
                                 </select>
-                        <select>
+                    <select>
                                     <option value="0">Select a place:</option>
                                     <option value="1">Moving Drawer/D4</option>
                                     <option value="2">Cupboard/C2</option>
                                 </select>
-                        <select>
+                    <button class="save-button">Save</button>
+                </div>
+
+                <div class="create-item-popup">
+                    <h3>Create Item</h3>
+                    <select>
+                                    <option value="0">Select an Area:</option>
+                                    <option value="1">Garage</option>
+                                    <option value="2">Bedroom</option>
+                                </select>
+                    <select>
+                                    <option value="0">Select a place:</option>
+                                    <option value="1">Moving Drawer/D4</option>
+                                    <option value="2">Cupboard/C2</option>
+                                </select>
+                    <select>
                                     <option value="0">Select a category:</option>
                                     <option value="1">Travel</option>
                                     <option value="2">Personal Care</option>
                                     <option value="1">Travel</option>
                                     <option value="2">Personal Care</option>
                                 </select>
-                        <button class="save-button">Save</button>
-                    </div>
-
+                    <button class="save-button">Save</button>
                 </div>
-            </section>
+
+            </div>
+        </section>
     </main>
 
     <main class="welcome-user-page">
