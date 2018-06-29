@@ -190,25 +190,27 @@ label {
 }
 
 .sidenav {
-    height: 100%;
-    width: 160px;
-    z-index: 1;
-    top: 90px;
-    left: 0;
+    /* height: 100%; */
+    /* width: 160px; */
+    z-index: 1000;
+    /* top: 90px; */
+    /* left: 0; */
     background-color: #90A89B;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     padding-top: 20px;
     position: relative;
-    right: 0;
+    /* right: 0; */
 }
 
 .sidenav button {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    display: inline-block;
+    width: auto;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
     background-color: #34515E;
     color: #E0FFFF;
+    height: auto;
+    padding: 10px 15px;
 }
 
 .sidenav button:hover {
