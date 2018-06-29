@@ -16,36 +16,56 @@
     -webkit-padding-end: 0px;
 }
 
-.welcome-page,
-.login-page,
-.register-page,
-.welcome-user-page,
-.items-page,
-.places-page,
-.areas-page,
-.categories-page {
-    border: 1px solid black;
-    width: 100%;
-    margin-top: 25px;
-    margin-left: 10px;
-    margin-right: 10px;
+/* Styles for Welcome Page */
+
+.welcome-page {
+    background: linear-gradient( rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)), url("https://images.fineartamerica.com/images-medium-large-5/the-cluttered-attic-steve-crisp.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 2px solid red;
 }
 
-.main-content {
+.main-window {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #f9f9f9;
     border: 1px solid blue;
-    width: 90%;
-    height: 90%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 40px;
     text-align: center;
+    color: black;
+}
+
+h1 {
+    color: #024C24;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-family: 'Walter Turncoat', cursive;
+}
+
+.banner-text {
+    color: #021D59;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 button {
     background-color: #4CAF50;
+    padding: 6px 8px 6px 8px;
+    height: 40px;
+    width: 100px;
     border: none;
-    color: white;
-    padding: 15px 32px;
+    border-radius: 6px;
+    color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -54,14 +74,26 @@ button {
     cursor: pointer;
 }
 
+
+.feature-description {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.features p {
+    display: inline-block;
+}
+
 .log-in-container,
 .register-container {
-    width: 400px;
+    width: 60%;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 30px;
+    padding-bottom: 10px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 15px;
     border: 1px solid black;
     background-color: white;
@@ -82,6 +114,7 @@ button {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    width: 100%;
 }
 
 label {
@@ -95,7 +128,7 @@ label {
 #email {
     display: block;
     margin-bottom: 15px;
-    width: 320px;
+    width: 70%;
     height: 55px;
     border: 2px solid #c4c6c5;
     border-radius: 5px;
@@ -105,7 +138,7 @@ label {
 .log-in-button,
 .register-button {
     margin-top: 15px;
-    width: 320px;
+    width: 70%;
     margin-bottom: 50px;
     height: 55px;
     background-color: #35ce59;
@@ -115,56 +148,137 @@ label {
     color: white;
 }
 
-.welcome-text {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
+/*welcome-page end*/
 
-.welcome-menu-container {
-    border: 1px solid red;
-    list-style: none;
-    text-align: center;
-}
-
-.welcome-menu-container > li {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
+/*Items page, Places page styles*/
 
 .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #3E606F;
+    line-height: 90px;
+    position: absolute;
+    width: 100%;
 }
 
-.topnav span {
+.nav-logo {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: normal;
+    padding: 3px 5px;
+}
+
+.nav-list {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: normal;
+    padding: 3px 5px;
+}
+
+.nav-logo h2 {
+    font-size: 26px;
+    color: #F5AB35;
+    font-family: 'Walter Turncoat', cursive;
+}
+
+.nav-list span {
     color: #f2f2f2;
-    text-decoration: none;
     font-size: 17px;
     display: inline-block;
-    padding: 10px 10px;
-    height: 30px;
+    padding: 5px 5px;
 }
 
-*.logout-text {
-    float: right;
+.sidenav {
+    height: 100%;
+    width: 160px;
+    z-index: 1;
+    top: 90px;
+    left: 0;
+    background-color: #90A89B;
+    overflow-x: hidden;
+    padding-top: 20px;
+    position: relative;
+    right: 0;
 }
 
-/*Headings for sections like Items,Places,Areas*/
+.sidenav button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #34515E;
+    color: #E0FFFF;
+}
+
+.sidenav button:hover {
+    color: red;
+}
+
+.content-area,
+.content-area-places {
+    position: relative;
+    top: -273px;
+    left: 160px;
+    right: 0;
+    bottom: 0;
+    background-color: #D1DBBD;
+}
+
+/*Items Page Properties*/
+
+.welcome-user-page {
+    margin-top: 20px;
+}
 
 .entity-heading {
     display: block;
     text-align: center;
+    font-size: 35px;
+    color: #E63022;
 }
 
-.home-button,
+.items-menu,
+.places-menu {
+    border: 1px solid green;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.items-menu-buttons,
+.places-menu-buttons {
+    text-align: right;
+    position: relative;
+    border: 1px solid brown;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.items-menu-buttons button,
+.places-menu-buttons button {
+    width: 120px;
+    height: 50px;
+}
+
 .create-new-button {
     display: inline-block;
+    position: absolute;
+    left: 10px;
+    background-color: #40806A;
+    color: white;
+    /* width: 15%;
+    height: 100%;*/
 }
 
-.create-new-button {
-    float: right;
+.show-all-button {
+    display: inline-block;
+    background-color: #40806A;
+    color: white;
+    /* width: 15%;
+    height: 100%;*/
 }
 
 .items-content,
@@ -173,10 +287,15 @@ label {
     border: 1px solid blue;
 }
 
-#item-lookup-form,
-#places-search-form {
-    margin-top: 30px;
-    text-align: center;
+#item-lookup-form {
+    display: block;
+    margin-top: 50px;
+
+    border: 1px solid black;
+}
+
+#item-lookup-form span {
+    font-size: 20px;
 }
 
 #searchfield {
@@ -185,67 +304,118 @@ label {
     border-radius: 0px;
     padding: 8px 0;
     -webkit-font-smoothing: antialiased;
-    font-size: 15px;
     background: none;
     width: 200px;
+    font-size: 20px;
 }
 
-#search-item {
-    border: 3px solid ghostwhite;
-    padding: 8px 13px;
-    font-size: 15px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    position: relative;
-    left: -3px;
-    border-radius: 0;
-}
-
-.show-all-button {
-    display: block;
-    margin-top: 30px;
+#search-item,
+#search-place {
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.items-result {
+.items-result,
+.places-result {
     text-align: center;
     border: 2px solid red;
 }
 
-table {
+
+.all-items-table {
+    margin: 1em 0;
+    min-width: 300px;
     margin-left: auto;
     margin-right: auto;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    margin-top: 15px;
 }
 
-td,
-th {
-    border: 1px solid #dddddd;
+.all-items-table tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.all-items-table th {
+    display: none;
+}
+
+.all-items-table td {
+    display: block;
+}
+
+.all-items-table td:first-child {
+    padding-top: 0.5em;
+}
+
+.all-items-table td:last-child {
+    padding-bottom: 0.5em;
+}
+
+.all-items-table td:before {
+    content: attr(data-th) ": ";
+    font-weight: bold;
+    width: 6.5em;
+    display: inline-block;
+}
+
+.all-items-table th,
+.all-items-table td {
     text-align: left;
-    padding: 8px;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+.all-items-table {
+    background: #5d6883;
+    color: #fff;
+    border-radius: 0.4em;
+    overflow: hidden;
+}
+
+.all-items-table tr {
+    border-color: #46637f;
+}
+
+.all-items-table th,
+.all-items-table td {
+    margin: 0.5em 1em;
+}
+
+.all-items-table th,
+.all-items-table td:before {
+    color: #dd5;
 }
 
 .move-item-popup,
 .create-item-popup {
-    width: 50%;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid brown;
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #cc5c47;
+    border-radius: 8px;
 }
 
 .move-item-popup *,
 .create-item-popup * {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.move-item-popup h3,
+.create-item-popup h3 {
+    color: #0C2231;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.js-item-popup-list select {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .save-button {
@@ -254,48 +424,117 @@ tr:nth-child(even) {
     margin-right: auto;
 }
 
-/*Places-Page properties*/
-
-.message-top-bar {
-    overflow: hidden;
-    background-color: #35ce59;
-}
-
-.no-entity-text {
-    color: #f2f2f2;
-    text-decoration: none;
-    font-size: 15px;
-    padding: 10px 10px;
-}
-
-.areas-list {
+.single-item-container {
+    border: 1px solid yellow;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
     text-align: center;
 }
 
-.area-container {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 50%;
+.item-options-container {
+    border: 1px solid green;
+}
+
+.single-item-container .all-items-table {
+    margin-bottom: 0px;
+}
+
+.item-options-container button {
+    display: inline-block;
+}
+
+/*Styles for places page*/
+
+.places-list-all {
+    list-style: none;
     border: 1px solid black;
     text-align: center;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.active,
-.area-container:hover {
-    background-color: #ccc;
+.places-list-all li {
+    color: #551700;
+    font-size: 18px;
+    border: 1px solid #551700;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e7ca33;
+    font-weight: 500px;
 }
 
-.area-contents {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
-    overflow: hidden;
+/*Media Queries*/
+
+@media (max-width: 600px) {
+    .log-in-container,
+    .register-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+    #username,
+    #password,
+    #email {
+        width: 100%;
+    }
+    .log-in-container button,
+    .register-container button {
+        width: 100%;
+    }
+    .main-window {
+        width: 100%;
+    }
+}
+
+@media (min-width: 480px) {
+    .all-items-table th,
+    .all-items-table td {
+        padding: 1em !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .items-menu-buttons {
+        border: 1px solid brown;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 15px;
+    }
+    .items-menu-buttons button {
+        width: 120px;
+        height: 50px;
+        margin-bottom: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .create-new-button,
+    .show-all-button {
+        display: block;
+        position: static;
+    }
+}
+
+@media (min-width: 480px) {
+    .all-items-table td:before {
+        display: none;
+    }
+}
+
+@media (min-width: 480px) {
+    .all-items-table th,
+    .all-items-table td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+    }
+    .all-items-table th:first-child,
+    .all-items-table td:first-child {
+        padding-left: 0;
+    }
+    .all-items-table th:last-child,
+    .all-items-table td:last-child {
+        padding-right: 0;
+    }
 }
