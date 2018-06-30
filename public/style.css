@@ -395,10 +395,21 @@ label {
     font-size: 18px;
 }
 
+.create-item-popup label {
+    display: inline-block;
+}
+
+
 .js-item-popup-list select {
-    display: block;
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.create-item-popup input,
+.create-item-popup select {
+    width: 30%;
+    margin-left: 10px;
 }
 
 .save-button {

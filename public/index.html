@@ -97,13 +97,13 @@
                 </div>
             </div>
 
-                <div class="sidenav">
-                    <button>About</button>
-                    <button>My Items</button>
-                    <button>My Places</button>
-                    <button>My Areas</button>
-                    <button>Cateogries</button>
-                </div>
+            <div class="sidenav">
+                <button>About</button>
+                <button>My Items</button>
+                <button>My Places</button>
+                <button>My Areas</button>
+                <button>Cateogries</button>
+            </div>
 
         </header>
         <section class="content-area">
@@ -204,25 +204,48 @@
                 </div>
 
                 <div class="create-item-popup">
-                    <h3>Create Item</h3>
-                    <select>
-                                    <option value="0">Select an Area:</option>
-                                    <option value="1">Garage</option>
-                                    <option value="2">Bedroom</option>
-                                </select>
-                    <select>
-                                    <option value="0">Select a place:</option>
-                                    <option value="1">Moving Drawer/D4</option>
-                                    <option value="2">Cupboard/C2</option>
-                                </select>
-                    <select>
-                                    <option value="0">Select a category:</option>
-                                    <option value="1">Travel</option>
-                                    <option value="2">Personal Care</option>
-                                    <option value="1">Travel</option>
-                                    <option value="2">Personal Care</option>
-                                </select>
-                    <button class="save-button">Save</button>
+                    <form class="create-item-form" action="/create/" method="post">
+                        <h4>Create Item</h4>
+                        <fieldset name="item-info" class="item-info">
+
+                            <div class="name-select-container">
+                                <label for="item_name">Name</label>
+                                <input role="textbox" type="text" name="item_name" id="item_name" required>
+                            </div>
+
+                            <div class="area-select-container">
+                                <label for="area-selection">Area</label>
+                                <select id="area-selection" name="area-selection">
+                                <option value="0">Select an Area:</option>
+                                <option value="1">Garage</option>
+                                <option value="2">Bedroom</option>
+                            </select>
+                            </div>
+
+                            <div class="place-select-container">
+                                <label for="place-selection">Place</label>
+                                <select id="place-selection" name="place-selection">
+                                <option value="0">Select a place:</option>
+                                <option value="1">Moving Drawer/D4</option>
+                                <option value="2">Cupboard/C2</option>
+                            </select>
+                            </div>
+
+                            <div class="category-select-container">
+                                <label for="category-selection">Category</label>
+                                <select id="category-selection" name="category-selection">
+                                <option value="0">Select a category:</option>
+                                <option value="1">Travel</option>
+                                <option value="2">Personal Care</option>
+                                <option value="1">Travel</option>
+                                <option value="2">Personal Care</option>
+                            </select>
+                            </div>
+
+                            <button role="button" type="submit" class="create-button">Create</button>
+
+                        </fieldset>
+                    </form>
                 </div>
 
             </div>
