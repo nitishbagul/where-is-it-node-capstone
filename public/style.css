@@ -193,7 +193,7 @@ label {
 .sidenav {
     z-index: 1000;
     background-color: #90A89B;
-    position: relative;
+    padding: 10px 10px;
 }
 
 .sidenav button {
@@ -203,6 +203,7 @@ label {
     color: #E0FFFF;
     height: auto;
     padding: 10px 15px;
+    width: 19.6%;
 }
 
 .sidenav button:hover {
