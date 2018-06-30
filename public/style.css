@@ -156,7 +156,6 @@ label {
     overflow: hidden;
     background-color: #3E606F;
     line-height: 90px;
-    position: absolute;
     width: 100%;
 }
 
@@ -174,12 +173,14 @@ label {
     padding: 3px 5px;
     float: right;
     margin-top: 30px;
+    margin-right: 10px;
 }
 
 .nav-logo h2 {
     font-size: 26px;
     color: #F5AB35;
     font-family: 'Walter Turncoat', cursive;
+    margin-left: 10px;
 }
 
 .nav-list span {
@@ -190,23 +191,14 @@ label {
 }
 
 .sidenav {
-    /* height: 100%; */
-    /* width: 160px; */
     z-index: 1000;
-    /* top: 90px; */
-    /* left: 0; */
     background-color: #90A89B;
-    /* overflow-x: hidden; */
-    /* padding-top: 20px; */
     position: relative;
-    /* right: 0; */
 }
 
 .sidenav button {
     display: inline-block;
     width: auto;
-    /* margin-top: 20px; */
-    /* margin-bottom: 20px; */
     background-color: #34515E;
     color: #E0FFFF;
     height: auto;
