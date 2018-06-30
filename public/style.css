@@ -224,7 +224,7 @@ label {
 .entity-heading {
     display: block;
     text-align: center;
-    font-size: 35px;
+    font-size: 42px;
     color: #E63022;
 }
 
@@ -256,8 +256,7 @@ label {
     display: inline-block;
     background-color: #40806A;
     color: white;
-    /* width: 15%;
-    height: 100%;*/
+    float: left;
 }
 
 .show-all-button {
@@ -448,7 +447,7 @@ label {
 
 /*Media Queries*/
 
-/*ipad lanscape / small laptop*/
+/*ipad landscape / small laptop*/
 
 @media only screen and (max-width: 1024px) {
     body {
@@ -469,7 +468,7 @@ label {
         padding-right: 15px;
     }
     .items-menu-buttons button {
-        width: 120px;
+        width: 100%;
         height: 50px;
         margin-bottom: 5px;
         margin-left: auto;
@@ -519,6 +518,15 @@ label {
         width: 100%;
     }
     .main-window {
+        width: 100%;
+    }
+
+    .sidenav button {
+        display: inline-block;
+        background-color: #34515E;
+        color: #E0FFFF;
+        height: auto;
+        padding: 10px 15px;
         width: 100%;
     }
 }
