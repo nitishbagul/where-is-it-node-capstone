@@ -497,6 +497,19 @@ label {
     margin-bottom: 10px;
 }
 
+.collapse-content button {
+    width: 30%
+}
+
+.js-single-place-result,
+.js-all-places-result {
+    margin-top: 20px;
+}
+
+    {
+    margin-top: 15px;
+}
+
 /*Media Queries*/
 
 /*ipad landscape / small laptop*/
