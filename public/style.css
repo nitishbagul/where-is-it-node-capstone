@@ -370,7 +370,8 @@ label {
 }
 
 .move-item-popup,
-.create-item-popup {
+.create-item-popup,
+.delete-item-popup {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
@@ -384,7 +385,8 @@ label {
 }
 
 .move-item-popup *,
-.create-item-popup * {
+.create-item-popup *,
+.delete-item-popup * {
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -512,6 +514,10 @@ label {
     .create-item-popup {
         width: 80%;
     }
+
+    .delete-item-popup {
+        width: 60%;
+    }
 }
 
 
@@ -541,6 +547,10 @@ label {
         height: auto;
         padding: 10px 15px;
         width: 100%;
+    }
+
+    .delete-item-popup {
+        width: 70%;
     }
 }
 

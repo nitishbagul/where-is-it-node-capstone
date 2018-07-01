@@ -120,6 +120,7 @@
                         <input id="searchfield" type="text" name="searchfield" placeholder="spare car key">
                         <button id="search-item">Search</button>
                     </form>
+                    <p>*Use the search to move/delete an item</p>
                 </div>
 
 
@@ -262,6 +263,16 @@
                     </form>
                 </div>
 
+                <div class="delete-item-popup">
+                    <form class="move-item-form" action="/delete/" method="post">
+                        <h4>Deleting Item: Gift Card</h4>
+                        <fieldset name="delete-info" class="delete-info">
+                            <button role="button" type="submit" class="delete-button">Delete</button>
+                            <button role="button" type="submit" class="delete-button">Cancel</button>
+                        </fieldset>
+                    </form>
+                </div>
+
             </div>
         </section>
     </main>
@@ -302,6 +313,7 @@
                         <input id="searchfield" type="text" name="searchfield" placeholder="spare car key">
                         <button id="search-place">Search</button>
                     </form>
+                    <p> *Use the search to move/delete an item</p>
                 </div>
 
                 <section class="places-result">
