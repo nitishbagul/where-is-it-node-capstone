@@ -521,23 +521,6 @@ label {
     body {
         color: green;
     }
-    .all-items-table td:before {
-        display: none;
-    }
-    .all-items-table th,
-    .all-items-table td {
-        display: table-cell;
-        padding: 0.25em 0.5em;
-        padding: 1em !important;
-    }
-    .all-items-table th:first-child,
-    .all-items-table td:first-child {
-        padding-left: 0;
-    }
-    .all-items-table th:last-child,
-    .all-items-table td:last-child {
-        padding-right: 0;
-    }
     #username,
     #password,
     #email {
@@ -567,5 +550,30 @@ label {
 @media only screen and (max-width: 320px) {
     body {
         color: purple;
+    }
+}
+
+/*Table Styles*/
+
+@media (min-width: 480px) {
+    .all-items-table td:before {
+        display: none;
+    }
+    .all-items-table th,
+    .all-items-table td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+    }
+    .all-items-table th:first-child,
+    .all-items-table td:first-child {
+        padding-left: 0;
+    }
+    .all-items-table th:last-child,
+    .all-items-table td:last-child {
+        padding-right: 0;
+    }
+    .all-items-table th,
+    .all-items-table td {
+        padding: 1em !important;
     }
 }
