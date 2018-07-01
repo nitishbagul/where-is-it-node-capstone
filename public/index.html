@@ -289,15 +289,14 @@
                     <span>Logout</span>
                 </div>
             </div>
+            <div class="sidenav">
+                <button>About</button>
+                <button>My Items</button>
+                <button>My Places</button>
+                <button>My Areas</button>
+                <button>Cateogries</button>
+            </div>
         </header>
-
-        <div class="sidenav">
-            <button>About</button>
-            <button>My Items</button>
-            <button>My Places</button>
-            <button>My Areas</button>
-            <button>Cateogries</button>
-        </div>
 
         <section class="content-area-places">
 
@@ -371,11 +370,11 @@
 
             </section>
 
-            <div class="js-item-popup-list">
-                <div class="move-item-popup">
-                    <form class="move-item-form" action="/create/" method="post">
+            <div class="js-place-popup-list">
+                <div class="move-place-popup">
+                    <form class="move-place-form" action="/create/" method="post">
                         <h4>Moving Place: Main Drawer</h4>
-                        <fieldset name="item-info" class="item-info">
+                        <fieldset name="place-info" class="place-info">
 
                             <div class="area-select-container">
                                 <label for="move-area-selection">Area</label>
@@ -392,14 +391,14 @@
                     </form>
                 </div>
 
-                <div class="create-item-popup">
-                    <form class="create-item-form" action="/create/" method="post">
+                <div class="create-place-popup">
+                    <form class="create-place-form" action="/create/" method="post">
                         <h4>Create Place</h4>
-                        <fieldset name="item-info" class="item-info">
+                        <fieldset name="place-info" class="place-info">
 
                             <div class="name-select-container">
-                                <label for="item_name">Name</label>
-                                <input role="textbox" type="text" name="item_name" id="item_name" required>
+                                <label for="place_name">Name</label>
+                                <input role="textbox" type="text" name="place_name" id="place_name" required>
                             </div>
 
                             <div class="area-select-container">
@@ -417,9 +416,112 @@
                     </form>
                 </div>
 
-                <div class="delete-item-popup">
-                    <form class="move-item-form" action="/delete/" method="post">
+                <div class="delete-place-popup">
+                    <form class="move-place-form" action="/delete/" method="post">
                         <h4>Deleting Item: Gift Card</h4>
+                        <fieldset name="delete-info" class="delete-info">
+                            <button role="button" type="submit" class="delete-button">Delete</button>
+                            <button role="button" type="submit" class="delete-button">Cancel</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <main class="welcome-user-page">
+        <header>
+            <div class="topnav">
+                <div class="nav-logo">
+                    <h2 class="logo-text">WhereIsIT</h2>
+                </div>
+                <div class="nav-list">
+                    <span class="username">Nitish</span>
+                    <span>|</span>
+                    <span>Logout</span>
+                </div>
+            </div>
+            <div class="sidenav">
+                <button>About</button>
+                <button>My Items</button>
+                <button>My Places</button>
+                <button>My Areas</button>
+                <button>Cateogries</button>
+            </div>
+        </header>
+
+        <section class="content-area-places">
+
+            <h1 class="entity-heading">Areas</h1>
+            <section class="places-content">
+                <div class="places-menu">
+                    <div class="places-menu-buttons">
+                        <button class="create-new-button">Create</button>
+                        <button class="show-all-button">Show All</button>
+                    </div>
+                </div>
+
+                <section class="places-result">
+                    <div class="js-all-places-result">
+                        <h3>My Areas:</h3>
+                        <ul class="places-list-all">
+                            <li>
+                                <button class="places-collapsible">Living Room</button>
+                                <div class="collapse-content">
+                                    <p>Holds <span>10</span> places</p>
+                                    <button role="button" class="all-items-button">Show Places</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+
+                            <li>
+                                <button class="places-collapsible">Garage</button>
+                                <div class="collapse-content">
+                                    <p>Holds <span>10</span> places</p>
+                                    <button role="button" class="all-items-button">Show Places</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+
+                            <li>
+                                <button class="places-collapsible">Master Bedroom</button>
+                                <div class="collapse-content">
+                                    <p>Holds <span>10</span> places</p>
+                                    <button role="button" class="all-items-button">Show Places</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <div class="js-place-popup-list">
+
+                <div class="create-place-popup">
+                    <form class="create-place-form" action="/create/" method="post">
+                        <h4>Create Area</h4>
+                        <fieldset name="place-info" class="place-info">
+
+                            <div class="name-select-container">
+                                <label for="place_name">Name</label>
+                                <input role="textbox" type="text" name="place_name" id="place_name" required>
+                            </div>
+
+                            <button role="button" type="submit" class="create-button">Create</button>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="delete-place-popup">
+                    <form class="move-place-form" action="/delete/" method="post">
+                        <h4>Deleting Area: Garage</h4>
                         <fieldset name="delete-info" class="delete-info">
                             <button role="button" type="submit" class="delete-button">Delete</button>
                             <button role="button" type="submit" class="delete-button">Cancel</button>

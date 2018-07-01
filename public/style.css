@@ -371,7 +371,10 @@ label {
 
 .move-item-popup,
 .create-item-popup,
-.delete-item-popup {
+.delete-item-popup,
+.move-place-popup,
+.create-place-popup,
+.delete-place-popup {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
@@ -386,25 +389,33 @@ label {
 
 .move-item-popup *,
 .create-item-popup *,
-.delete-item-popup * {
+.delete-item-popup *,
+.move-place-popup *,
+.create-place-popup *,
+.delete-place-popup * {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .move-item-popup h3,
-.create-item-popup h3 {
+.create-item-popup h3,
+.move-place-popup h3,
+.create-place-popup h3 {
     color: #0C2231;
     font-weight: 500;
     font-size: 18px;
 }
 
 .create-item-popup label,
-.move-item-popup label {
+.move-item-popup label,
+.create-place-popup label,
+.move-place-popup label {
     display: inline-block;
 }
 
 
-.js-item-popup-list select {
+.js-item-popup-list select,
+.js-place-popup-list select {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
@@ -412,7 +423,10 @@ label {
 
 .create-item-popup input,
 .create-item-popup select,
-.move-item-popup select {
+.move-item-popup select,
+.create-place-popup input,
+.create-place-popup select,
+.move-place-popup select {
     width: 50%;
     margin-left: 10px;
 }
@@ -550,21 +564,27 @@ label {
 
     .create-item-popup label,
     .move-item-popup label,
-        {
+    .create-place-popup label,
+    .move-place-popup label {
         display: block;
     }
 
     .create-item-popup input,
-    .create-item-popup select {
+    .create-item-popup select,
+    .create-place-popup input,
+    .create-placce-popup select {
         width: 50%;
     }
 
     .move-item-popup,
-    .create-item-popup {
+    .create-item-popup,
+    .move-place-popup,
+    .create-place-popup {
         width: 80%;
     }
 
-    .delete-item-popup {
+    .delete-item-popup,
+    .delete-place-popup {
         width: 60%;
     }
 }
@@ -598,7 +618,8 @@ label {
         width: 100%;
     }
 
-    .delete-item-popup {
+    .delete-item-popup,
+    .delete-place-popup {
         width: 70%;
     }
 }
