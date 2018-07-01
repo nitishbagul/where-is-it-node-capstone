@@ -313,12 +313,43 @@
                         <input id="searchfield" type="text" name="searchfield" placeholder="spare car key">
                         <button id="search-place">Search</button>
                     </form>
-                    <p> *Use the search to move/delete an item</p>
+                    <p> *Use the search to move/delete places</p>
                 </div>
 
                 <section class="places-result">
                     <div class="js-all-places-result">
                         <ul class="places-list-all">
+                            <li>
+                                <button class="places-collapsible">Main Cupboard</button>
+                                <div class="collapse-content">
+                                    <p>Current Area: Living Room</p>
+                                    <button role="button" class="move-button">Move</button>
+                                    <button role="button" class="all-items-button">Show Items</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+
+                            <li>
+                                <button class="places-collapsible">Drawer/D1</button>
+                                <div class="collapse-content">
+                                    <p>Current Area: Living Room</p>
+                                    <button role="button" class="move-button">Move</button>
+                                    <button role="button" class="all-items-button">Show Items</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+
+                            <li>
+                                <button class="places-collapsible">Book Shelf</button>
+                                <div class="collapse-content">
+                                    <p>Current Area: Living Room</p>
+                                    <button role="button" class="move-button">Move</button>
+                                    <button role="button" class="all-items-button">Show Items</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <!--<ul class="places-list-all">
                             <li>Living Room</li>
                             <li>Kitchen</li>
                             <li>Garage</li>
@@ -327,19 +358,21 @@
                             <li>Garage</li>
                             <li>Master Bedroom</li>
                             <li>Frontyard</li>
-                        </ul>
+                        </ul>-->
+
                     </div>
-                    <div class="js-single-place-result">
+
+                    <!--<div class="js-single-place-result">
                         <li>Living Room</li>
                         <li>Kitchen</li>
-                    </div>
+                    </div>-->
                 </section>
 
             </section>
 
         </section>
     </main>
-
+    <script src="client.js"></script>
 </body>
 
 </html>

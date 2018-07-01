@@ -60,7 +60,7 @@ h1 {
 
 button {
     background-color: #4CAF50;
-    padding: 6px 8px 6px 8px;
+    /* padding: 6px 8px 6px 8px; */
     height: 40px;
     width: 100px;
     border: none;
@@ -443,7 +443,7 @@ label {
 
 .places-list-all {
     list-style: none;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     text-align: center;
     width: 50%;
     margin-left: auto;
@@ -453,12 +453,48 @@ label {
 .places-list-all li {
     color: #551700;
     font-size: 18px;
-    border: 1px solid #551700;
+    /* border: 1px solid #551700; */
     border-radius: 3px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #e7ca33;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px; */
+    /* background-color: #e7ca33; */
     font-weight: 500px;
+}
+
+/*Trying Collapse*/
+
+.places-collapsible {
+    /* background-color: #777; */
+    /* color: white; */
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* text-align: left; */
+    outline: none;
+    font-size: 15px;
+}
+
+.js-all-places-result ul {
+    list-style: none;
+}
+
+.active,
+.collapse-content:hover {
+    background-color: #555;
+}
+
+.collapse-content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.collapse-content * {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*Media Queries*/
