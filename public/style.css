@@ -380,6 +380,7 @@ label {
     margin-bottom: 20px;
     background-color: #cc5c47;
     border-radius: 8px;
+    padding: 10px 10px;
 }
 
 .move-item-popup *,
@@ -395,7 +396,8 @@ label {
     font-size: 18px;
 }
 
-.create-item-popup label {
+.create-item-popup label,
+.move-item-popup label {
     display: inline-block;
 }
 
@@ -407,8 +409,9 @@ label {
 }
 
 .create-item-popup input,
-.create-item-popup select {
-    width: 30%;
+.create-item-popup select,
+.move-item-popup select {
+    width: 50%;
     margin-left: 10px;
 }
 
@@ -492,6 +495,22 @@ label {
     .log-in-container,
     .register-container {
         width: 100%;
+    }
+
+    .create-item-popup label,
+    .move-item-popup label,
+        {
+        display: block;
+    }
+
+    .create-item-popup input,
+    .create-item-popup select {
+        width: 50%;
+    }
+
+    .move-item-popup,
+    .create-item-popup {
+        width: 80%;
     }
 }
 
