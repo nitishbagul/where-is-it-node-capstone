@@ -350,16 +350,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <!--<ul class="places-list-all">
-                            <li>Living Room</li>
-                            <li>Kitchen</li>
-                            <li>Garage</li>
-                            <li>Basement</li>
-                            <li>Backyard</li>
-                            <li>Garage</li>
-                            <li>Master Bedroom</li>
-                            <li>Frontyard</li>
-                        </ul>-->
+
                     </div>
 
                     <div class="js-single-place-result">
@@ -379,6 +370,64 @@
                 </section>
 
             </section>
+
+            <div class="js-item-popup-list">
+                <div class="move-item-popup">
+                    <form class="move-item-form" action="/create/" method="post">
+                        <h4>Moving Place: Main Drawer</h4>
+                        <fieldset name="item-info" class="item-info">
+
+                            <div class="area-select-container">
+                                <label for="move-area-selection">Area</label>
+                                <select id="move-area-selection" name="area-selection">
+                                    <option value="0">Select..</option>
+                                    <option value="1">Garage</option>
+                                    <option value="2">Bedroom</option>
+                                </select>
+                            </div>
+
+                            <button role="button" type="submit" class="move-button">Move</button>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="create-item-popup">
+                    <form class="create-item-form" action="/create/" method="post">
+                        <h4>Create Place</h4>
+                        <fieldset name="item-info" class="item-info">
+
+                            <div class="name-select-container">
+                                <label for="item_name">Name</label>
+                                <input role="textbox" type="text" name="item_name" id="item_name" required>
+                            </div>
+
+                            <div class="area-select-container">
+                                <label for="create-area-selection">Area</label>
+                                <select id="create-area-selection" name="area-selection">
+                                    <option value="0">Select..</option>
+                                    <option value="1">Garage</option>
+                                    <option value="2">Bedroom</option>
+                                </select>
+                            </div>
+
+                            <button role="button" type="submit" class="create-button">Create</button>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="delete-item-popup">
+                    <form class="move-item-form" action="/delete/" method="post">
+                        <h4>Deleting Item: Gift Card</h4>
+                        <fieldset name="delete-info" class="delete-info">
+                            <button role="button" type="submit" class="delete-button">Delete</button>
+                            <button role="button" type="submit" class="delete-button">Cancel</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
 
         </section>
     </main>
