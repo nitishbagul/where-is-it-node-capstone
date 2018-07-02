@@ -478,7 +478,8 @@ label {
 /*Styles for places page*/
 
 .places-list-all,
-.areas-list-all {
+.areas-list-all,
+.categories-list-all {
     list-style: none;
     text-align: center;
     width: 50%;
@@ -515,6 +516,7 @@ label {
     border: none;
     outline: none;
     font-size: 15px;
+    background-color: #dda952;
 }
 
 .js-all-places-result ul,
@@ -525,7 +527,7 @@ label {
 
 .active,
 .collapse-content:hover {
-    background-color: #555;
+    background-color: #52b5dd;
 }
 
 .collapse-content {

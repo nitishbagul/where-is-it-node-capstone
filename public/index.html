@@ -533,6 +533,109 @@
 
         </section>
     </main>
+
+    <main class="welcome-user-page">
+        <header>
+            <div class="topnav">
+                <div class="nav-logo">
+                    <h2 class="logo-text">WhereIsIT</h2>
+                </div>
+                <div class="nav-list">
+                    <span class="username">Nitish</span>
+                    <span>|</span>
+                    <span>Logout</span>
+                </div>
+            </div>
+            <div class="sidenav">
+                <button>About</button>
+                <button>My Items</button>
+                <button>My Places</button>
+                <button>My Areas</button>
+                <button>Cateogries</button>
+            </div>
+        </header>
+
+        <section class="content-area-categories">
+
+            <h1 class="entity-heading">Categories</h1>
+            <section class="categories-content">
+                <div class="categories-menu">
+                    <div class="categories-menu-buttons">
+                        <button class="create-new-button">Create</button>
+                        <button class="show-all-button">Show All</button>
+                    </div>
+                </div>
+
+                <section class="categories-result">
+                    <div class="js-all-categories-result">
+                        <h3>My Categories</h3>
+                        <ul class="categories-list-all">
+                            <li>
+                                <button class="collapsible">Travel</button>
+                                <div class="collapse-content">
+                                    <p>Holds <span>10</span> items</p>
+                                    <button role="button" class="all-items-button">Show Items</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+
+                            <li>
+                                <button class="collapsible">Documents</button>
+                                <div class="collapse-content">
+                                    <p>Holds <span>10</span> places</p>
+                                    <button role="button" class="all-items-button">Show Places</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+
+                            <li>
+                                <button class="collapsible">Personal Care</button>
+                                <div class="collapse-content">
+                                    <p>Holds <span>10</span> places</p>
+                                    <button role="button" class="all-items-button">Show Places</button>
+                                    <button role="button" class="delete-button">Delete</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <div class="js-categories-popup-list">
+
+                <div class="create-category-popup">
+                    <form class="create-category-form" action="/create/" method="post">
+                        <h4>Create Category</h4>
+                        <fieldset name="category-info" class="category-info">
+
+                            <div class="name-select-container">
+                                <label for="category_name">Name</label>
+                                <input role="textbox" type="text" name="category_name" id="category_name" required>
+                            </div>
+
+                            <button role="button" type="submit" class="create-button">Create</button>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="delete-category-popup">
+                    <form class="move-category-form" action="/delete/" method="post">
+                        <h4>Deleting Category: Travel</h4>
+                        <fieldset name="delete-info" class="delete-info">
+                            <button role="button" type="submit" class="delete-button">Delete</button>
+                            <button role="button" type="submit" class="delete-button">Cancel</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
     <script src="client.js"></script>
 </body>
 
