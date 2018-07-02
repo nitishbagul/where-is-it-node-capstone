@@ -320,7 +320,7 @@
                         <h3>Here are all the places:</h3>
                         <ul class="places-list-all">
                             <li>
-                                <button class="places-collapsible">Main Cupboard</button>
+                                <button class="collapsible">Main Cupboard</button>
                                 <div class="collapse-content">
                                     <p>Current Area: Living Room</p>
                                     <button role="button" class="move-button">Move</button>
@@ -330,7 +330,7 @@
                             </li>
 
                             <li>
-                                <button class="places-collapsible">Drawer/D1</button>
+                                <button class="collapsible">Drawer/D1</button>
                                 <div class="collapse-content">
                                     <p>Current Area: Living Room</p>
                                     <button role="button" class="move-button">Move</button>
@@ -340,7 +340,7 @@
                             </li>
 
                             <li>
-                                <button class="places-collapsible">Book Shelf</button>
+                                <button class="collapsible">Book Shelf</button>
                                 <div class="collapse-content">
                                     <p>Current Area: Living Room</p>
                                     <button role="button" class="move-button">Move</button>
@@ -356,7 +356,7 @@
                         <h3>Here are the search results:</h3>
                         <ul class="places-list-all">
                             <li>
-                                <button class="places-collapsible">Movable Drawer</button>
+                                <button class="collapsible">Movable Drawer</button>
                                 <div class="collapse-content">
                                     <p>Current Area: Living Room</p>
                                     <button role="button" class="move-button">Move</button>
@@ -452,23 +452,23 @@
             </div>
         </header>
 
-        <section class="content-area-places">
+        <section class="content-area-areas">
 
             <h1 class="entity-heading">Areas</h1>
-            <section class="places-content">
-                <div class="places-menu">
-                    <div class="places-menu-buttons">
+            <section class="areas-content">
+                <div class="areas-menu">
+                    <div class="areas-menu-buttons">
                         <button class="create-new-button">Create</button>
                         <button class="show-all-button">Show All</button>
                     </div>
                 </div>
 
-                <section class="places-result">
-                    <div class="js-all-places-result">
+                <section class="areas-result">
+                    <div class="js-all-areas-result">
                         <h3>My Areas:</h3>
-                        <ul class="places-list-all">
+                        <ul class="areas-list-all">
                             <li>
-                                <button class="places-collapsible">Living Room</button>
+                                <button class="collapsible">Living Room</button>
                                 <div class="collapse-content">
                                     <p>Holds <span>10</span> places</p>
                                     <button role="button" class="all-items-button">Show Places</button>
@@ -477,7 +477,7 @@
                             </li>
 
                             <li>
-                                <button class="places-collapsible">Garage</button>
+                                <button class="collapsible">Garage</button>
                                 <div class="collapse-content">
                                     <p>Holds <span>10</span> places</p>
                                     <button role="button" class="all-items-button">Show Places</button>
@@ -486,7 +486,7 @@
                             </li>
 
                             <li>
-                                <button class="places-collapsible">Master Bedroom</button>
+                                <button class="collapsible">Master Bedroom</button>
                                 <div class="collapse-content">
                                     <p>Holds <span>10</span> places</p>
                                     <button role="button" class="all-items-button">Show Places</button>
@@ -501,16 +501,16 @@
 
             </section>
 
-            <div class="js-place-popup-list">
+            <div class="js-areas-popup-list">
 
-                <div class="create-place-popup">
-                    <form class="create-place-form" action="/create/" method="post">
+                <div class="create-area-popup">
+                    <form class="create-area-form" action="/create/" method="post">
                         <h4>Create Area</h4>
-                        <fieldset name="place-info" class="place-info">
+                        <fieldset name="area-info" class="area-info">
 
                             <div class="name-select-container">
-                                <label for="place_name">Name</label>
-                                <input role="textbox" type="text" name="place_name" id="place_name" required>
+                                <label for="area_name">Name</label>
+                                <input role="textbox" type="text" name="area_name" id="area_name" required>
                             </div>
 
                             <button role="button" type="submit" class="create-button">Create</button>
@@ -519,8 +519,8 @@
                     </form>
                 </div>
 
-                <div class="delete-place-popup">
-                    <form class="move-place-form" action="/delete/" method="post">
+                <div class="delete-area-popup">
+                    <form class="move-area-form" action="/delete/" method="post">
                         <h4>Deleting Area: Garage</h4>
                         <fieldset name="delete-info" class="delete-info">
                             <button role="button" type="submit" class="delete-button">Delete</button>

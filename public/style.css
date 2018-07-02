@@ -118,7 +118,6 @@ button {
 }
 
 label {
-    display: block;
     margin-bottom: 10px;
     font-weight: 500;
 }
@@ -211,7 +210,9 @@ label {
 }
 
 .content-area,
-.content-area-places {
+.content-area-places,
+.content-area-areas,
+.content-area-categories {
     background-color: #D1DBBD;
 }
 
@@ -229,7 +230,9 @@ label {
 }
 
 .items-menu,
-.places-menu {
+.places-menu,
+.areas-menu,
+.categories-menu {
     padding: 5px;
     margin-bottom: 5px;
     text-align: center;
@@ -239,7 +242,9 @@ label {
 }
 
 .items-menu-buttons,
-.places-menu-buttons {
+.places-menu-buttons,
+.areas-menu-buttons,
+.categories-menu-buttons {
     text-align: right;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -268,7 +273,9 @@ label {
 }
 
 .items-content,
-.places-content {
+.places-content,
+.areas-content,
+.categories-content {
     padding: 5px 5px;
 
 }
@@ -303,7 +310,9 @@ label {
 }
 
 .items-result,
-.places-result {
+.places-result,
+.areas-result,
+.categories-result {
     text-align: center;
 }
 
@@ -374,7 +383,11 @@ label {
 .delete-item-popup,
 .move-place-popup,
 .create-place-popup,
-.delete-place-popup {
+.delete-place-popup,
+.create-area-popup,
+.delete-area-popup,
+.create-category-popup,
+.delete-category-popup {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
@@ -392,7 +405,11 @@ label {
 .delete-item-popup *,
 .move-place-popup *,
 .create-place-popup *,
-.delete-place-popup * {
+.delete-place-popup *,
+.create-area-popup *,
+.delete-area-popup *,
+.create-category-popup *,
+.delete-category-popup * {
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -400,7 +417,9 @@ label {
 .move-item-popup h3,
 .create-item-popup h3,
 .move-place-popup h3,
-.create-place-popup h3 {
+.create-place-popup h3,
+.create-area-popup h3,
+.create-category-popup h3 {
     color: #0C2231;
     font-weight: 500;
     font-size: 18px;
@@ -409,7 +428,9 @@ label {
 .create-item-popup label,
 .move-item-popup label,
 .create-place-popup label,
-.move-place-popup label {
+.move-place-popup label,
+.create-area-popup label,
+    {
     display: inline-block;
 }
 
@@ -426,7 +447,9 @@ label {
 .move-item-popup select,
 .create-place-popup input,
 .create-place-popup select,
-.move-place-popup select {
+.move-place-popup select,
+.create-area-popup input,
+.create-category-popup input {
     width: 50%;
     margin-left: 10px;
 }
@@ -443,7 +466,6 @@ label {
     text-align: center;
 }
 
-.item-options-container {}
 
 .single-item-container .all-items-table {
     margin-bottom: 0px;
@@ -455,42 +477,49 @@ label {
 
 /*Styles for places page*/
 
-.places-list-all {
+.places-list-all,
+.areas-list-all {
     list-style: none;
-    /* border: 1px solid black; */
     text-align: center;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.places-list-all li {
+.places-list-all li,
+.areas-list-all li {
     color: #551700;
     font-size: 18px;
-    /* border: 1px solid #551700; */
     border-radius: 3px;
-    /* padding-top: 10px; */
-    /* padding-bottom: 10px; */
-    /* background-color: #e7ca33; */
     font-weight: 500px;
+}
+
+.js-single-place-result,
+.js-all-places-result,
+.js-all-areas-result,
+.js-all-categories-result {
+    margin-top: 20px;
+}
+
+    {
+    margin-top: 15px;
 }
 
 /*Trying Collapse*/
 
-.places-collapsible {
-    /* background-color: #777; */
-    /* color: white; */
+.collapsible {
     cursor: pointer;
     padding: 18px;
     width: 100%;
     height: 100%;
     border: none;
-    /* text-align: left; */
     outline: none;
     font-size: 15px;
 }
 
-.js-all-places-result ul {
+.js-all-places-result ul,
+.js-all-areas-result ul,
+.js-all-categories-result ul {
     list-style: none;
 }
 
@@ -515,14 +544,6 @@ label {
     width: 30%
 }
 
-.js-single-place-result,
-.js-all-places-result {
-    margin-top: 20px;
-}
-
-    {
-    margin-top: 15px;
-}
 
 /*Media Queries*/
 
@@ -565,28 +586,30 @@ label {
     .create-item-popup label,
     .move-item-popup label,
     .create-place-popup label,
-    .move-place-popup label {
+    .move-place-popup label,
+    .move-area-popup label {
         display: block;
     }
 
     .create-item-popup input,
     .create-item-popup select,
     .create-place-popup input,
-    .create-placce-popup select {
+    .create-placce-popup select,
+    .create-area-popup input,
+    .create-category-popup input {
         width: 50%;
     }
 
     .move-item-popup,
     .create-item-popup,
+    .delete-item-popup,
     .move-place-popup,
-    .create-place-popup {
+    .create-area-popup,
+    .delete-area-popup,
+    .delete-category-popup {
         width: 80%;
     }
 
-    .delete-item-popup,
-    .delete-place-popup {
-        width: 60%;
-    }
 }
 
 
@@ -619,7 +642,8 @@ label {
     }
 
     .delete-item-popup,
-    .delete-place-popup {
+    .delete-place-popup,
+    .delete-area-popup {
         width: 70%;
     }
 }
