@@ -645,7 +645,8 @@ label {
 
     .delete-item-popup,
     .delete-place-popup,
-    .delete-area-popup {
+    .delete-area-popup,
+    .delete-category-popup {
         width: 70%;
     }
 }
