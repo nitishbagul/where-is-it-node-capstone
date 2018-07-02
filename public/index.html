@@ -22,9 +22,9 @@
             <div class="main-content">
 
                 <div class="feature-list">
-                    <button>Login</button>
+                    <button class="show-login-container">Login</button>
                     <span>Or</span>
-                    <button>Register</button>
+                    <button class="show-registration-container">Register</button>
                     <div class="features">
                         <i class="fas fa-check"></i>
                         <p class="feature-description">Add a list of items to track</p>
@@ -44,15 +44,15 @@
                 </div>
 
                 <div class="log-in-container">
-                    <form class="login-form" action="/login/" method="post">
+                    <form class="login-form">
                         <h2 class="log-in-text">Log in</h2>
                         <fieldset name="user-info" class="user-info">
 
                             <label for="username">Username</label>
-                            <input role="textbox" type="text" name="username" id="username" required>
+                            <input role="textbox" type="text" name="username" id="loginUserName" value="demouser" required>
 
                             <label for="password">Password</label>
-                            <input role="textbox" type="password" name="pwd" id="password" required>
+                            <input role="textbox" type="password" name="pwd" id="loginPassword" value="demopassword" required>
 
                             <button role="button" type="submit" class="log-in-button">Log In</button>
 
@@ -66,13 +66,13 @@
                         <fieldset name="user-info" class="user-info">
 
                             <label for="email">Email</label>
-                            <input role="textbox" placeholder="foo@bar.com" type="email" name="email" id="email" required>
+                            <input role="textbox" placeholder="foo@bar.com" type="email" name="email" id="registerEmail" value="demo@email.com" required>
 
                             <label for="username">Username</label>
-                            <input role="textbox" type="text" name="username" id="username" required>
+                            <input role="textbox" type="text" name="username" id="registerUserName" value="demouser" required>
 
                             <label for="password">Password</label>
-                            <input role="textbox" type="password" name="pwd" id="password" required>
+                            <input role="textbox" type="password" name="pwd" id="registerPassword" value="demopassword" required>
 
                             <button role="button" type="submit" class="register-button">Register</button>
 
@@ -84,7 +84,7 @@
         </section>
     </main>
 
-    <main class="welcome-user-page">
+    <main class="items-page">
         <header>
             <div class="topnav">
                 <div class="nav-logo">
@@ -93,7 +93,7 @@
                 <div class="nav-list">
                     <span class="username">Nitish</span>
                     <span>|</span>
-                    <span>Logout</span>
+                    <span><button class="logout-button">Logout</button></span>
                 </div>
             </div>
 
@@ -277,7 +277,7 @@
         </section>
     </main>
 
-    <main class="welcome-user-page">
+    <main class="places-page">
         <header>
             <div class="topnav">
                 <div class="nav-logo">
@@ -431,7 +431,7 @@
         </section>
     </main>
 
-    <main class="welcome-user-page">
+    <main class="areas-page">
         <header>
             <div class="topnav">
                 <div class="nav-logo">
@@ -534,7 +534,7 @@
         </section>
     </main>
 
-    <main class="welcome-user-page">
+    <main class="categories-page">
         <header>
             <div class="topnav">
                 <div class="nav-logo">
@@ -636,6 +636,7 @@
 
         </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="client.js"></script>
 </body>
 
