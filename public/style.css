@@ -153,7 +153,7 @@ label {
 
 .topnav {
     overflow: hidden;
-    background-color: #3E606F;
+    background-color: saddlebrown;
     line-height: 90px;
     width: 100%;
 }
@@ -171,15 +171,23 @@ label {
     line-height: normal;
     padding: 3px 5px;
     float: right;
-    margin-top: 30px;
+    margin-top: 18px;
     margin-right: 10px;
 }
 
 .nav-logo h2 {
     font-size: 26px;
-    color: #F5AB35;
+    color: #FEFEFE;
     font-family: 'Walter Turncoat', cursive;
     margin-left: 10px;
+}
+
+.nav-list button {
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    color: white;
 }
 
 .nav-list span {
@@ -190,30 +198,31 @@ label {
 }
 
 .sidenav {
-    z-index: 1000;
+    /* z-index: 1000; */
     background-color: #90A89B;
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
     text-align: center;
+    /*height: 50px;*/
+    font-size: 0;
 }
 
 .sidenav button {
     display: inline-block;
-    background-color: #34515E;
-    color: #E0FFFF;
-    height: auto;
-    padding: 10px 15px;
-    width: 18.6%;
-}
-
-.sidenav button:hover {
-    color: red;
+    background-color: #FC814A;
+    color: brown;
+    height: 50px;
+    /* padding: 10px 15px; */
+    width: 20%;
+    margin: 0;
+    border-radius: 0;
+    font-size: 20px;
 }
 
 .content-area,
 .content-area-places,
 .content-area-areas,
 .content-area-categories {
-    background-color: #D1DBBD;
+    background-color: #f2cb6f;
 }
 
 /*Items Page Properties*/

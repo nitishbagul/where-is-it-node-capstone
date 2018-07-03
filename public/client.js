@@ -1,7 +1,7 @@
 //Step 1: Define functions, objects and variables
 
 
-
+/*
 
 //Step 2: Use functions, objects and variables(Triggers)
 //when the page loads...
@@ -47,7 +47,7 @@ $(document).submit('.login-form', function (event) {
 
 });
 
-
+*/
 
 
 
