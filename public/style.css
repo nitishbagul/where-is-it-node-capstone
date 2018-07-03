@@ -74,6 +74,31 @@ button {
     cursor: pointer;
 }
 
+.feature-list button {
+    font-size: 19px;
+    color: #2B390E;
+    font-weight: 400;
+    height: 45px;
+    width: 20%;
+}
+
+.feature-list span {
+    font-size: 20px;
+}
+
+.feature-list button,
+.feature-list span {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.features-container {
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+    width: 50%;
+}
 
 .feature-description {
     font-size: 20px;
@@ -603,6 +628,9 @@ main {
     body {
         color: red;
     }
+    .feature-list button {
+        width: 23%;
+    }
     .items-menu-buttons {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -659,6 +687,11 @@ main {
 @media only screen and (max-width: 480px) {
     body {
         color: green;
+    }
+    .feature-list button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     #loginUserName,
     #loginPassword,
