@@ -122,9 +122,11 @@ label {
     font-weight: 500;
 }
 
-#username,
-#password,
-#email {
+#loginUserName,
+#loginPassword,
+#registerEmail,
+#registerUserName,
+registerPassword {
     display: block;
     margin-bottom: 15px;
     width: 70%;
@@ -658,9 +660,11 @@ main {
     body {
         color: green;
     }
-    #username,
-    #password,
-    #email {
+    #loginUserName,
+    #loginPassword,
+    #registerEmail,
+    #registerUserName,
+    registerPassword {
         width: 100%;
     }
     .log-in-container button,
