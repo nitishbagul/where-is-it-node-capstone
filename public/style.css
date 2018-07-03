@@ -44,7 +44,7 @@
 h1 {
     color: #024C24;
     padding: 10px 0;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     font-size: 50px;
     font-family: 'Walter Turncoat', cursive;
 }
@@ -148,6 +148,32 @@ label {
 }
 
 /*welcome-page end*/
+
+/*About Page Styles*/
+
+.about-page p {
+    font-size: 20px;
+    padding: 10px 10px;
+    font-family: helvetica;
+    line-height: 49.5px;
+    color: #292929;
+}
+
+.about-page p span {
+    color: #E63022;
+    font-size: 22px;
+}
+
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    width: 20%;
+    background-color: black;
+    height: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /*Items page, Places page styles*/
 
