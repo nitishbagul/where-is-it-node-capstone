@@ -592,16 +592,16 @@ form span {
     list-style: none;
 }
 
-.active,
+/*.active,
 .collapse-content:hover {
     background-color: #52b5dd;
-}
+}*/
 
 .collapse-content {
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: #8CC2D8;
 }
 
 .collapse-content * {
@@ -610,9 +610,15 @@ form span {
 }
 
 .collapse-content button {
-    width: 30%
+    width: 30%;
+    height: 40px;
+    background-color: #815849;
+    color: white;
 }
 
+.collapse-content p {
+    color: #3C2109;
+}
 
 /*Media Queries*/
 
@@ -683,6 +689,13 @@ form span {
         width: 80%;
     }
 
+    .collapse-content button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
 }
 
 
@@ -747,6 +760,13 @@ form span {
     .delete-place-popup,
     .delete-area-popup,
     .delete-category-popup {
+        width: 70%;
+    }
+
+    .collapse-content button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         width: 70%;
     }
 }
