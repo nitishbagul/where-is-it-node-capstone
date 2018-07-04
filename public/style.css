@@ -688,6 +688,28 @@ main {
     body {
         color: green;
     }
+
+    .nav-logo,
+    .nav-list {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .nav-list {
+        float: none;
+    }
+    .nav-logo h2 {
+        font-size: 23px;
+    }
+
+    .nav-list span {
+        font-size: 17px;
+    }
+    .nav-list button {
+        font-size: 18px;
+    }
     .feature-list button {
         display: block;
         margin-left: auto;
@@ -708,11 +730,13 @@ main {
         width: 100%;
     }
 
-    @media only screen and (max-width: 480px) .sidenav button {
+    .sidenav button {
         display: inline-block;
         height: auto;
         padding: 10px 15px;
         width: 100%;
+        border-top: 1px solid brown;
+        border-bottom: brown;
     }
 
     .delete-item-popup,
