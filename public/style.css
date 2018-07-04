@@ -319,21 +319,17 @@ main {
 .places-menu-buttons button {
     width: 120px;
     height: 50px;
+    color: white;
+    background-color: #a3573e;
 }
 
 .create-new-button {
     display: inline-block;
-    background-color: #40806A;
-    color: white;
     float: left;
 }
 
 .show-all-button {
     display: inline-block;
-    background-color: #40806A;
-    color: white;
-    /* width: 15%;
-    height: 100%;*/
 }
 
 .items-content,
@@ -362,6 +358,7 @@ main {
     background: none;
     width: 200px;
     font-size: 20px;
+    text-align: center;
 }
 
 #search-item,
@@ -442,16 +439,13 @@ main {
     color: #dd5;
 }
 
-.move-item-popup,
-.create-item-popup,
-.delete-item-popup,
-.move-place-popup,
-.create-place-popup,
-.delete-place-popup,
-.create-area-popup,
-.delete-area-popup,
-.create-category-popup,
-.delete-category-popup {
+.popup h4 {
+    color: #FFFACD;
+    font-weight: initial;
+    font-size: 19px;
+}
+
+.popup {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
@@ -652,6 +646,7 @@ main {
         width: 100%;
     }
 
+
     .create-item-popup label,
     .move-item-popup label,
     .create-place-popup label,
@@ -753,6 +748,10 @@ main {
 @media only screen and (max-width: 320px) {
     body {
         color: purple;
+    }
+    .all-items-table {
+        min-width: 0px;
+
     }
 }
 
