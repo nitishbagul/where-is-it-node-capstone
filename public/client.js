@@ -57,6 +57,11 @@ $(document).on('click', '.my-items-button', function (event) {
     event.preventDefault();
     //alert("hi");
     $('main').hide();
+    $('.items-page .items-result').hide();
+    $('.items-page .js-item-popup-list').hide();
+    // $('main').hide();
+    //$('main').hide();
+
     $('.items-page').show();
 });
 
