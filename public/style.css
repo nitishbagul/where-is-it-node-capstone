@@ -18,6 +18,20 @@
 
 /* Styles for Welcome Page */
 
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient( rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)), url("https://images.fineartamerica.com/images-medium-large-5/the-cluttered-attic-steve-crisp.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .welcome-page {
     background: linear-gradient( rgba(0, 0, 0, 0.3),
     rgba(0, 0, 0, 0.3)), url("https://images.fineartamerica.com/images-medium-large-5/the-cluttered-attic-steve-crisp.jpg") no-repeat center center fixed;
@@ -26,7 +40,7 @@
     -o-background-size: cover;
     background-size: cover;
     padding-top: 100px;
-    margin-bottom: 0px;
+    padding-bottom: 100px;
 }
 
 .main-window {
