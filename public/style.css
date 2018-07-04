@@ -620,6 +620,30 @@ form span {
     color: #3C2109;
 }
 
+
+.js-all-places-result h3,
+.js-single-place-result h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: unset;
+    color: #3C2109;
+}
+
+.show-items-popup ul {
+    list-style: none;
+    color: white;
+}
+
+.show-items-popup hr {
+    width: 80%;
+    background-color: azure;
+}
+
+.show-items-popup ul * {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
 /*Media Queries*/
 
 /*ipad landscape / small laptop*/
@@ -756,10 +780,7 @@ form span {
         border-bottom: brown;
     }
 
-    .delete-item-popup,
-    .delete-place-popup,
-    .delete-area-popup,
-    .delete-category-popup {
+    .popup {
         width: 70%;
     }
 
