@@ -1,7 +1,7 @@
 //Step 1: Define functions, objects and variables
 
 
-/*
+
 
 //Step 2: Use functions, objects and variables(Triggers)
 //when the page loads...
@@ -37,17 +37,60 @@ $(document).on('click', '.logout-button', function (event) {
     location.reload();
 });
 
+$(document).on('click', '.show-registration-container', function (event) {
+    event.preventDefault();
+    // alert("hi");
+    $('main').hide();
+    $('.log-in-container').hide();
+    $('.register-container').show();
+    $('.welcome-page').show();
+});
+
+$(document).on('click', '.about-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('main').hide();
+    $('.about-page').show();
+});
+
+$(document).on('click', '.my-items-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('main').hide();
+    $('.items-page').show();
+});
+
+$(document).on('click', '.my-places-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('main').hide();
+    $('.places-page').show();
+});
+
+$(document).on('click', '.my-areas-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('main').hide();
+    $('.areas-page').show();
+});
+
+$(document).on('click', '.categories-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('main').hide();
+    $('.categories-page').show();
+});
 
 //form trigger
 $(document).submit('.login-form', function (event) {
     event.preventDefault();
-    alert("hi");
+    //alert("hi");
     $('main').hide();
-    $('.items-page').show();
+    $('.about-page').show();
 
 });
 
-*/
+
 
 
 
