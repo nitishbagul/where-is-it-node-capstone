@@ -345,7 +345,7 @@ main {
     margin-top: 50px;
 }
 
-#item-lookup-form span {
+form span {
     font-size: 20px;
 }
 
@@ -441,8 +441,10 @@ main {
 
 .popup h4 {
     color: #FFFACD;
-    font-weight: initial;
+    font-weight: unset;
     font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .popup {
@@ -458,18 +460,24 @@ main {
     padding: 10px 10px;
 }
 
-.move-item-popup *,
-.create-item-popup *,
-.delete-item-popup *,
-.move-place-popup *,
-.create-place-popup *,
-.delete-place-popup *,
-.create-area-popup *,
-.delete-area-popup *,
-.create-category-popup *,
-.delete-category-popup * {
-    margin-top: 20px;
+.popup fieldset {
+    margin-top: 30px;
+}
+
+.popup fieldset * {
     margin-bottom: 20px;
+}
+
+.popup label {
+    font-size: 19px;
+    color: #332533;
+}
+
+.popup .close-icon {
+    display: block;
+    margin-top: -4px;
+    padding: 0px;
+    float: right;
 }
 
 .move-item-popup h3,
@@ -573,8 +581,9 @@ main {
     height: 100%;
     border: none;
     outline: none;
-    font-size: 15px;
-    background-color: #dda952;
+    font-size: 18px;
+    background-color: #5967a2;
+    color: #F2F1EF;
 }
 
 .js-all-places-result ul,
