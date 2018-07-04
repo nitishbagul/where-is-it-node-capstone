@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <main class="welcome-page">
+    <main class="welcome-page" role="main">
         <section class="main-window">
-            <header>
+            <header role="banner">
                 <h1>WhereIsIt</h1>
                 <p class="banner-text">Tell us once where it is and we will never forget!</p>
             </header>
@@ -86,8 +86,8 @@
         </section>
     </main>
 
-    <main class="about-page">
-        <header>
+    <main class="about-page" role="main">
+        <header role="banner">
             <div class="topnav">
                 <div class="nav-logo">
                     <h2 class="logo-text">WhereIsIT</h2>
@@ -126,28 +126,28 @@
         </section>
     </main>
 
-    <main class="items-page">
-        <header>
-            <div class="topnav">
-                <div class="nav-logo">
-                    <h2 class="logo-text">WhereIsIT</h2>
-                </div>
-                <div class="nav-list">
-                    <span class="username">Nitish</span>
-                    <span>|</span>
-                    <span><button class="logout-button">Logout</button></span>
-                </div>
-            </div>
-
-            <div class="sidenav">
-                <button>About</button>
-                <button>My Items</button>
-                <button>My Places</button>
-                <button>My Areas</button>
-                <button>Cateogries</button>
-            </div>
-
-        </header>
+    <main class="items-page" role="main">
+        <!--
+<header role="banner">
+<div class="topnav">
+<div class="nav-logo">
+<h2 class="logo-text">WhereIsIT</h2>
+</div>
+<div class="nav-list">
+<span class="username">Nitish</span>
+<span>|</span>
+<span><button class="logout-button">Logout</button></span>
+</div>
+</div>
+<div class="sidenav">
+<button>About</button>
+<button>My Items</button>
+<button>My Places</button>
+<button>My Areas</button>
+<button>Cateogries</button>
+</div>
+</header>
+-->
         <section class="content-area">
 
             <h1 class="entity-heading">Items</h1>
@@ -323,26 +323,28 @@
         </section>
     </main>
 
-    <main class="places-page">
-        <header>
-            <div class="topnav">
-                <div class="nav-logo">
-                    <h2 class="logo-text">WhereIsIT</h2>
-                </div>
-                <div class="nav-list">
-                    <span class="username">Nitish</span>
-                    <span>|</span>
-                    <span>Logout</span>
-                </div>
-            </div>
-            <div class="sidenav">
-                <button>About</button>
-                <button>My Items</button>
-                <button>My Places</button>
-                <button>My Areas</button>
-                <button>Cateogries</button>
-            </div>
-        </header>
+    <main class="places-page" role="main">
+        <!--
+<header role="banner">
+<div class="topnav">
+<div class="nav-logo">
+<h2 class="logo-text">WhereIsIT</h2>
+</div>
+<div class="nav-list">
+<span class="username">Nitish</span>
+<span>|</span>
+<span><button class="logout-button">Logout</button></span>
+</div>
+</div>
+<div class="sidenav">
+<button>About</button>
+<button>My Items</button>
+<button>My Places</button>
+<button>My Areas</button>
+<button>Cateogries</button>
+</div>
+</header>
+-->
 
         <section class="content-area-places">
 
@@ -364,7 +366,7 @@
 
                 <section class="places-result">
                     <div class="js-all-places-result">
-                        <h3>Here are all the places:</h3>
+                        <h3>My places</h3>
                         <ul class="places-list-all">
                             <li>
                                 <button class="collapsible">Main Cupboard</button>
@@ -479,7 +481,7 @@
                 <div class="show-items-popup popup">
 
                     <i class="fas fa-times close-icon"></i>
-                    <h4>Showing Items - Living Room</h4>
+                    <h4>Showing Items - Main Cupboard</h4>
                     <hr>
                     <ul>
                         <li>Second Car Key</li>
@@ -495,8 +497,9 @@
         </section>
     </main>
 
-    <main class="areas-page">
-        <header>
+    <main class="areas-page" role="main">
+        <!--
+           <header role="banner">
             <div class="topnav">
                 <div class="nav-logo">
                     <h2 class="logo-text">WhereIsIT</h2>
@@ -504,7 +507,7 @@
                 <div class="nav-list">
                     <span class="username">Nitish</span>
                     <span>|</span>
-                    <span>Logout</span>
+                    <span><button class="logout-button">Logout</button></span>
                 </div>
             </div>
             <div class="sidenav">
@@ -515,6 +518,7 @@
                 <button>Cateogries</button>
             </div>
         </header>
+        -->
 
         <section class="content-area-areas">
 
@@ -530,7 +534,7 @@
 
                 <section class="areas-result">
                     <div class="js-all-areas-result">
-                        <h3>My Areas:</h3>
+                        <h3>My Areas</h3>
                         <ul class="areas-list-all">
                             <li>
                                 <button class="collapsible">Living Room</button>
@@ -596,31 +600,47 @@
                     </form>
                 </div>
 
+                <div class="show-places-popup popup">
+
+                    <i class="fas fa-times close-icon"></i>
+                    <h4>Showing Places - Bedroom</h4>
+                    <hr>
+                    <ul>
+                        <li>Wardrobe</li>
+                        <li>Main cupboard</li>
+                        <li>Small Bookshelf</li>
+                        <li>Study Desk Drawer</li>
+                    </ul>
+
+                </div>
+
             </div>
 
         </section>
     </main>
 
-    <main class="categories-page">
-        <header>
-            <div class="topnav">
-                <div class="nav-logo">
-                    <h2 class="logo-text">WhereIsIT</h2>
-                </div>
-                <div class="nav-list">
-                    <span class="username">Nitish</span>
-                    <span>|</span>
-                    <span>Logout</span>
-                </div>
-            </div>
-            <div class="sidenav">
-                <button>About</button>
-                <button>My Items</button>
-                <button>My Places</button>
-                <button>My Areas</button>
-                <button>Cateogries</button>
-            </div>
-        </header>
+    <main class="categories-page" role="main">
+        <!--
+<header role="banner">
+<div class="topnav">
+<div class="nav-logo">
+<h2 class="logo-text">WhereIsIT</h2>
+</div>
+<div class="nav-list">
+<span class="username">Nitish</span>
+<span>|</span>
+<span><button class="logout-button">Logout</button></span>
+</div>
+</div>
+<div class="sidenav">
+<button>About</button>
+<button>My Items</button>
+<button>My Places</button>
+<button>My Areas</button>
+<button>Cateogries</button>
+</div>
+</header>
+-->
 
         <section class="content-area-categories">
 
@@ -700,6 +720,20 @@
                             <button role="button" type="submit" class="delete-button">Cancel</button>
                         </fieldset>
                     </form>
+                </div>
+
+                <div class="show-items-popup popup">
+
+                    <i class="fas fa-times close-icon"></i>
+                    <h4>Showing Items - Travel</h4>
+                    <hr>
+                    <ul>
+                        <li>Travel Shaving Kit</li>
+                        <li>Immigration Documents</li>
+                        <li>Battery</li>
+                        <li>Vest Pouch</li>
+                    </ul>
+
                 </div>
 
             </div>
