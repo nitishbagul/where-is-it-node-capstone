@@ -70,6 +70,7 @@ $(document).on('click', '.my-places-button', function (event) {
     $('main').hide();
     $('.places-page .places-result').hide();
     $('.places-page .js-place-popup-list').hide();
+
     //alert("hi");
     $('.places-page').show();
 });
@@ -78,6 +79,8 @@ $(document).on('click', '.my-areas-button', function (event) {
     event.preventDefault();
     //alert("hi");
     $('main').hide();
+    $('.areas-result').hide();
+    $('.js-areas-popup-list').hide();
     $('.areas-page').show();
 });
 
@@ -158,8 +161,76 @@ $(document).on('click', '.places-result .move-button', function (event) {
     $('.move-place-popup').show();
 });
 
+$(document).on('click', '.places-result .all-items-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-place-popup-list').hide();
+    $('.js-all-places-result').hide();
+    $('.create-place-popup').hide();
+    $('.delete-place-popup').hide();
+    $('.move-place-popup').hide();
+    $('.js-place-popup-list').show();
+    $('.show-items-popup').show();
+});
+
+$(document).on('click', '.places-result .delete-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-place-popup-list').hide();
+    $('.js-all-places-result').hide();
+    $('.create-place-popup').hide();
+    $('.show-items-popup').hide();
+    $('.move-place-popup').hide();
+    $('.js-place-popup-list').show();
+    $('.delete-place-popup').show();
+});
+
+$(document).on('click', '.areas-menu .create-new-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.popup').hide();
+    $('.areas-result').hide();
+    $('.js-areas-popup-list').show();
+    $('.create-area-popup').show();
+});
+
+$(document).on('click', '.areas-menu .show-all-button', function (event) {
+    event.preventDefault();
+    // alert("hi");
+    $('.js-areas-popup-list').hide();
+    $('.areas-result').show();
+});
+
+$(document).on('click', '.areas-result .all-places-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-place-popup-list').hide();
+    $('.create-area-popup').hide();
+    $('.delete-area-popup').hide();
+    $('.js-areas-popup-list').show();
+    $('.show-places-popup').show();
+});
+
+$(document).on('click', '.areas-result .delete-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-place-popup-list').hide();
+    $('.create-area-popup').hide();
+    $('.show-places-popup').hide();
+    $('.js-areas-popup-list').show();
+    $('.delete-area-popup').show();
+});
+
 //form trigger
 $('.login-form').submit(function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('main').hide();
+    $('.about-page').show();
+
+});
+
+$('.register-form').submit(function (event) {
     event.preventDefault();
     //alert("hi");
     $('main').hide();
@@ -182,8 +253,6 @@ $('#placesLookupForm').submit(function (event) {
     $('.places-result').show();
     $('.js-single-place-result').show();
 });
-
-
 
 
 

@@ -55,6 +55,7 @@ body {
     text-align: center;
     color: black;
     margin-bottom: 0px;
+    padding-bottom: 50px;
 }
 
 h1 {
@@ -334,7 +335,9 @@ hr {
 }
 
 .items-menu-buttons button,
-.places-menu-buttons button {
+.places-menu-buttons button,
+.areas-menu-buttons button,
+.categories-menu-buttons button {
     width: 120px;
     height: 50px;
     color: white;
