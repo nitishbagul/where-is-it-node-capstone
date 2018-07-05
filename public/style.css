@@ -296,6 +296,7 @@ hr {
 .content-area-categories {
     background-color: #f2cb6f;
     padding-bottom: 80px;
+    height: 100vh;
 }
 
 /*Items Page Properties*/

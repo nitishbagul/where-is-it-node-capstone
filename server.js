@@ -58,13 +58,14 @@ function closeServer() {
 app.post('/users/create', (req, res) => {
 
     //take the name, username and the password from the ajax api call
-    let name = req.body.name;
+    let email = req.body.email;
     let username = req.body.username;
     let password = req.body.password;
 
     //exclude extra spaces from the username and password
     username = username.trim();
     password = password.trim();
+    email = email.trim();
 
     //create an encryption key
     bcrypt.genSalt(10, (err, salt) => {
@@ -74,7 +75,7 @@ app.post('/users/create', (req, res) => {
 
             //display it
             return res.status(500).json({
-                message: 'Internal server error'
+                message: 'Error creating encryption key'
             });
         }
 
@@ -86,13 +87,13 @@ app.post('/users/create', (req, res) => {
 
                 //display it
                 return res.status(500).json({
-                    message: 'Internal server error'
+                    message: 'Password encryption failed'
                 });
             }
 
             //using the mongoose DB schema, connect to the database and create the new user
             User.create({
-                name,
+                email,
                 username,
                 password: hash,
             }, (err, item) => {
@@ -101,7 +102,7 @@ app.post('/users/create', (req, res) => {
                 if (err) {
                     //display it
                     return res.status(500).json({
-                        message: 'Internal Server Error'
+                        message: 'New user creation failed'
                     });
                 }
                 //if creating a new user in the DB is succefull
@@ -133,14 +134,14 @@ app.post('/users/login', function (req, res) {
 
             //display it
             return res.status(500).json({
-                message: "Internal server error"
+                message: "Failed to connect to database"
             });
         }
         // if there are no users with that username
         if (!items) {
             //display it
             return res.status(401).json({
-                message: "Not found!"
+                message: "No username found!"
             });
         }
         //if the username is found

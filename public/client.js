@@ -262,17 +262,111 @@ $(document).on('click', '.categories-result .delete-button', function (event) {
 //form trigger
 $('.login-form').submit(function (event) {
     event.preventDefault();
-    //alert("hi");
-    $('main').hide();
-    $('.about-page').show();
+
+    //take the input from the user
+    const username = $("#loginUserName").val();
+    const password = $("#loginPassword").val();
+
+    //validate the input
+    if (username == "") {
+        alert('Please input user name');
+    } else if (password == "") {
+        alert('Please input password');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const loginUserObject = {
+            username: username,
+            password: password
+        };
+        console.log(loginUserObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/users/login',
+                dataType: 'json',
+                data: JSON.stringify(loginUserObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                console.log(result);
+                $('main').hide();
+                $('.about-page').show();
+                /* $('section').hide();
+                 $('.navbar').show();
+                 $('#user-dashboard').show();
+                 populateUserDashboardDate(result.username);*/
+                $('.username').text(result.username);
+                $('#loggedInUserId').val(result._id);
+
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert('Incorrect Username or Password');
+            });
+    };
 
 });
 
 $('.register-form').submit(function (event) {
     event.preventDefault();
-    //alert("hi");
-    $('main').hide();
-    $('.about-page').show();
+
+    //take the input from the user
+    const email = $("#registerEmail").val();
+    const username = $("#registerUserName").val();
+    const password = $("#registerPassword").val();
+
+    //validate the input
+    if (email == "") {
+        alert('Please add an email');
+    } else if (username == "") {
+        alert('Please add a user name');
+    } else if (password == "") {
+        alert('Please add a password');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newUserObject = {
+            email: email,
+            username: username,
+            password: password
+        };
+        // console.log(newUserObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/users/create',
+                dataType: 'json',
+                data: JSON.stringify(newUserObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                console.log(result);
+                $('main').hide();
+                $('.about-page').show();
+                /*$('#loggedInName').text(result.name);
+                $('#loggedInUserName').val(result.username);
+                $('section').hide();
+                $('.navbar').show();
+                $('#user-dashboard').show();
+                populateUserDashboardDate(result.username);*/
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
 
 });
 
