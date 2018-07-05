@@ -294,6 +294,7 @@ hr {
 .content-area-areas,
 .content-area-categories {
     background-color: #f2cb6f;
+    padding-bottom: 80px;
 }
 
 /*Items Page Properties*/
@@ -357,7 +358,7 @@ hr {
 
 }
 
-#item-lookup-form {
+#itemsLookupForm {
     display: block;
     margin-top: 50px;
 }
@@ -366,7 +367,8 @@ form span {
     font-size: 20px;
 }
 
-#searchfield {
+#itemSearchField,
+#placeSearchField {
     border: none;
     border-bottom: 3px solid gray;
     border-radius: 0px;
@@ -378,8 +380,8 @@ form span {
     text-align: center;
 }
 
-#search-item,
-#search-place {
+#searchItem,
+#searchPlace {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;

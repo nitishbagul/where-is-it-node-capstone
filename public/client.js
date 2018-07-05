@@ -67,8 +67,10 @@ $(document).on('click', '.my-items-button', function (event) {
 
 $(document).on('click', '.my-places-button', function (event) {
     event.preventDefault();
-    //alert("hi");
     $('main').hide();
+    $('.places-page .places-result').hide();
+    $('.places-page .js-place-popup-list').hide();
+    //alert("hi");
     $('.places-page').show();
 });
 
@@ -90,6 +92,7 @@ $(document).on('click', '.items-page .create-new-button', function (event) {
     event.preventDefault();
     // alert("hi");
     $('.popup').hide();
+    $('.items-result').hide();
     $('.js-item-popup-list').show();
     $('.create-item-popup').show();
 });
@@ -97,13 +100,66 @@ $(document).on('click', '.items-page .create-new-button', function (event) {
 $(document).on('click', '.items-page .show-all-button', function (event) {
     event.preventDefault();
     // alert("hi");
+    $('.js-item-popup-list').hide();
     $('.js-single-result-area').hide();
     $('.items-result').show();
-    // $('.js-all-result-area').show();
+    $('.js-all-result-area').show();
+});
+
+$(document).on('click', '.move-item-button', function (event) {
+    event.preventDefault();
+    // alert("hi");
+    $('.js-item-popup-list').hide();
+    $('.js-all-result-area').hide();
+    $('.create-item-popup').hide();
+    $('.delete-item-popup').hide();
+    $('.js-item-popup-list').show();
+    $('.move-item-popup').show();
+});
+
+$(document).on('click', '.delete-item-button', function (event) {
+    event.preventDefault();
+    // alert("hi");
+    $('.js-item-popup-list').hide();
+    $('.js-all-result-area').hide();
+    $('.create-item-popup').hide();
+    $('.move-item-popup').hide();
+    $('.js-item-popup-list').show();
+    $('.delete-item-popup').show();
+});
+
+$(document).on('click', '.places-menu .create-new-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.popup').hide();
+    $('.places-result').hide();
+    $('.js-place-popup-list').show();
+    $('.create-place-popup').show();
+});
+
+$(document).on('click', '.places-menu .show-all-button', function (event) {
+    event.preventDefault();
+    // alert("hi");
+    $('.js-place-popup-list').hide();
+    $('.js-single-place-result').hide();
+    $('.places-result').show();
+    $('.js-all-places-result').show();
+});
+
+$(document).on('click', '.places-result .move-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-place-popup-list').hide();
+    $('.js-all-places-result').hide();
+    $('.create-place-popup').hide();
+    $('.delete-place-popup').hide();
+    $('.show-items-popup').hide();
+    $('.js-place-popup-list').show();
+    $('.move-place-popup').show();
 });
 
 //form trigger
-$(document).submit('.login-form', function (event) {
+$('.login-form').submit(function (event) {
     event.preventDefault();
     //alert("hi");
     $('main').hide();
@@ -111,8 +167,21 @@ $(document).submit('.login-form', function (event) {
 
 });
 
+$('#itemsLookupForm').submit(function (event) {
+    event.preventDefault();
+    $('.js-item-popup-list').hide();
+    $('.js-all-result-area').hide();
+    $('.items-result').show();
+    $('.js-single-result-area').show();
+});
 
-
+$('#placesLookupForm').submit(function (event) {
+    event.preventDefault();
+    $('.js-place-popup-list').hide();
+    $('.js-all-places-result').hide();
+    $('.places-result').show();
+    $('.js-single-place-result').show();
+});
 
 
 
