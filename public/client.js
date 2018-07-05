@@ -88,6 +88,8 @@ $(document).on('click', '.categories-button', function (event) {
     event.preventDefault();
     //alert("hi");
     $('main').hide();
+    $('.categories-result').hide();
+    $('.js-categories-popup-list').hide();
     $('.categories-page').show();
 });
 
@@ -219,6 +221,42 @@ $(document).on('click', '.areas-result .delete-button', function (event) {
     $('.show-places-popup').hide();
     $('.js-areas-popup-list').show();
     $('.delete-area-popup').show();
+});
+
+$(document).on('click', '.categories-menu .create-new-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.popup').hide();
+    $('.categories-result').hide();
+    $('.js-categories-popup-list').show();
+    $('.create-category-popup').show();
+});
+
+$(document).on('click', '.categories-menu .show-all-button', function (event) {
+    event.preventDefault();
+    // alert("hi");
+    $('.js-categories-popup-list').hide();
+    $('.categories-result').show();
+});
+
+$(document).on('click', '.categories-result .all-items-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-categories-popup-list').hide();
+    $('.create-category-popup').hide();
+    $('.delete-category-popup').hide();
+    $('.js-categories-popup-list').show();
+    $('.show-items-popup').show();
+});
+
+$(document).on('click', '.categories-result .delete-button', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-categories-popup-list').hide();
+    $('.create-category-popup').hide();
+    $('.show-items-popup').hide();
+    $('.js-categories-popup-list').show();
+    $('.delete-category-popup').show();
 });
 
 //form trigger
