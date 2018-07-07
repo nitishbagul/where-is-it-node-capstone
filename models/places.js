@@ -11,6 +11,10 @@ const placesSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
+    loggedInUserName: {
+        type: String,
+        required: false
+    }
 
 });
 

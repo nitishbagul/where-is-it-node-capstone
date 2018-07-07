@@ -3,27 +3,30 @@
 const mongoose = require('mongoose');
 
 const itemsSchema = new mongoose.Schema({
-    item_name: {
+    itemName: {
         type: String,
         required: false
     },
-    creation_date: {
+    creationDate: {
         type: Date,
         required: false
     },
-    place_name: {
+    placeName: {
         type: String,
         required: false
     },
-    area_name: {
+    areaName: {
         type: String,
         required: false
     },
-    category_name: {
+    categoryName: {
         type: String,
         required: false
     },
-
+    loggedInUserName: {
+        type: String,
+        required: false
+    }
 });
 
 const Items = mongoose.model('Items', itemsSchema);
