@@ -412,6 +412,34 @@ app.post('/areas/create', (req, res) => {
 
 });
 
+// GET
+// all Areas by user
+app.get('/areas/:user', function (req, res) {
+
+    Areas
+        .find()
+        .then(function (areas) {
+            let areasOutput = [];
+            areas.map(function (area) {
+                if (area.loggedInUserName == req.params.user) {
+                    areasOutput.push(area);
+                }
+            });
+            res.json({
+                areasOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+
+
+
 //----------------Categories Endpoints-------------
 //POST
 // creating a new Category
