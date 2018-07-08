@@ -3,11 +3,15 @@
 const mongoose = require('mongoose');
 
 const categoriesSchema = new mongoose.Schema({
-    category_name: {
+    categoryName: {
         type: String,
         required: false
     },
-    creation_date: {
+    creationDate: {
+        type: Date,
+        required: false
+    },
+    lastUpdated: {
         type: Date,
         required: false
     },

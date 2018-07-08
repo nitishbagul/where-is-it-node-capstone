@@ -3,11 +3,15 @@
 const mongoose = require('mongoose');
 
 const areasSchema = new mongoose.Schema({
-    area_name: {
+    areaName: {
         type: String,
         required: false
     },
-    creation_date: {
+    creationDate: {
+        type: Date,
+        required: false
+    },
+    lastUpdated: {
         type: Date,
         required: false
     },

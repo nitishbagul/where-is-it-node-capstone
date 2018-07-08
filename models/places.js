@@ -3,11 +3,19 @@
 const mongoose = require('mongoose');
 
 const placesSchema = new mongoose.Schema({
-    place_name: {
+    placeName: {
         type: String,
         required: false
     },
-    creation_date: {
+    areaName: {
+        type: String,
+        required: false
+    },
+    creationDate: {
+        type: Date,
+        required: false
+    },
+    lastUpdated: {
         type: Date,
         required: false
     },

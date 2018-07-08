@@ -11,6 +11,10 @@ const itemsSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
+    lastUpdated: {
+        type: Date,
+        required: false
+    },
     placeName: {
         type: String,
         required: false
