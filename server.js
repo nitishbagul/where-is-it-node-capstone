@@ -197,6 +197,7 @@ app.post('/items/create', (req, res) => {
         placeName,
         areaName,
         creationDate,
+        categoryName,
         loggedInUserName
     }, (err, item) => {
         if (err) {

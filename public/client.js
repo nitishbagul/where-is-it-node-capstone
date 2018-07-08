@@ -1,6 +1,61 @@
 //Step 1: Define functions, objects and variables
+function populateAllItems() {
+    var username = $('.items-page .username').text();
+    if ((username == "") || (username == undefined) || (username == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/items/${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            //console.log(result);
+            /*if (result.entriesOutput.length === 0) {
+                $('#no-entry').show();
+            } else {
+                $('#no-entry').hide();
+            }
 
+            //empty the user-list container before populating it dynamically
+            $('#user-list').html("");
+            htmlUserDashboard(result);*/
+            let buildTheHtmlOutput = `<tr>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Area</th>
+        <th>Category</th>
+        </tr>`;
 
+            $.each(result.itemsOutput, function (resultKey, resultValue) {
+                //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+                buildTheHtmlOutput += `<tr>`;
+                buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
+                buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
+                buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
+                buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
+                buildTheHtmlOutput += `</tr>`;
+            });
+            //use the HTML output to show it in all items table
+            $(".all-items-table tbody").html(buildTheHtmlOutput);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
 
 
 //Step 2: Use functions, objects and variables(Triggers)
@@ -104,9 +159,12 @@ $(document).on('click', '.items-page .create-new-button', function (event) {
 
 $(document).on('click', '.items-page .show-all-button', function (event) {
     event.preventDefault();
+    var username = $('.items-page .username').text();
     // alert("hi");
     $('.js-item-popup-list').hide();
     $('.js-single-result-area').hide();
+    // console.log(username);
+    populateAllItems();
     $('.items-result').show();
     $('.js-all-result-area').show();
 });
@@ -280,7 +338,7 @@ $('.login-form').submit(function (event) {
             username: username,
             password: password
         };
-        console.log(loginUserObject);
+        //console.log(loginUserObject);
 
         //make the api call using the payload above
         $.ajax({
@@ -292,7 +350,7 @@ $('.login-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                console.log(result);
+                // console.log(result);
                 $('main').hide();
                 $('.about-page').show();
                 /* $('section').hide();
@@ -350,7 +408,7 @@ $('.register-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                console.log(result);
+                //console.log(result);
                 $('main').hide();
                 $('.about-page').show();
                 /*$('#loggedInName').text(result.name);
@@ -384,6 +442,61 @@ $('#placesLookupForm').submit(function (event) {
     $('.js-all-places-result').hide();
     $('.places-result').show();
     $('.js-single-place-result').show();
+});
+
+$('.create-item-form').submit(function (event) {
+    event.preventDefault();
+    //take the input from the user
+    const itemName = $("#item_name").val();
+    const areaName = $("#create-area-selection option:selected").text();
+    const placeName = $("#create-place-selection option:selected").text();
+    const categoryName = $("#create-category-selection option:selected").text();
+    const loggedInUserName = $('.items-page .username').text();
+    // console.log(itemName + areaName + placeName + categoryName);
+
+    //validate the input
+    if (itemName == "") {
+        alert('Please add an item');
+    } else if (areaName == "Select..") {
+        alert('Please add an Area');
+    } else if (placeName == "Select..") {
+        alert('Please add a Place');
+    } else if (categoryName == "Select..") {
+        alert('Please add a Place');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newItemObject = {
+            itemName: itemName,
+            areaName: areaName,
+            placeName: placeName,
+            categoryName: categoryName,
+            loggedInUserName: loggedInUserName
+        };
+        //console.log(newItemObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/items/create',
+                dataType: 'json',
+                data: JSON.stringify(newItemObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                //console.log(result);
+                $('.create-item-popup').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
 });
 
 
