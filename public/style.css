@@ -744,6 +744,19 @@ form span {
         width: 50%;
     }
 
+    .about-page p {
+        font-size: 18px;
+
+    }
+
+    .content-area,
+    .content-area-places,
+    .content-area-areas,
+    .content-area-categories {
+
+        height: 110vh;
+    }
+
 }
 
 
@@ -810,6 +823,19 @@ form span {
         margin-left: auto;
         margin-right: auto;
         width: 70%;
+    }
+
+    .about-page p {
+        font-size: 16px;
+
+    }
+
+    .content-area,
+    .content-area-places,
+    .content-area-areas,
+    .content-area-categories {
+
+        height: 120vh;
     }
 }
 
