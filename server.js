@@ -1,5 +1,9 @@
 const User = require('./models/user');
 const Entry = require('./models/entry');
+const Items = require('./models/items');
+const Places = require('./models/places');
+const Areas = require('./models/areas');
+const Categories = require('./models/categories');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -175,6 +179,270 @@ app.post('/users/login', function (req, res) {
         };
     });
 });
+
+
+//----------------Items Endpoints-------------
+//POST
+// creating a new item
+app.post('/items/create', (req, res) => {
+    let itemName = req.body.itemName;
+    let placeName = req.body.placeName;
+    let areaName = req.body.areaName;
+    let categoryName = req.body.categoryName;
+    let loggedInUserName = req.body.loggedInUserName;
+    let creationDate = new Date();
+
+    Items.create({
+        itemName,
+        placeName,
+        areaName,
+        creationDate,
+        loggedInUserName
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            return res.json(item);
+        }
+    });
+
+});
+
+//PUT
+//Moving existing Item
+app.put('/items/:id', (req, res) => {
+    if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        const message = "Id in the request and body should match"
+        console.error(message);
+        return res.status(400).json({
+            message: message
+        });
+    }
+
+    const toUpdate = {};
+    const updateableFields = ['placeName', 'areaName', 'categoryName'];
+
+    updateableFields.forEach(field => {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+
+    Items
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate,
+            $set: {
+                lastUpdated: new Date()
+            }
+        })
+        .then(items => res.status(204).end())
+        .catch(err => res.status(500).json({
+            message: 'Inernal server error'
+        }));
+});
+
+// GET
+// all items by user
+app.get('/items/:user', function (req, res) {
+
+    Items
+        .find()
+        .then(function (items) {
+            let itemsOutput = [];
+            items.map(function (item) {
+                if (item.loggedInUserName == req.params.user) {
+                    itemsOutput.push(item);
+                }
+            });
+            res.json({
+                itemsOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+// Geting Item by ID
+app.get('/item/:id', function (req, res) {
+    Items
+        .findById(req.params.id).exec().then(function (item) {
+            return res.json(item);
+        })
+        .catch(function (items) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+//DELETE
+
+
+
+//----------------Places Endpoints-------------
+//POST
+// creating a new Place
+app.post('/places/create', (req, res) => {
+    let placeName = req.body.placeName;
+    let areaName = req.body.areaName;
+    let loggedInUserName = req.body.loggedInUserName;
+    let creationDate = new Date();
+
+    Places.create({
+        placeName,
+        areaName,
+        loggedInUserName,
+        creationDate
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            return res.json(item);
+        }
+    });
+
+});
+
+
+//PUT
+//Moving existing Place
+app.put('/places/:id', (req, res) => {
+    if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        const message = "Id in the request and body should match"
+        console.error(message);
+        return res.status(400).json({
+            message: message
+        });
+    }
+
+    const toUpdate = {};
+    const updateableFields = ['areaName'];
+
+    updateableFields.forEach(field => {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+
+    Places
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate,
+            $set: {
+                lastUpdated: new Date()
+            }
+        })
+        .then(places => res.status(204).end())
+        .catch(err => res.status(500).json({
+            message: 'Inernal server error'
+        }));
+});
+
+// GET
+// all places by user
+app.get('/places/:user', function (req, res) {
+
+    Places
+        .find()
+        .then(function (places) {
+            let placesOutput = [];
+            places.map(function (place) {
+                if (place.loggedInUserName == req.params.user) {
+                    placesOutput.push(place);
+                }
+            });
+            res.json({
+                placesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+// Geting Place by ID
+app.get('/place/:id', function (req, res) {
+    Places
+        .findById(req.params.id).exec().then(function (place) {
+            return res.json(place);
+        })
+        .catch(function (places) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+//----------------Areas Endpoints-------------
+//POST
+// creating a new Area
+app.post('/areas/create', (req, res) => {
+    let areaName = req.body.areaName;
+    let loggedInUserName = req.body.loggedInUserName;
+    let creationDate = new Date();
+
+    Areas.create({
+        areaName,
+        loggedInUserName,
+        creationDate
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            return res.json(item);
+        }
+    });
+
+});
+
+//----------------Categories Endpoints-------------
+//POST
+// creating a new Category
+app.post('/categories/create', (req, res) => {
+    let categoryName = req.body.categoryName;
+    let loggedInUserName = req.body.loggedInUserName;
+    let creationDate = new Date();
+
+    Categories.create({
+        categoryName,
+        loggedInUserName,
+        creationDate
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            return res.json(item);
+        }
+    });
+
+});
+
+
+
+
+
+
+
 
 
 // -------------entry ENDPOINTS------------------------------------------------
