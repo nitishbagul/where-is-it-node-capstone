@@ -284,6 +284,15 @@ app.get('/item/:id', function (req, res) {
 });
 
 //DELETE
+app.delete('/item/:id', function (req, res) {
+    Items.findByIdAndRemove(req.params.id).exec().then(function (item) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
 
 
 
@@ -387,6 +396,17 @@ app.get('/place/:id', function (req, res) {
         });
 });
 
+//DELETE
+app.delete('/place/:id', function (req, res) {
+    Items.findByIdAndRemove(req.params.id).exec().then(function (place) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
 //----------------Areas Endpoints-------------
 //POST
 // creating a new Area
@@ -437,6 +457,16 @@ app.get('/areas/:user', function (req, res) {
         });
 });
 
+//DELETE
+app.delete('/area/:id', function (req, res) {
+    Items.findByIdAndRemove(req.params.id).exec().then(function (area) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
 
 
 
@@ -465,8 +495,41 @@ app.post('/categories/create', (req, res) => {
 
 });
 
+// GET
+// all Categories by user
+app.get('/categories/:user', function (req, res) {
 
+    Categories
+        .find()
+        .then(function (categories) {
+            let categoriesOutput = [];
+            categories.map(function (category) {
+                if (category.loggedInUserName == req.params.user) {
+                    categoriesOutput.push(category);
+                }
+            });
+            res.json({
+                categoriesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
 
+//DELETE
+app.delete('/category/:id', function (req, res) {
+    Items.findByIdAndRemove(req.params.id).exec().then(function (category) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
 
 
 
