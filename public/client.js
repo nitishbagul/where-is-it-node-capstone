@@ -1,5 +1,50 @@
 //Step 1: Define functions, objects and variables
 
+function showDeleteItemPopup(itemId) {
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        item: itemId
+    };
+    $.ajax({
+            type: 'GET',
+            url: `/item/${itemId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            /*if (result.entriesOutput.length === 0) {
+                        $('#no-entry').show();
+                    } else {
+                        $('#no-entry').hide();
+                    }
+
+                    //empty the user-list container before populating it dynamically
+                    $('#user-list').html("");
+                    htmlUserDashboard(result);*/
+            let buildTheHtmlOutput = "";
+
+            buildTheHtmlOutput += `<h4 class="delete-item-heading">Deleting Item: ${result.itemName}</h4>`;
+            buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button" data-itemid=${result._id}>Delete</button>
+<button role="button" type="submit" class="cancel-button" data-itemid=${result._id}>Cancel</button>
+</fieldset>`;
+            //console.log(buildTheHtmlOutput);
+
+            //use the HTML output to show it in all items table
+            $(".items-page .delete-item-form").html(buildTheHtmlOutput);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 function populateAreasList() {
     //alert("hi");
     var username = $('.items-page .username').text();
@@ -21,7 +66,7 @@ function populateAreasList() {
         })
         //if call is succefull
         .done(function (result) {
-            console.log(result);
+            //console.log(result);
             /*if (result.entriesOutput.length === 0) {
                     $('#no-entry').show();
                 } else {
@@ -36,7 +81,6 @@ function populateAreasList() {
             $.each(result.areasOutput, function (resultKey, resultValue) {
                 //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
                 buildTheHtmlOutput += `<option>${resultValue.areaName}</option>`;
-                console.log(buildTheHtmlOutput);
             });
             //use the HTML output to show it in all items table
             $(".items-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
@@ -73,7 +117,7 @@ function populateAllItems() {
         })
         //if call is succefull
         .done(function (result) {
-            console.log(result);
+            //console.log(result);
             /*if (result.entriesOutput.length === 0) {
                     $('#no-entry').show();
                 } else {
@@ -131,7 +175,7 @@ function populateSearchedItem(itemName) {
         })
         //if call is succefull
         .done(function (result) {
-            console.log(result);
+            // console.log(result);
             /*if (result.entriesOutput.length === 0) {
                         $('#no-entry').show();
                     } else {
@@ -162,8 +206,8 @@ function populateSearchedItem(itemName) {
                 buildTheHtmlOutput += `</tr>`;
                 buildTheHtmlOutput += `</table>`;
                 buildTheHtmlOutput += `<div class="item-options-container">
-<button class="move-item-button">Move</button>
-<button class="delete-item-button">Delete</button>
+<button class="move-item-button" data-itemid=${resultValue._id}>Move</button>
+<button class="delete-item-button" data-itemid=${resultValue._id}>Delete</button>
 </div>`;
             });
             //use the HTML output to show it in all items table
@@ -299,6 +343,19 @@ $(document).on('click', '.move-item-button', function (event) {
     $('.delete-item-popup').hide();
     $('.js-item-popup-list').show();
     $('.move-item-popup').show();
+});
+
+$(document).on('click', '.delete-item-button', function (event) {
+    event.preventDefault();
+    let itemId = $(this).data('itemid');
+    // alert("hi");
+    $('.js-item-popup-list').hide();
+    $('.js-all-result-area').hide();
+    $('.create-item-popup').hide();
+    $('.move-item-popup').hide();
+    showDeleteItemPopup(itemId);
+    $('.js-item-popup-list').show();
+    $('.delete-item-popup').show();
 });
 
 $(document).on('click', '.delete-item-button', function (event) {
@@ -563,8 +620,20 @@ $('.register-form').submit(function (event) {
 
 $('#itemsLookupForm').submit(function (event) {
     let itemSearchText = $('.items-content #itemSearchField').val();
-    console.log(itemSearchText);
+    //console.log(itemSearchText);
     event.preventDefault();
+    $('.js-item-popup-list').hide();
+    $('.js-all-result-area').hide();
+    populateSearchedItem(itemSearchText);
+    $('.items-result').show();
+    $('.js-single-result-area').show();
+});
+
+$('.delete-item-form').submit(function (event) {
+
+    event.preventDefault();
+    let itemId = $('.items-content #itemSearchField').val();
+    //console.log(itemSearchText);
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     populateSearchedItem(itemSearchText);
