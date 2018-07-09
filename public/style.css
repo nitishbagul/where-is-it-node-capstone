@@ -296,7 +296,7 @@ hr {
 .content-area-categories {
     background-color: #f2cb6f;
     padding-bottom: 80px;
-    height: 100vh;
+    height: 500vh;
 }
 
 /*Items Page Properties*/
@@ -754,7 +754,7 @@ form span {
     .content-area-areas,
     .content-area-categories {
 
-        height: 110vh;
+        height: 500vh;
     }
 
 }
@@ -835,7 +835,7 @@ form span {
     .content-area-areas,
     .content-area-categories {
 
-        height: 120vh;
+        height: 500vh;
     }
 }
 

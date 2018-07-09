@@ -311,7 +311,7 @@ app.get('/item/:id', function (req, res) {
 });
 
 // Geting Item by Name
-app.get('/items-search/:itemName', function (req, res) {
+app.get('/items-search/:itemName/:id', function (req, res) {
 
     Items
         .find({
@@ -323,9 +323,9 @@ app.get('/items-search/:itemName', function (req, res) {
         .then(function (items) {
             let itemsOutput = [];
             items.map(function (item) {
-
-                itemsOutput.push(item);
-
+                if (item.loggedInUserId == req.params.id) {
+                    itemsOutput.push(item);
+                }
             });
             res.json({
                 itemsOutput

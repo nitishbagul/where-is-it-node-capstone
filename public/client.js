@@ -111,54 +111,64 @@ function populateAllItems() {
         });
 }
 
-function populateSearchedItem(searchText) {
-    var username = $('.items-page .username').text();
-    if ((username == "") || (username == undefined) || (username == null)) {
+function populateSearchedItem(itemName) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
         alert("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
-        user: username
+        user: userId
     };
     //console.log(UserObject);
     //make the api call using the payload above
     $.ajax({
             type: 'GET',
-            url: `/items/${username}`,
+            url: `/items-search/${itemName}/${userId}`,
             dataType: 'json',
             data: JSON.stringify(UserObject),
             contentType: 'application/json'
         })
         //if call is succefull
         .done(function (result) {
-            //console.log(result);
+            console.log(result);
             /*if (result.entriesOutput.length === 0) {
-                    $('#no-entry').show();
-                } else {
-                    $('#no-entry').hide();
-                }
+                        $('#no-entry').show();
+                    } else {
+                        $('#no-entry').hide();
+                    }
 
-                //empty the user-list container before populating it dynamically
-                $('#user-list').html("");
-                htmlUserDashboard(result);*/
-            let buildTheHtmlOutput = `<tr>
+                    //empty the user-list container before populating it dynamically
+                    $('#user-list').html("");
+                    htmlUserDashboard(result);*/
+
+            let buildTheHtmlOutput = ``;
+
+
+            $.each(result.itemsOutput, function (resultKey, resultValue) {
+                buildTheHtmlOutput += `<table class="all-items-table">
+<tr>
 <th>Name</th>
 <th>Place</th>
 <th>Area</th>
 <th>Category</th>
 </tr>`;
 
-            $.each(result.itemsOutput, function (resultKey, resultValue) {
-                //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
                 buildTheHtmlOutput += `<tr>`;
                 buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
                 buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
                 buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
                 buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
                 buildTheHtmlOutput += `</tr>`;
+                buildTheHtmlOutput += `</table>`;
+                buildTheHtmlOutput += `<div class="item-options-container">
+<button class="move-item-button">Move</button>
+<button class="delete-item-button">Delete</button>
+</div>`;
             });
             //use the HTML output to show it in all items table
-            $(".js-all-result-area .all-items-table").html(buildTheHtmlOutput);
+            $(".js-single-result-area .single-item-container").html(buildTheHtmlOutput);
+
 
         })
         //if the call is failing
@@ -552,10 +562,12 @@ $('.register-form').submit(function (event) {
 });
 
 $('#itemsLookupForm').submit(function (event) {
+    let itemSearchText = $('.items-content #itemSearchField').val();
+    console.log(itemSearchText);
     event.preventDefault();
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
-    populateSearchedItem();
+    populateSearchedItem(itemSearchText);
     $('.items-result').show();
     $('.js-single-result-area').show();
 });
@@ -576,6 +588,7 @@ $('.create-item-form').submit(function (event) {
     const placeName = $("#create-place-selection option:selected").text();
     const categoryName = $("#create-category-selection option:selected").text();
     const loggedInUserName = $('.items-page .username').text();
+    const loggedInUserId = $('#loggedInUserId').val();
     // console.log(itemName + areaName + placeName + categoryName);
 
     //validate the input
@@ -596,7 +609,8 @@ $('.create-item-form').submit(function (event) {
             areaName: areaName,
             placeName: placeName,
             categoryName: categoryName,
-            loggedInUserName: loggedInUserName
+            loggedInUserName: loggedInUserName,
+            loggedInUserId: loggedInUserId
         };
         //console.log(newItemObject);
 
