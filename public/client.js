@@ -51,21 +51,22 @@ function populateAreasList() {
 
 }
 
+
 function populateAllItems() {
     //alert("hi");
-    var username = $('.items-page .username').text();
-    if ((username == "") || (username == undefined) || (username == null)) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
         alert("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
-        user: username
+        user: userId
     };
     //console.log(UserObject);
     //make the api call using the payload above
     $.ajax({
             type: 'GET',
-            url: `/items/${username}`,
+            url: `/items/get/all/${userId}`,
             dataType: 'json',
             data: JSON.stringify(UserObject),
             contentType: 'application/json'
@@ -74,20 +75,20 @@ function populateAllItems() {
         .done(function (result) {
             console.log(result);
             /*if (result.entriesOutput.length === 0) {
-                $('#no-entry').show();
-            } else {
-                $('#no-entry').hide();
-            }
+                    $('#no-entry').show();
+                } else {
+                    $('#no-entry').hide();
+                }
 
-            //empty the user-list container before populating it dynamically
-            $('#user-list').html("");
-            htmlUserDashboard(result);*/
+                //empty the user-list container before populating it dynamically
+                $('#user-list').html("");
+                htmlUserDashboard(result);*/
             let buildTheHtmlOutput = `<tr>
-        <th>Name</th>
-        <th>Place</th>
-        <th>Area</th>
-        <th>Category</th>
-        </tr>`;
+<th>Name</th>
+<th>Place</th>
+<th>Area</th>
+<th>Category</th>
+</tr>`;
 
             $.each(result.itemsOutput, function (resultKey, resultValue) {
                 //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
