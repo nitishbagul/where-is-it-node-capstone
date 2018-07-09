@@ -190,6 +190,7 @@ app.post('/items/create', (req, res) => {
     let areaName = req.body.areaName;
     let categoryName = req.body.categoryName;
     let loggedInUserName = req.body.loggedInUserName;
+    let loggedInUserId = req.body.loggedInUserId;
     let creationDate = new Date();
 
     Items.create({
@@ -198,7 +199,8 @@ app.post('/items/create', (req, res) => {
         areaName,
         creationDate,
         categoryName,
-        loggedInUserName
+        loggedInUserName,
+        loggedInUserId
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -255,6 +257,30 @@ app.get('/items/:user', function (req, res) {
             let itemsOutput = [];
             items.map(function (item) {
                 if (item.loggedInUserName == req.params.user) {
+                    itemsOutput.push(item);
+                }
+            });
+            res.json({
+                itemsOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+//all items by userID
+app.get('/items/get/all/:id', function (req, res) {
+
+    Items
+        .find()
+        .then(function (items) {
+            let itemsOutput = [];
+            items.map(function (item) {
+                if (item.loggedInUserId == req.params.id) {
                     itemsOutput.push(item);
                 }
             });
