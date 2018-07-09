@@ -284,6 +284,36 @@ app.get('/item/:id', function (req, res) {
         });
 });
 
+// Geting Item by Name
+app.get('/items-search/:itemName', function (req, res) {
+
+    Items
+        .find({
+            itemName: {
+                $regex: `.*${req.params.itemName}.*`,
+                $options: "i"
+            }
+        })
+        .then(function (items) {
+            let itemsOutput = [];
+            items.map(function (item) {
+
+                itemsOutput.push(item);
+
+            });
+            res.json({
+                itemsOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+
 //DELETE
 app.delete('/item/:id', function (req, res) {
     Items.findByIdAndRemove(req.params.id).exec().then(function (item) {

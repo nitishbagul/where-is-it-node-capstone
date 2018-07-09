@@ -46,7 +46,65 @@ function populateAllItems() {
                 buildTheHtmlOutput += `</tr>`;
             });
             //use the HTML output to show it in all items table
-            $(".all-items-table tbody").html(buildTheHtmlOutput);
+            $(".js-all-result-area .all-items-table").html(buildTheHtmlOutput);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function populateSearchedItem() {
+    var username = $('.items-page .username').text();
+    if ((username == "") || (username == undefined) || (username == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/items/${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            //console.log(result);
+            /*if (result.entriesOutput.length === 0) {
+                    $('#no-entry').show();
+                } else {
+                    $('#no-entry').hide();
+                }
+
+                //empty the user-list container before populating it dynamically
+                $('#user-list').html("");
+                htmlUserDashboard(result);*/
+            let buildTheHtmlOutput = `<tr>
+<th>Name</th>
+<th>Place</th>
+<th>Area</th>
+<th>Category</th>
+</tr>`;
+
+            $.each(result.itemsOutput, function (resultKey, resultValue) {
+                //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+                buildTheHtmlOutput += `<tr>`;
+                buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
+                buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
+                buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
+                buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
+                buildTheHtmlOutput += `</tr>`;
+            });
+            //use the HTML output to show it in all items table
+            $(".js-all-result-area .all-items-table").html(buildTheHtmlOutput);
 
         })
         //if the call is failing
@@ -159,12 +217,11 @@ $(document).on('click', '.items-page .create-new-button', function (event) {
 
 $(document).on('click', '.items-page .show-all-button', function (event) {
     event.preventDefault();
-    var username = $('.items-page .username').text();
+    populateAllItems();
     // alert("hi");
     $('.js-item-popup-list').hide();
     $('.js-single-result-area').hide();
     // console.log(username);
-    populateAllItems();
     $('.items-result').show();
     $('.js-all-result-area').show();
 });
@@ -432,6 +489,7 @@ $('#itemsLookupForm').submit(function (event) {
     event.preventDefault();
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
+    populateSearchedItem();
     $('.items-result').show();
     $('.js-single-result-area').show();
 });
