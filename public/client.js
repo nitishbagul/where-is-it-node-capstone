@@ -1,5 +1,58 @@
 //Step 1: Define functions, objects and variables
+
+function populateAreasList() {
+    //alert("hi");
+    var username = $('.items-page .username').text();
+    if ((username == "") || (username == undefined) || (username == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/areas/${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            /*if (result.entriesOutput.length === 0) {
+                    $('#no-entry').show();
+                } else {
+                    $('#no-entry').hide();
+                }
+
+                //empty the user-list container before populating it dynamically
+                $('#user-list').html("");
+                htmlUserDashboard(result);*/
+            let buildTheHtmlOutput = "<option>Select..</option>";
+
+            $.each(result.areasOutput, function (resultKey, resultValue) {
+                //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+                buildTheHtmlOutput += `<option>${resultValue.areaName}</option>`;
+                console.log(buildTheHtmlOutput);
+            });
+            //use the HTML output to show it in all items table
+            $(".items-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
+}
+
 function populateAllItems() {
+    //alert("hi");
     var username = $('.items-page .username').text();
     if ((username == "") || (username == undefined) || (username == null)) {
         alert("Cannot find the user");
@@ -19,7 +72,7 @@ function populateAllItems() {
         })
         //if call is succefull
         .done(function (result) {
-            //console.log(result);
+            console.log(result);
             /*if (result.entriesOutput.length === 0) {
                 $('#no-entry').show();
             } else {
@@ -57,7 +110,7 @@ function populateAllItems() {
         });
 }
 
-function populateSearchedItem() {
+function populateSearchedItem(searchText) {
     var username = $('.items-page .username').text();
     if ((username == "") || (username == undefined) || (username == null)) {
         alert("Cannot find the user");
@@ -373,6 +426,18 @@ $(document).on('click', '.categories-result .delete-button', function (event) {
     $('.js-categories-popup-list').show();
     $('.delete-category-popup').show();
 });
+
+/*$(document).on('click', '.create-area-selection', function (event) {
+    event.preventDefault();
+    //alert("hi");
+    $('.js-categories-popup-list').hide();
+    $('.create-category-popup').hide();
+    $('.show-items-popup').hide();
+    $('.js-categories-popup-list').show();
+    $('.delete-category-popup').show();
+});*/
+
+
 
 //form trigger
 $('.login-form').submit(function (event) {
