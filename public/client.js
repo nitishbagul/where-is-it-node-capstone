@@ -92,6 +92,23 @@ function showDeleteItemPopup(itemId) {
         });
 }
 
+//Catch item id and dynamically generate item heading
+function showDeleteAreaPopup(areaId, areaName) {
+    let buildTheHtmlOutput = "";
+
+    buildTheHtmlOutput += `<h4>Deleting Area: ${areaName}</h4>`;
+    buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button" data-itemid=${areaId}>Delete</button>
+<button role="button" type="submit" class="cancel-button" data-itemid=${areaId}>Cancel</button>
+</fieldset>`;
+    //console.log(buildTheHtmlOutput);
+
+    //use the HTML output to show it in all items table
+    $(".areas-page .delete-area-form").html(buildTheHtmlOutput);
+    $('.delete-item-form').data('areaid', areaId);
+
+}
+
 function populateAreasList() {
     //alert("hi");
     var username = $('.items-page .username').text();
@@ -174,8 +191,8 @@ function populateAreas() {
                     buildTheHtmlOutput += `<li data-areaentry=${resultValue._id}>`;
                     buildTheHtmlOutput += `<button class="collapsible">${resultValue.areaName}</button>`;
                     buildTheHtmlOutput += `<div class="collapse-content">
-<button role="button" class="all-places-button" data-itemid=${result._id}>Show Places</button>
-<button role="button" class="delete-button" data-itemid=${result._id}>Delete</button>
+<button role="button" class="all-places-button" data-areaid=${resultValue._id}>Show Places</button>
+<button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
@@ -553,10 +570,13 @@ $(document).on('click', '.areas-result .all-places-button', function (event) {
 
 $(document).on('click', '.areas-result .delete-button', function (event) {
     event.preventDefault();
+    let areaId = $(this).data('areaid');
+    let areaName = $(this).closest('li').find('.collapsible').text();
     //alert("hi");
     $('.js-place-popup-list').hide();
     $('.create-area-popup').hide();
     $('.show-places-popup').hide();
+    showDeleteAreaPopup(areaId, areaName);
     $('.js-areas-popup-list').show();
     $('.delete-area-popup').show();
 });
