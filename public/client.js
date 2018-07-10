@@ -44,6 +44,33 @@ function deleteItem(itemId) {
         });
 }
 
+//Delete Item
+function deleteArea(areaId) {
+    console.log(areaId);
+    event.preventDefault();
+
+    //make the api call using the payload above
+    $.ajax({
+            type: 'DELETE',
+            url: `/area/${areaId}`,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            alert("Area deleted succesfully");
+            $(`li[data-areaentry='${areaId}']`).hide();
+            $(".delete-area-popup").hide();
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 
 //Catch item id and dynamically generate item heading
 function showDeleteItemPopup(itemId) {
@@ -90,6 +117,23 @@ function showDeleteItemPopup(itemId) {
             console.log(error);
             console.log(errorThrown);
         });
+}
+
+//Catch item id and dynamically generate item heading
+function showDeleteAreaPopup(areaId, areaName) {
+    let buildTheHtmlOutput = "";
+
+    buildTheHtmlOutput += `<h4>Deleting Area: ${areaName}</h4>`;
+    buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button" data-areaid=${areaId}>Delete</button>
+<button role="button" type="submit" class="cancel-button" data-areaid=${areaId}>Cancel</button>
+</fieldset>`;
+    //console.log(buildTheHtmlOutput);
+
+    //use the HTML output to show it in all items table
+    $(".areas-page .delete-area-form").html(buildTheHtmlOutput);
+    $('.delete-area-form').data('areaid', areaId);
+
 }
 
 function populateAreasList() {
@@ -175,8 +219,8 @@ function populateAreas() {
                     buildTheHtmlOutput += `<li data-areaentry=${resultValue._id}>`;
                     buildTheHtmlOutput += `<button class="collapsible">${resultValue.areaName}</button>`;
                     buildTheHtmlOutput += `<div class="collapse-content">
-<button role="button" class="all-places-button" data-itemid=${result._id}>Show Places</button>
-<button role="button" class="delete-button" data-itemid=${result._id}>Delete</button>
+<button role="button" class="all-places-button" data-areaid=${resultValue._id}>Show Places</button>
+<button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
@@ -555,10 +599,13 @@ $(document).on('click', '.areas-result .all-places-button', function (event) {
 
 $(document).on('click', '.areas-result .delete-button', function (event) {
     event.preventDefault();
+    let areaId = $(this).data('areaid');
+    let areaName = $(this).closest('li').find('.collapsible').text();
     //alert("hi");
     $('.js-place-popup-list').hide();
     $('.create-area-popup').hide();
     $('.show-places-popup').hide();
+    showDeleteAreaPopup(areaId, areaName);
     $('.js-areas-popup-list').show();
     $('.delete-area-popup').show();
 });
@@ -741,6 +788,16 @@ $('.delete-item-form').submit(function (event) {
     deleteItem(itemId);
     $('.items-result').show();
     $('.js-single-result-area').show();
+});
+
+$('.delete-area-form').submit(function (event) {
+
+    event.preventDefault();
+    let areaId = $(this).data('areaid');
+    console.log(areaId);
+    deleteArea(areaId);
+    //$('.items-result').show();
+    //$('.js-single-result-area').show();
 });
 
 $('#placesLookupForm').submit(function (event) {

@@ -469,7 +469,7 @@
                 </div>
 
                 <div class="delete-place-popup popup">
-                    <form class="move-place-form" action="/delete/" method="post">
+                    <form class="delete-place-form" data-placeid="">
                         <i class="fas fa-times close-icon"></i>
                         <h4>Deleting Item: Gift Card</h4>
                         <fieldset name="delete-info" class="delete-info">
@@ -517,23 +517,25 @@
                 <button class="my-areas-button">My Areas</button>
                 <button class="categories-button">Cateogries</button>
             </div>
+        </header>
 
-            <section class="content-area-areas">
+        <section class="content-area-areas">
 
-                <h1 class="entity-heading">Areas</h1>
-                <hr>
-                <section class="areas-content">
-                    <div class="areas-menu">
-                        <div class="areas-menu-buttons">
-                            <button class="create-new-button">Create</button>
-                            <button class="show-all-button">Show All</button>
-                        </div>
+            <h1 class="entity-heading">Areas</h1>
+            <hr>
+            <section class="areas-content">
+                <div class="areas-menu">
+                    <div class="areas-menu-buttons">
+                        <button class="create-new-button">Create</button>
+                        <button class="show-all-button">Show All</button>
                     </div>
+                </div>
 
-                    <section class="areas-result">
-                        <div class="js-all-areas-result">
-                            <h3>My Areas</h3>
-                            <ul class="areas-list-all">
+                <section class="areas-result">
+                    <div class="js-all-areas-result">
+                        <h3>My Areas</h3>
+                        <ul class="areas-list-all">
+                            <!--
                                 <li>
                                     <button class="collapsible">Living Room</button>
                                     <div class="collapse-content">
@@ -560,61 +562,64 @@
                                         <button role="button" class="delete-button">Delete</button>
                                     </div>
                                 </li>
-                            </ul>
+                                -->
+                        </ul>
 
-                        </div>
-
-                    </section>
+                    </div>
 
                 </section>
 
-                <div class="js-areas-popup-list">
+            </section>
 
-                    <div class="create-area-popup popup">
-                        <form class="create-area-form">
-                            <i class="fas fa-times close-icon"></i>
-                            <h4>Create Area</h4>
-                            <fieldset name="area-info" class="area-info">
+            <div class="js-areas-popup-list">
 
-                                <div class="name-select-container">
-                                    <label for="area_name">Name</label>
-                                    <input role="textbox" type="text" name="area_name" id="area_name" required>
-                                </div>
+                <div class="create-area-popup popup">
+                    <form class="create-area-form">
+                        <i class="fas fa-times close-icon"></i>
+                        <h4>Create Area</h4>
+                        <fieldset name="area-info" class="area-info">
 
-                                <button role="button" type="submit" class="create-button">Create</button>
+                            <div class="name-select-container">
+                                <label for="area_name">Name</label>
+                                <input role="textbox" type="text" name="area_name" id="area_name" required>
+                            </div>
 
-                            </fieldset>
-                        </form>
-                    </div>
+                            <button role="button" type="submit" class="create-button">Create</button>
 
-                    <div class="delete-area-popup popup">
-                        <form class="move-area-form" action="/delete/" method="post">
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="delete-area-popup popup">
+                    <form class="delete-area-form" data-areaid="">
+                        <!--
                             <i class="fas fa-times close-icon"></i>
                             <h4>Deleting Area: Garage</h4>
                             <fieldset name="delete-info" class="delete-info">
                                 <button role="button" type="submit" class="delete-button">Delete</button>
                                 <button role="button" type="submit" class="delete-button">Cancel</button>
                             </fieldset>
-                        </form>
-                    </div>
+                            -->
+                    </form>
+                </div>
 
-                    <div class="show-places-popup popup">
+                <div class="show-places-popup popup">
 
-                        <i class="fas fa-times close-icon"></i>
-                        <h4>Showing Places - Bedroom</h4>
-                        <hr>
-                        <ul>
-                            <li>Wardrobe</li>
-                            <li>Main cupboard</li>
-                            <li>Small Bookshelf</li>
-                            <li>Study Desk Drawer</li>
-                        </ul>
-
-                    </div>
+                    <i class="fas fa-times close-icon"></i>
+                    <h4>Showing Places - Bedroom</h4>
+                    <hr>
+                    <ul>
+                        <li>Wardrobe</li>
+                        <li>Main cupboard</li>
+                        <li>Small Bookshelf</li>
+                        <li>Study Desk Drawer</li>
+                    </ul>
 
                 </div>
 
-            </section>
+            </div>
+
+        </section>
     </main>
 
     <main class="categories-page" role="main">
@@ -710,7 +715,7 @@
                 </div>
 
                 <div class="delete-category-popup popup">
-                    <form class="move-category-form" action="/delete/" method="post">
+                    <form class="move-category-form" data-categoryid="">
                         <i class="fas fa-times close-icon"></i>
                         <h4>Deleting Category: Travel</h4>
                         <fieldset name="delete-info" class="delete-info">
