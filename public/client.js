@@ -44,6 +44,33 @@ function deleteItem(itemId) {
         });
 }
 
+//Delete Item
+function deleteArea(areaId) {
+    console.log(areaId);
+    event.preventDefault();
+
+    //make the api call using the payload above
+    $.ajax({
+            type: 'DELETE',
+            url: `/area/${areaId}`,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            alert("Area deleted succesfully");
+            $(`li[data-areaentry='${areaId}']`).hide();
+            $(".delete-area-popup").hide();
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 
 //Catch item id and dynamically generate item heading
 function showDeleteItemPopup(itemId) {
@@ -98,14 +125,14 @@ function showDeleteAreaPopup(areaId, areaName) {
 
     buildTheHtmlOutput += `<h4>Deleting Area: ${areaName}</h4>`;
     buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button" data-itemid=${areaId}>Delete</button>
-<button role="button" type="submit" class="cancel-button" data-itemid=${areaId}>Cancel</button>
+<button role="button" type="submit" class="delete-button" data-areaid=${areaId}>Delete</button>
+<button role="button" type="submit" class="cancel-button" data-areaid=${areaId}>Cancel</button>
 </fieldset>`;
     //console.log(buildTheHtmlOutput);
 
     //use the HTML output to show it in all items table
     $(".areas-page .delete-area-form").html(buildTheHtmlOutput);
-    $('.delete-item-form').data('areaid', areaId);
+    $('.delete-area-form').data('areaid', areaId);
 
 }
 
@@ -759,6 +786,16 @@ $('.delete-item-form').submit(function (event) {
     deleteItem(itemId);
     $('.items-result').show();
     $('.js-single-result-area').show();
+});
+
+$('.delete-area-form').submit(function (event) {
+
+    event.preventDefault();
+    let areaId = $(this).data('areaid');
+    console.log(areaId);
+    deleteArea(areaId);
+    //$('.items-result').show();
+    //$('.js-single-result-area').show();
 });
 
 $('#placesLookupForm').submit(function (event) {
