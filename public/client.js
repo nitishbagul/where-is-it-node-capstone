@@ -1,5 +1,33 @@
 //Step 1: Define functions, objects and variables
 
+//Delete Item
+function deleteItem(itemId) {
+    event.preventDefault();
+
+    //make the api call using the payload above
+    $.ajax({
+            type: 'DELETE',
+            url: `/item/${itemId}`,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            alert("deleted item");
+            $(`div[data-itementry='${itemId}']`).hide();
+            $(".delete-item-popup").hide();
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+
+//Cath item id and dynamically generate item heading
 function showDeleteItemPopup(itemId) {
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -35,6 +63,7 @@ function showDeleteItemPopup(itemId) {
 
             //use the HTML output to show it in all items table
             $(".items-page .delete-item-form").html(buildTheHtmlOutput);
+            $('.delete-item-form').data('itemid', result._id);
 
         })
         //if the call is failing
@@ -190,6 +219,7 @@ function populateSearchedItem(itemName) {
 
 
             $.each(result.itemsOutput, function (resultKey, resultValue) {
+                buildTheHtmlOutput += `<div data-itementry=${resultValue._id}>`;
                 buildTheHtmlOutput += `<table class="all-items-table">
 <tr>
 <th>Name</th>
@@ -209,6 +239,7 @@ function populateSearchedItem(itemName) {
 <button class="move-item-button" data-itemid=${resultValue._id}>Move</button>
 <button class="delete-item-button" data-itemid=${resultValue._id}>Delete</button>
 </div>`;
+                buildTheHtmlOutput += '</div>';
             });
             //use the HTML output to show it in all items table
             $(".js-single-result-area .single-item-container").html(buildTheHtmlOutput);
@@ -632,11 +663,9 @@ $('#itemsLookupForm').submit(function (event) {
 $('.delete-item-form').submit(function (event) {
 
     event.preventDefault();
-    let itemId = $('.items-content #itemSearchField').val();
-    //console.log(itemSearchText);
-    $('.js-item-popup-list').hide();
-    $('.js-all-result-area').hide();
-    populateSearchedItem(itemSearchText);
+    let itemId = $(this).data('itemid');
+    //console.log(itemId);
+    deleteItem(itemId);
     $('.items-result').show();
     $('.js-single-result-area').show();
 });
