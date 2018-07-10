@@ -1,5 +1,23 @@
 //Step 1: Define functions, objects and variables
 
+//Execute Collpsible
+function executeCollapsible() {
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+}
+
 //Delete Item
 function deleteItem(itemId) {
     event.preventDefault();
@@ -27,7 +45,7 @@ function deleteItem(itemId) {
 }
 
 
-//Cath item id and dynamically generate item heading
+//Catch item id and dynamically generate item heading
 function showDeleteItemPopup(itemId) {
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -113,6 +131,58 @@ function populateAreasList() {
             });
             //use the HTML output to show it in all items table
             $(".items-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
+}
+
+function populateAreas() {
+    //alert("hi");
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/areas/get/all/${userId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.areasOutput.length === 0) {
+                alert("No Areas found")
+            } else {
+
+                let buildTheHtmlOutput = ``;
+
+                $.each(result.areasOutput, function (resultKey, resultValue) {
+                    buildTheHtmlOutput += `<li data-areaentry=${resultValue._id}>`;
+                    buildTheHtmlOutput += `<button class="collapsible">${resultValue.areaName}</button>`;
+                    buildTheHtmlOutput += `<div class="collapse-content">
+<button role="button" class="all-places-button" data-itemid=${result._id}>Show Places</button>
+<button role="button" class="delete-button" data-itemid=${result._id}>Delete</button>
+</div>`;
+                    buildTheHtmlOutput += `</li>`;
+                });
+                //use the HTML output to show it in all items table
+                $(".areas-page .areas-list-all").html(buildTheHtmlOutput);
+                executeCollapsible();
+            }
 
         })
         //if the call is failing
@@ -467,6 +537,7 @@ $(document).on('click', '.areas-menu .show-all-button', function (event) {
     event.preventDefault();
     // alert("hi");
     $('.js-areas-popup-list').hide();
+    populateAreas();
     $('.areas-result').show();
 });
 
@@ -732,6 +803,58 @@ $('.create-item-form').submit(function (event) {
                 console.log(errorThrown);
             });
     };
+
+});
+
+$('.create-area-form').submit(function (event) {
+    event.preventDefault();
+
+    //take the input from the user
+    const areaName = $('#area_name').val();
+    const loggedInUserName = $('.areas-page .username').text();
+    const loggedInUserId = $('#loggedInUserId').val();
+    // console.log(itemName + areaName + placeName + categoryName);
+
+    //validate the input
+    if (areaName == "") {
+        alert('Please add an item');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newItemObject = {
+            areaName: areaName,
+            loggedInUserName: loggedInUserName,
+            loggedInUserId: loggedInUserId
+        };
+        //console.log(newItemObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/areas/create',
+                dataType: 'json',
+                data: JSON.stringify(newItemObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                //console.log(result);
+                $('#area_name').val('');
+                $('.create-area-popup').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+});
+
+$(document).on('change', '.create-item-form #create-area-selection', function (event) {
+    populatePlacesList();
 
 });
 

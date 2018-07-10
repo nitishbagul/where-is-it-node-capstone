@@ -470,11 +470,13 @@ app.delete('/place/:id', function (req, res) {
 app.post('/areas/create', (req, res) => {
     let areaName = req.body.areaName;
     let loggedInUserName = req.body.loggedInUserName;
+    let loggedInUserId = req.body.loggedInUserId;
     let creationDate = new Date();
 
     Areas.create({
         areaName,
         loggedInUserName,
+        loggedInUserId,
         creationDate
     }, (err, item) => {
         if (err) {
@@ -499,6 +501,30 @@ app.get('/areas/:user', function (req, res) {
             let areasOutput = [];
             areas.map(function (area) {
                 if (area.loggedInUserName == req.params.user) {
+                    areasOutput.push(area);
+                }
+            });
+            res.json({
+                areasOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+//Get all areas by userID
+app.get('/areas/get/all/:id', function (req, res) {
+
+    Areas
+        .find()
+        .then(function (areas) {
+            let areasOutput = [];
+            areas.map(function (area) {
+                if (area.loggedInUserId == req.params.id) {
                     areasOutput.push(area);
                 }
             });

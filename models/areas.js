@@ -18,6 +18,10 @@ const areasSchema = new mongoose.Schema({
     loggedInUserName: {
         type: String,
         required: false
+    },
+    loggedInUserId: {
+        type: String,
+        required: false
     }
 
 });
