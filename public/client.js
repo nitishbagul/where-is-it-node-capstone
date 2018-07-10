@@ -239,6 +239,58 @@ function populateAreas() {
 
 }
 
+function populatePlaces() {
+    //alert("hi");
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/places/get/all/${userId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.areasOutput.length === 0) {
+                alert("No Areas found")
+            } else {
+
+                let buildTheHtmlOutput = ``;
+
+                $.each(result.areasOutput, function (resultKey, resultValue) {
+                    buildTheHtmlOutput += `<li data-areaentry=${resultValue._id}>`;
+                    buildTheHtmlOutput += `<button class="collapsible">${resultValue.areaName}</button>`;
+                    buildTheHtmlOutput += `<div class="collapse-content">
+<button role="button" class="all-places-button" data-areaid=${resultValue._id}>Show Places</button>
+<button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>
+</div>`;
+                    buildTheHtmlOutput += `</li>`;
+                });
+                //use the HTML output to show it in all items table
+                $(".areas-page .areas-list-all").html(buildTheHtmlOutput);
+                executeCollapsible();
+            }
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
+}
+
 
 function populateAllItems() {
     //alert("hi");
@@ -530,6 +582,7 @@ $(document).on('click', '.places-menu .show-all-button', function (event) {
     // alert("hi");
     $('.js-place-popup-list').hide();
     $('.js-single-place-result').hide();
+    populatePlaces();
     $('.places-result').show();
     $('.js-all-places-result').show();
 });
@@ -952,6 +1005,7 @@ $('.create-place-form').submit(function (event) {
             .done(function (result) {
                 console.log(result);
                 alert("place created succefuly");
+                $("#place_name").val("");
                 $('.create-place-popup').hide();
             })
             //if the call is failing
