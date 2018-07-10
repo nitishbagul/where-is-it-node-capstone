@@ -127,10 +127,11 @@ function populateAreasList() {
 
             $.each(result.areasOutput, function (resultKey, resultValue) {
                 //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
-                buildTheHtmlOutput += `<option>${resultValue.areaName}</option>`;
+                buildTheHtmlOutput += `<option data-areaid=${resultValue._id}>${resultValue.areaName}</option>`;
             });
             //use the HTML output to show it in all items table
             $(".items-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
+            $(".places-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
 
         })
         //if the call is failing
@@ -475,6 +476,7 @@ $(document).on('click', '.places-menu .create-new-button', function (event) {
     //alert("hi");
     $('.popup').hide();
     $('.places-result').hide();
+    populateAreasList();
     $('.js-place-popup-list').show();
     $('.create-place-popup').show();
 });
@@ -853,6 +855,60 @@ $('.create-area-form').submit(function (event) {
 
 });
 
+$('.create-place-form').submit(function (event) {
+    event.preventDefault();
+    //take the input from the user
+    const placeName = $("#place_name").val();
+    const areaName = $(".places-page #create-area-selection option:selected").text();
+    const areaId = $(".places-page #create-area-selection option:selected").data('areaid');
+    const loggedInUserName = $('.places-page .username').text();
+    const loggedInUserId = $('#loggedInUserId').val();
+    // console.log(itemName + areaName + placeName + categoryName);
+
+    //validate the input
+    if (placeName == "") {
+        alert('Please add an item');
+    } else if (areaName == "Select..") {
+        alert('Please add an Area');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newPlaceObject = {
+            placeName: placeName,
+            areaName: areaName,
+            areaId: areaId,
+            loggedInUserName: loggedInUserName,
+            loggedInUserId: loggedInUserId
+        };
+        //console.log(newItemObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/places/create',
+                dataType: 'json',
+                data: JSON.stringify(newPlaceObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                console.log(result);
+                alert("place created succefuly");
+                $('.create-place-popup').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+});
+
+
+//Change event for dynamic dropdowns
 $(document).on('change', '.create-item-form #create-area-selection', function (event) {
     populatePlacesList();
 

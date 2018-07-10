@@ -11,6 +11,10 @@ const placesSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    areaId: {
+        type: String,
+        required: false
+    },
     creationDate: {
         type: Date,
         required: false

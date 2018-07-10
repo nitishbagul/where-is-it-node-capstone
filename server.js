@@ -359,13 +359,17 @@ app.delete('/item/:id', function (req, res) {
 app.post('/places/create', (req, res) => {
     let placeName = req.body.placeName;
     let areaName = req.body.areaName;
+    let areaId = req.body.areaId;
     let loggedInUserName = req.body.loggedInUserName;
+    let loggedInUserId = req.body.loggedInUserId;
     let creationDate = new Date();
 
     Places.create({
         placeName,
         areaName,
+        areaId,
         loggedInUserName,
+        loggedInUserId,
         creationDate
     }, (err, item) => {
         if (err) {
@@ -455,7 +459,7 @@ app.get('/place/:id', function (req, res) {
 
 //DELETE
 app.delete('/place/:id', function (req, res) {
-    Items.findByIdAndRemove(req.params.id).exec().then(function (place) {
+    Places.findByIdAndRemove(req.params.id).exec().then(function (place) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
