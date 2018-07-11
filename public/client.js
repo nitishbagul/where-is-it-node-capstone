@@ -208,7 +208,7 @@ function populateAreas() {
         })
         //if call is succefull
         .done(function (result) {
-            console.log(result);
+            //console.log(result);
             if (result.areasOutput.length === 0) {
                 alert("No Areas found")
             } else {
@@ -261,23 +261,25 @@ function populatePlaces() {
         //if call is succefull
         .done(function (result) {
             console.log(result);
-            if (result.areasOutput.length === 0) {
-                alert("No Areas found")
+            if (result.placesOutput.length === 0) {
+                alert("No Places found")
             } else {
 
                 let buildTheHtmlOutput = ``;
 
-                $.each(result.areasOutput, function (resultKey, resultValue) {
-                    buildTheHtmlOutput += `<li data-areaentry=${resultValue._id}>`;
-                    buildTheHtmlOutput += `<button class="collapsible">${resultValue.areaName}</button>`;
+                $.each(result.placesOutput, function (resultKey, resultValue) {
+                    buildTheHtmlOutput += `<li data-placeentry=${resultValue._id}>`;
+                    buildTheHtmlOutput += `<button class="collapsible">${resultValue.placeName}</button>`;
                     buildTheHtmlOutput += `<div class="collapse-content">
-<button role="button" class="all-places-button" data-areaid=${resultValue._id}>Show Places</button>
-<button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>
+<p>Current Area: ${resultValue.areaName}</p>
+<button role="button" class="move-button" data-placeid=${resultValue._id}>Move</button>
+<button role="button" class="all-items-button" data-placeid=${resultValue._id}>Show Items</button>
+<button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
                 //use the HTML output to show it in all items table
-                $(".areas-page .areas-list-all").html(buildTheHtmlOutput);
+                $(".places-page .places-list-all").html(buildTheHtmlOutput);
                 executeCollapsible();
             }
 
