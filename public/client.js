@@ -136,6 +136,23 @@ function showDeleteAreaPopup(areaId, areaName) {
 
 }
 
+//Catch item id and dynamically generate item heading
+function showDeletePlacePopup(placeId, placeName) {
+    let buildTheHtmlOutput = "";
+
+    buildTheHtmlOutput += `<h4>Deleting Place: ${placeName}</h4>`;
+    buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button" data-areaid=${placeId}>Delete</button>
+<button role="button" type="submit" class="cancel-button" data-areaid=${placeId}>Cancel</button>
+</fieldset>`;
+    //console.log(buildTheHtmlOutput);
+
+    //use the HTML output to show it in all items table
+    $(".places-page .delete-place-form").html(buildTheHtmlOutput);
+    $('.delete-place-form').data('placeid', placeId);
+
+}
+
 function populateAreasList() {
     //alert("hi");
     var username = $('.items-page .username').text();
@@ -279,7 +296,7 @@ function populatePlaces() {
                     buildTheHtmlOutput += `</li>`;
                 });
                 //use the HTML output to show it in all items table
-                $(".places-page .places-list-all").html(buildTheHtmlOutput);
+                $(".places-page .js-all-places-result .places-list-all").html(buildTheHtmlOutput);
                 executeCollapsible();
             }
 
@@ -413,6 +430,63 @@ function populateSearchedItem(itemName) {
             //use the HTML output to show it in all items table
             $(".js-single-result-area .single-item-container").html(buildTheHtmlOutput);
 
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function populateSearchedPlace(placeName) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/places-search/${placeName}/${userId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            // console.log(result);
+            /*if (result.entriesOutput.length === 0) {
+                            $('#no-entry').show();
+                        } else {
+                            $('#no-entry').hide();
+                        }
+
+                        //empty the user-list container before populating it dynamically
+                        $('#user-list').html("");
+                        htmlUserDashboard(result);*/
+
+            let buildTheHtmlOutput = ``;
+
+            $.each(result.placesOutput, function (resultKey, resultValue) {
+                buildTheHtmlOutput += `<li data-placeentry=${resultValue._id}>`;
+                buildTheHtmlOutput += `<button class="collapsible">${resultValue.placeName}</button>`;
+                buildTheHtmlOutput += `<div class="collapse-content">
+<p>Current Area: ${resultValue.areaName}</p>
+<button role="button" class="move-button" data-placeid=${resultValue._id}>Move</button>
+<button role="button" class="all-items-button" data-placeid=${resultValue._id}>Show Items</button>
+<button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>
+</div>`;
+                buildTheHtmlOutput += `</li>`;
+            });
+            //use the HTML output to show it in all items table
+            $(".places-page .js-single-place-result .places-list-all").html(buildTheHtmlOutput);
+            executeCollapsible();
 
         })
         //if the call is failing
@@ -615,12 +689,15 @@ $(document).on('click', '.places-result .all-items-button', function (event) {
 
 $(document).on('click', '.places-result .delete-button', function (event) {
     event.preventDefault();
+    let placeId = $(this).data('placeid');
+    let placeName = $(this).closest('li').find('.collapsible').text();
     //alert("hi");
     $('.js-place-popup-list').hide();
     $('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.show-items-popup').hide();
     $('.move-place-popup').hide();
+    showDeletePlacePopup(placeId, placeName);
     $('.js-place-popup-list').show();
     $('.delete-place-popup').show();
 });
@@ -856,9 +933,11 @@ $('.delete-area-form').submit(function (event) {
 });
 
 $('#placesLookupForm').submit(function (event) {
+    let placeSearchText = $('.places-content #placeSearchField').val();
     event.preventDefault();
     $('.js-place-popup-list').hide();
     $('.js-all-places-result').hide();
+    populateSearchedPlace(placeSearchText);
     $('.places-result').show();
     $('.js-single-place-result').show();
 });
