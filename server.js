@@ -310,7 +310,7 @@ app.get('/item/:id', function (req, res) {
         });
 });
 
-// Geting Item by Name
+// Geting Item by Name-Search
 app.get('/items-search/:itemName/:id', function (req, res) {
 
     Items
@@ -477,6 +477,35 @@ app.get('/place/:id', function (req, res) {
             console.error(err);
             res.status(500).json({
                 message: 'Internal Server Error'
+            });
+        });
+});
+
+// Geting Place by Name-Search
+app.get('/places-search/:placeName/:id', function (req, res) {
+
+    Places
+        .find({
+            placeName: {
+                $regex: `.*${req.params.placeName}.*`,
+                $options: "i"
+            }
+        })
+        .then(function (places) {
+            let placesOutput = [];
+            places.map(function (place) {
+                if (place.loggedInUserId == req.params.id) {
+                    placesOutput.push(place);
+                }
+            });
+            res.json({
+                placesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
             });
         });
 });

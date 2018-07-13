@@ -44,7 +44,7 @@ function deleteItem(itemId) {
         });
 }
 
-//Delete Item
+//Delete Area
 function deleteArea(areaId) {
     console.log(areaId);
     event.preventDefault();
