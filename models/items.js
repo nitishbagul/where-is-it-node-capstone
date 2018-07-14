@@ -19,6 +19,10 @@ const itemsSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    placeId: {
+        type: String,
+        required: false
+    },
     areaName: {
         type: String,
         required: false

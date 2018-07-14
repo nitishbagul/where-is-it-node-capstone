@@ -467,6 +467,30 @@ app.get('/places/get/all/:id', function (req, res) {
         });
 });
 
+//all places by areaID
+app.get('/places/get/all/:id/:areaId', function (req, res) {
+
+    Places
+        .find()
+        .then(function (places) {
+            let placesOutput = [];
+            places.map(function (place) {
+                if (place.loggedInUserId == req.params.id && place.areaId == req.params.areaId) {
+                    placesOutput.push(place);
+                }
+            });
+            res.json({
+                placesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
 // Geting Place by ID
 app.get('/place/:id', function (req, res) {
     Places

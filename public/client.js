@@ -497,6 +497,58 @@ function populateSearchedPlace(placeName) {
         });
 }
 
+function showPlacesByArea(areaId) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId,
+        area: areaId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/places/get/all/${userId}/${areaId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            /*if (result.entriesOutput.length === 0) {
+                                $('#no-entry').show();
+                            } else {
+                                $('#no-entry').hide();
+                            }
+
+                            //empty the user-list container before populating it dynamically
+                            $('#user-list').html("");
+                            htmlUserDashboard(result);*/
+
+            let buildTheHtmlOutput = `<h4>Showing Places - ${result.placesOutput[0].areaName}</h4>
+<hr>
+<ul>`;
+
+            $.each(result.placesOutput, function (resultKey, resultValue) {
+                buildTheHtmlOutput += `<li>${resultValue.placeName}</li>`;
+            });
+            buildTheHtmlOutput += `</ul>`;
+            //use the HTML output to show it in all items table
+            $(".areas-page .js-areas-popup-list .show-places-popup").html(buildTheHtmlOutput);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 
 //Step 2: Use functions, objects and variables(Triggers)
 //when the page loads...
@@ -721,10 +773,12 @@ $(document).on('click', '.areas-menu .show-all-button', function (event) {
 
 $(document).on('click', '.areas-result .all-places-button', function (event) {
     event.preventDefault();
+    let areaId = $(this).data('areaid');
     //alert("hi");
     $('.js-place-popup-list').hide();
     $('.create-area-popup').hide();
     $('.delete-area-popup').hide();
+    showPlacesByArea(areaId);
     $('.js-areas-popup-list').show();
     $('.show-places-popup').show();
 });
