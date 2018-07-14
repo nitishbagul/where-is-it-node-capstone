@@ -27,7 +27,15 @@ const itemsSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    areaId: {
+        type: String,
+        required: false
+    },
     categoryName: {
+        type: String,
+        required: false
+    },
+    categoryId: {
         type: String,
         required: false
     },
