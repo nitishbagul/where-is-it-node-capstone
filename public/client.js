@@ -429,7 +429,7 @@ function populateCategories() {
                     buildTheHtmlOutput += `<li data-categoryentry=${resultValue._id}>`;
                     buildTheHtmlOutput += `<button class="collapsible">${resultValue.categoryName}</button>`;
                     buildTheHtmlOutput += `<div class="collapse-content">
-<button role="button" class="all-places-button" data-categoryid=${resultValue._id}>Show Items</button>
+<button role="button" class="all-items-button" data-categoryid=${resultValue._id}>Show Items</button>
 <button role="button" class="delete-button" data-categoryid=${resultValue._id}>Delete</button>
 </div>`;
                     buildTheHtmlOutput += `</li>`;
@@ -742,6 +742,58 @@ function showPlacesByArea(areaId) {
         });
 }
 
+function showItemsByCategory(categoryId) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId,
+        category: categoryId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/items/get/all/${userId}/${categoryId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.itemsOutput.length === 0) {
+                alert("No Items found");
+                $(".categories-page .js-categories-popup-list .show-items-popup").hide();
+
+            } else {
+
+
+                let buildTheHtmlOutput = `<h4>Showing Items - ${result.itemsOutput[0].categoryName}</h4>
+<hr>
+<ul>`;
+
+                $.each(result.itemsOutput, function (resultKey, resultValue) {
+                    buildTheHtmlOutput += `<li>${resultValue.itemName}</li>`;
+                });
+                buildTheHtmlOutput += `</ul>`;
+                //use the HTML output to show it in all items table
+                $(".categories-page .js-categories-popup-list .show-items-popup").html(buildTheHtmlOutput);
+                $('.js-categories-popup-list').show();
+                $('.show-items-popup').show();
+            }
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 
 //Step 2: Use functions, objects and variables(Triggers)
 //when the page loads...
@@ -1010,12 +1062,14 @@ $(document).on('click', '.categories-menu .show-all-button', function (event) {
 
 $(document).on('click', '.categories-result .all-items-button', function (event) {
     event.preventDefault();
+    let categoryId = $(this).data('categoryid');
     //alert("hi");
     $('.js-categories-popup-list').hide();
     $('.create-category-popup').hide();
     $('.delete-category-popup').hide();
-    $('.js-categories-popup-list').show();
-    $('.show-items-popup').show();
+    showItemsByCategory(categoryId);
+    //$('.js-categories-popup-list').show();
+    //$('.show-items-popup').show();
 });
 
 $(document).on('click', '.categories-result .delete-button', function (event) {

@@ -345,6 +345,30 @@ app.get('/items-search/:itemName/:id', function (req, res) {
         });
 });
 
+//all items by category ID
+app.get('/items/get/all/:id/:categoryId', function (req, res) {
+
+    Items
+        .find()
+        .then(function (items) {
+            let itemsOutput = [];
+            items.map(function (item) {
+                if (item.loggedInUserId == req.params.id && item.categoryId == req.params.categoryId) {
+                    itemsOutput.push(item);
+                }
+            });
+            res.json({
+                itemsOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
 
 //DELETE
 app.delete('/item/:id', function (req, res) {
@@ -718,7 +742,7 @@ app.get('/categories/get/all/:id', function (req, res) {
 
 //DELETE
 app.delete('/category/:id', function (req, res) {
-    Items.findByIdAndRemove(req.params.id).exec().then(function (category) {
+    Categories.findByIdAndRemove(req.params.id).exec().then(function (category) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
