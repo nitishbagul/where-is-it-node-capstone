@@ -187,8 +187,11 @@ app.post('/users/login', function (req, res) {
 app.post('/items/create', (req, res) => {
     let itemName = req.body.itemName;
     let placeName = req.body.placeName;
+    let placeId = req.body.placeId;
     let areaName = req.body.areaName;
+    let areaId = req.body.areaId;
     let categoryName = req.body.categoryName;
+    let categoryId = req.body.categoryId;
     let loggedInUserName = req.body.loggedInUserName;
     let loggedInUserId = req.body.loggedInUserId;
     let creationDate = new Date();
@@ -196,9 +199,12 @@ app.post('/items/create', (req, res) => {
     Items.create({
         itemName,
         placeName,
+        placeId,
         areaName,
+        areaId,
         creationDate,
         categoryName,
+        categoryId,
         loggedInUserName,
         loggedInUserId
     }, (err, item) => {
@@ -640,20 +646,22 @@ app.delete('/area/:id', function (req, res) {
 app.post('/categories/create', (req, res) => {
     let categoryName = req.body.categoryName;
     let loggedInUserName = req.body.loggedInUserName;
+    let loggedInUserId = req.body.loggedInUserId;
     let creationDate = new Date();
 
     Categories.create({
         categoryName,
         loggedInUserName,
+        loggedInUserId,
         creationDate
-    }, (err, item) => {
+    }, (err, category) => {
         if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
         }
-        if (item) {
-            return res.json(item);
+        if (category) {
+            return res.json(category);
         }
     });
 
@@ -669,6 +677,30 @@ app.get('/categories/:user', function (req, res) {
             let categoriesOutput = [];
             categories.map(function (category) {
                 if (category.loggedInUserName == req.params.user) {
+                    categoriesOutput.push(category);
+                }
+            });
+            res.json({
+                categoriesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+//Get all categories by userID
+app.get('/categories/get/all/:id', function (req, res) {
+
+    Categories
+        .find()
+        .then(function (categories) {
+            let categoriesOutput = [];
+            categories.map(function (category) {
+                if (category.loggedInUserId == req.params.id) {
                     categoriesOutput.push(category);
                 }
             });
