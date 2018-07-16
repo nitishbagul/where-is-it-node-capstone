@@ -210,18 +210,20 @@ function showDeletePlacePopup(placeId, placeName) {
 }
 
 function showMovePlacePopup(placeId, placeName) {
-    console.log(placeId, placeName);
-    /*let buildTheHtmlOutput = ``;
-
-    buildTheHtmlOutput += `<h4>Moving Place: ${placeName}</h4>`;
-    buildTheHtmlOutput += `<fieldset name="place-info" class="delete-info">
-<button role="button" type="submit" class="delete-button" data-placeid=${placeId}>Delete</button>
-<button role="button" class="cancel-button" data-placeid=${placeId}>Cancel</button>
-</fieldset>`;*/
+    //console.log(placeId, placeName);
     //console.log(buildTheHtmlOutput);
     $(".places-page .move-place-form h4").text(`Moving Place: ${placeName}`);
     $(".places-page .move-place-form .move-button").data('placeid', placeId);
     $('.move-place-form').data('placeid', placeId);
+    populateAreasList();
+}
+
+function showMoveItemPopup(itemId, itemName) {
+    //console.log(itemId, itemName);
+    //console.log(buildTheHtmlOutput);
+    $(".items-page .move-item-form h4").text(`Moving Item: ${itemName}`);
+    $(".items-page .move-item-form .move-button").data('itemid', itemId);
+    $('.move-item-form').data('itemid', itemId);
     populateAreasList();
 }
 
@@ -281,6 +283,7 @@ function populateAreasList() {
             $(".items-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
             $(".places-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
             $(".places-page .area-select-container #move-area-selection").html(buildTheHtmlOutput);
+            $(".items-page .area-select-container #move-area-selection").html(buildTheHtmlOutput);
 
         })
         //if the call is failing
@@ -380,6 +383,7 @@ function populatePlacesList(areaId) {
             });
             //use the HTML output to show it in all items table
             $(".items-page .place-select-container #create-place-selection").html(buildTheHtmlOutput);
+            $(".items-page .move-item-form .place-select-container #move-place-selection").html(buildTheHtmlOutput);
 
         })
         //if the call is failing
@@ -1001,11 +1005,15 @@ $(document).on('click', '.items-page .show-all-button', function (event) {
 
 $(document).on('click', '.move-item-button', function (event) {
     event.preventDefault();
+    let itemId = $(this).data('itemid');
+    let itemName = $(this).closest('.item-options-container').prev('table').find('tbody tr:nth-of-type(2) td:nth-of-type(1)').text();
+    console.log(itemId, itemName);
     // alert("hi");
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     $('.create-item-popup').hide();
     $('.delete-item-popup').hide();
+    showMoveItemPopup(itemId, itemName);
     $('.js-item-popup-list').show();
     $('.move-item-popup').show();
 });
@@ -1643,7 +1651,11 @@ $(document).on('change', '.create-item-form #create-area-selection', function (e
 
 });
 
+$(document).on('change', '.move-item-form #move-area-selection', function (event) {
+    var selectedAreaId = $('#move-area-selection option:selected').data('areaid');
+    populatePlacesList(selectedAreaId);
 
+});
 
 
 var coll = document.getElementsByClassName("collapsible");
