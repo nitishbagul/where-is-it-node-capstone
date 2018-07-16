@@ -1403,6 +1403,63 @@ $('.move-place-form').submit(function (event) {
 
 });
 
+$('.move-item-form').submit(function (event) {
+    event.preventDefault();
+    /*let placeId = $(this).data('placeid');
+    let areaId = $(".move-place-form #move-area-selection option:selected").data('areaid');
+    let areaName = $(".move-place-form #move-area-selection option:selected").text();
+    //console.log(itemId);
+    movePlace(placeId, areaId, areaName);
+    //$('.places-result').show();
+    //$('.places-page .js-single-result-area').show();*/
+    event.preventDefault();
+    //take the input from the user
+    let itemId = $(this).data('itemid');
+    let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
+    let placeName = $(".move-item-form #move-place-selection option:selected").text();
+    let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
+    let areaName = $(".move-item-form #move-area-selection option:selected").text();
+
+    //validate the input
+    if (areaName == "Select.." || areaName == "" || areaName == undefined) {
+        alert('Invalid Area selected');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newItemObject = {
+            id: itemId,
+            placeName: placeName,
+            placeId: placeId,
+            areaName: areaName,
+            areaId: areaId
+        };
+        console.log(newItemObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'PUT',
+                url: `/items/${itemId}`,
+                dataType: 'json',
+                data: JSON.stringify(newItemObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                alert("Item moved to a new place");
+                console.log(result);
+                $('.move-item-popup').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+});
+
 $('.delete-area-form').submit(function (event) {
 
     event.preventDefault();

@@ -224,7 +224,7 @@ app.post('/items/create', (req, res) => {
 //Moving existing Item
 app.put('/items/:id', (req, res) => {
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-        const message = "Id in the request and body should match"
+        const message = "Id in the request and body should match";
         console.error(message);
         return res.status(400).json({
             message: message
@@ -232,7 +232,7 @@ app.put('/items/:id', (req, res) => {
     }
 
     const toUpdate = {};
-    const updateableFields = ['placeName', 'areaName', 'categoryName'];
+    const updateableFields = ['placeName', 'placeId', 'areaName', 'areaId'];
 
     updateableFields.forEach(field => {
         if (field in req.body) {
@@ -242,12 +242,9 @@ app.put('/items/:id', (req, res) => {
 
     Items
         .findByIdAndUpdate(req.params.id, {
-            $set: toUpdate,
-            $set: {
-                lastUpdated: new Date()
-            }
+            $set: toUpdate
         })
-        .then(items => res.status(204).end())
+        .then(items => res.status(204).json(items))
         .catch(err => res.status(500).json({
             message: 'Inernal server error'
         }));
