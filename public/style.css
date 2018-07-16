@@ -168,7 +168,7 @@ label {
 #loginPassword,
 #registerEmail,
 #registerUserName,
-registerPassword {
+#registerPassword {
     display: block;
     margin-bottom: 15px;
     width: 70%;

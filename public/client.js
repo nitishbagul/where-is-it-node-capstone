@@ -1298,15 +1298,11 @@ $('.register-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                //console.log(result);
+                // console.log(result);
                 $('main').hide();
                 $('.about-page').show();
-                /*$('#loggedInName').text(result.name);
-                $('#loggedInUserName').val(result.username);
-                $('section').hide();
-                $('.navbar').show();
-                $('#user-dashboard').show();
-                populateUserDashboardDate(result.username);*/
+                $('.username').text(result.username);
+                $('#loggedInUserId').val(result._id);
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
