@@ -369,6 +369,30 @@ app.get('/items/get/all/:id/:categoryId', function (req, res) {
         });
 });
 
+//all items by place ID
+app.get('/items/get/all/by/place/:id/:placeId', function (req, res) {
+
+    Items
+        .find()
+        .then(function (items) {
+            let itemsOutput = [];
+            items.map(function (item) {
+                if (item.loggedInUserId == req.params.id && item.placeId == req.params.placeId) {
+                    itemsOutput.push(item);
+                }
+            });
+            res.json({
+                itemsOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
 
 //DELETE
 app.delete('/item/:id', function (req, res) {
@@ -418,8 +442,9 @@ app.post('/places/create', (req, res) => {
 //PUT
 //Moving existing Place
 app.put('/places/:id', (req, res) => {
+    console.log(req.params.id, req.body);
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-        const message = "Id in the request and body should match"
+        const message = "Id in the request and body should match";
         console.error(message);
         return res.status(400).json({
             message: message
@@ -427,7 +452,7 @@ app.put('/places/:id', (req, res) => {
     }
 
     const toUpdate = {};
-    const updateableFields = ['areaName'];
+    const updateableFields = ['areaId', 'areaName'];
 
     updateableFields.forEach(field => {
         if (field in req.body) {
@@ -437,12 +462,9 @@ app.put('/places/:id', (req, res) => {
 
     Places
         .findByIdAndUpdate(req.params.id, {
-            $set: toUpdate,
-            $set: {
-                lastUpdated: new Date()
-            }
+            $set: toUpdate
         })
-        .then(places => res.status(204).end())
+        .then(places => res.status(204).json(places))
         .catch(err => res.status(500).json({
             message: 'Inernal server error'
         }));
