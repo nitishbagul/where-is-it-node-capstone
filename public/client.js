@@ -71,62 +71,7 @@ function deletePlace(placeId) {
         });
 }
 
-//Move Place
-function movePlace(placeId, areaId, areaName) {
-    event.preventDefault();
 
-    //take the input from the user
-    const itemName = $("#item_name").val();
-    const areaName = $("#create-area-selection option:selected").text();
-    const areaId = $("#create-area-selection option:selected").data('areaid');
-
-    //validate the input
-    if (areaName == "Select..") {
-        alert('Please add an Area');
-    } else if (placeName == "Select..") {
-        alert('Please add a Place');
-    } else if (categoryName == "Select..") {
-        alert('Please add a Place');
-    }
-    //if the input is valid
-    else {
-        //create the payload object (what data we send to the api call)
-        const newItemObject = {
-            itemName: itemName,
-            areaName: areaName,
-            areaId: areaId,
-            placeName: placeName,
-            placeId: placeId,
-            categoryName: categoryName,
-            categoryId: categoryId,
-            loggedInUserName: loggedInUserName,
-            loggedInUserId: loggedInUserId
-        };
-        //console.log(newItemObject);
-
-        //make the api call using the payload above
-        $.ajax({
-                type: 'POST',
-                url: '/items/create',
-                dataType: 'json',
-                data: JSON.stringify(newItemObject),
-                contentType: 'application/json'
-            })
-            //if call is succefull
-            .done(function (result) {
-                //console.log(result);
-                $('.create-item-popup').hide();
-                alert("Item created succesfully");
-            })
-            //if the call is failing
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            });
-    };
-
-}
 
 //Delete Area
 function deleteArea(areaId) {
@@ -1436,9 +1381,9 @@ $('.move-place-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
+                alert("Place moved to new area");
                 console.log(result);
-                //$('.create-item-popup').hide();
-                //alert("Item created succesfully");
+                $('.move-place-popup').hide();
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
