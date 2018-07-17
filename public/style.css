@@ -76,13 +76,15 @@ h1 {
 }
 
 button {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50; */
+    background-color: #a3573e;
     /* padding: 6px 8px 6px 8px; */
     height: 40px;
     width: 100px;
     border: none;
     border-radius: 6px;
-    color: black;
+    /*color: black;*/
+    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -93,7 +95,7 @@ button {
 
 .feature-list button {
     font-size: 19px;
-    color: #2B390E;
+    /*color: #2B390E;*/
     font-weight: 400;
     height: 45px;
     width: 20%;
@@ -223,7 +225,10 @@ hr {
 
 .topnav {
     overflow: hidden;
+    background-color: rgb(92, 126, 193);
+    /*
     background-color: saddlebrown;
+*/
     line-height: 90px;
     width: 100%;
 }
@@ -280,8 +285,12 @@ hr {
 
 .sidenav button {
     display: inline-block;
-    background-color: #FC814A;
-    color: brown;
+    /*
+    background-color: #FC814A;*/
+    background-color: rgb(92, 112, 200);
+/*
+    color: brown;*/
+    color: black;
     height: 50px;
     /* padding: 10px 15px; */
     width: 20%;
@@ -294,7 +303,10 @@ hr {
 .content-area-places,
 .content-area-areas,
 .content-area-categories {
+    background-color: rgb(144, 167, 213);
+    /*
     background-color: #f2cb6f;
+*/
     padding-bottom: 80px;
     height: 500vh;
 }
@@ -310,7 +322,9 @@ hr {
     display: block;
     text-align: center;
     font-size: 42px;
-    color: #E63022;
+/*
+    color: #E63022;*/
+    color: lavenderblush;
 }
 
 .items-menu,
