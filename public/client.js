@@ -1401,14 +1401,6 @@ $('.move-place-form').submit(function (event) {
 
 $('.move-item-form').submit(function (event) {
     event.preventDefault();
-    /*let placeId = $(this).data('placeid');
-    let areaId = $(".move-place-form #move-area-selection option:selected").data('areaid');
-    let areaName = $(".move-place-form #move-area-selection option:selected").text();
-    //console.log(itemId);
-    movePlace(placeId, areaId, areaName);
-    //$('.places-result').show();
-    //$('.places-page .js-single-result-area').show();*/
-    event.preventDefault();
     //take the input from the user
     let itemId = $(this).data('itemid');
     let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
@@ -1534,6 +1526,7 @@ $('.create-item-form').submit(function (event) {
             //if call is succefull
             .done(function (result) {
                 //console.log(result);
+                $("#item_name").val("");
                 $('.create-item-popup').hide();
                 alert("Item created succesfully");
             })
