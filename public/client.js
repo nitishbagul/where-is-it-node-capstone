@@ -18,10 +18,82 @@ function executeCollapsible() {
     }
 }
 
+function deleteItemElements({
+    itemId,
+    categoryId,
+    areaId,
+    placeId
+} = {}) {
+    /*let itemId = $(this).data('itemid');
+    let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
+    let placeName = $(".move-item-form #move-place-selection option:selected").text();
+    let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
+    let areaName = $(".move-item-form #move-area-selection option:selected").text();
+*/
+    //alert("hi");
+    let updatedCategoryId;
+    let updatedCategoryName;
+    let updatedAreaId;
+    let updatedAreaName;
+    let updatedPlaceId;
+    let updatedPlaceName;
+    //validate the input
+    if (categoryId !== undefined) {
+        updatedCategoryId = "";
+        updatedCategoryName = "";
+    }
+    if (areaId !== undefined) {
+        updatedAreaId = "";
+        updatedAreaName = "";
+    }
+    if (placeId !== undefined) {
+        updatedPlaceId = "";
+        updatedPlaceName = "";
+    }
+    if (itemId == undefined) {
+        alert("Cannot delete item fields");
+    }
+
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newItemObject = {
+            id: itemId,
+            categoryId: updatedCategoryId,
+            categoryName: updatedCategoryName,
+            placeId: updatedPlaceId,
+            placeName: updatedPlaceName,
+            areaId: updatedAreaId,
+            areaName: updatedAreaName
+        };
+        console.log(newItemObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'PUT',
+                url: `/items/remove/${itemId}`,
+                dataType: 'json',
+                data: JSON.stringify(newItemObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                //alert("Item moved to a new place");
+                console.log(result);
+                //$('.move-item-popup').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+}
+
 //Delete Item
 function deleteItem(itemId) {
-    event.preventDefault();
-
     //make the api call using the payload above
     $.ajax({
             type: 'DELETE',
@@ -117,6 +189,7 @@ function deleteCategory(categoryId) {
             alert("Category deleted succesfully");
             $(`li[data-categoryentry='${categoryId}']`).hide();
             $(".delete-category-popup").hide();
+            removeItemsByCategory(categoryId);
 
         })
         //if the call is failing
@@ -838,6 +911,50 @@ function showItemsByCategory(categoryId) {
         });
 }
 
+function removeItemsByCategory(categoryId) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        alert("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId,
+        category: categoryId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/items/get/all/${userId}/${categoryId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.itemsOutput.length === 0) {
+                alert("No Items found");
+            } else {
+
+                $.each(result.itemsOutput, function (resultKey, resultValue) {
+                    deleteItemElements({
+                        itemId: resultValue._id,
+                        categoryId: categoryId
+                    });
+                });
+
+            }
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 function showItemsByPlace(placeId) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
@@ -1464,6 +1581,7 @@ $('.delete-category-form').submit(function (event) {
     let categoryId = $(this).data('categoryid');
     //console.log(areaId);
     deleteCategory(categoryId);
+    //deleteItemCategory(categoryId);
     //$('.items-result').show();
     //$('.js-single-result-area').show();
 });

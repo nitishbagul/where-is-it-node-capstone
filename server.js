@@ -250,6 +250,35 @@ app.put('/items/:id', (req, res) => {
         }));
 });
 
+//Removing some fields
+app.put('/items/remove/:id', (req, res) => {
+    if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        const message = "Id in the request and body should match";
+        console.error(message);
+        return res.status(400).json({
+            message: message
+        });
+    }
+
+    const toRemove = {};
+    const updateableFields = ['placeName', 'placeId', 'areaName', 'areaId', 'categoryName', 'categoryId'];
+
+    updateableFields.forEach(field => {
+        if (field in req.body) {
+            toRemove[field] = req.body[field];
+        }
+    });
+
+    Items
+        .findByIdAndUpdate(req.params.id, {
+            $unset: toRemove
+        })
+        .then(items => res.status(204).json(items))
+        .catch(err => res.status(500).json({
+            message: 'Inernal server error'
+        }));
+});
+
 // GET
 // all items by user
 app.get('/items/:user', function (req, res) {
