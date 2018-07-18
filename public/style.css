@@ -323,6 +323,10 @@ hr {
     font-size: 20px;
 }
 
+.js-menu-button {
+    background-color: #AD8424 !important;
+}
+
 .sidenav button:hover {
     background-color: #AD8424;
 }

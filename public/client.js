@@ -6,6 +6,21 @@ function displayError(message) {
     $("#messageBox").fadeOut(10000);
 };
 
+/*function handleMenuButtonClicks() {
+    $('.sidenav button').on('click', event => {
+        // save reference to this bulb,
+        const targetButton = $(event.currentTarget);
+        // and reference to all other bulbs
+        const otherButtons = $('.sidenav button').not(targetButton);
+
+        // Remove 'bulb-on' class from other bulbs
+        otherButtons.removeClass('js-menu-button');
+        // toggle the presence of 'bulb-on' on this bulb;
+        targetButton.toggleClass('js-menu-button');
+    });
+}*/
+
+
 //Execute Collpsible
 function executeCollapsible() {
     var coll = document.getElementsByClassName("collapsible");
@@ -1021,6 +1036,7 @@ $(document).ready(function () {
     $('main').hide();
     $('.log-in-container').hide();
     $('.register-container').hide();
+    //$(handleMenuButtonClicks);
     $('.welcome-page').show();
 });
 
@@ -1059,15 +1075,23 @@ $(document).on('click', '.show-registration-container', function (event) {
 
 $(document).on('click', '.about-button', function (event) {
     event.preventDefault();
-    this.style.backgroundColor = "#AD8424";
+    //this.style.backgroundColor = "#AD8424";
     //displayError("hi");
     $('main').hide();
     $('.about-page').show();
+    const targetButton = $('.about-page .sidenav .about-button');
+    // and reference to all other bulbs
+    const otherButtons = $('.sidenav button').not(targetButton);
+
+    // Remove 'bulb-on' class from other bulbs
+    otherButtons.removeClass('js-menu-button');
+    // toggle the presence of 'bulb-on' on this bulb;
+    targetButton.toggleClass('js-menu-button');
 });
 
 $(document).on('click', '.my-items-button', function (event) {
     event.preventDefault();
-    this.style.backgroundColor = "#AD8424";
+    // this.style.backgroundColor = "#AD8424";
     //displayError("hi");
     $('main').hide();
     $('.items-page .items-result').hide();
@@ -1076,37 +1100,54 @@ $(document).on('click', '.my-items-button', function (event) {
     //$('main').hide();
 
     $('.items-page').show();
+
+    const targetButton = $('.items-page .sidenav .my-items-button');
+    const otherButtons = $('.sidenav button').not(targetButton);
+    otherButtons.removeClass('js-menu-button');
+    targetButton.toggleClass('js-menu-button');
 });
 
 $(document).on('click', '.my-places-button', function (event) {
     event.preventDefault();
-    this.style.backgroundColor = "#AD8424";
+    //this.style.backgroundColor = "#AD8424";
     $('main').hide();
     $('.places-page .places-result').hide();
     $('.places-page .js-place-popup-list').hide();
 
     //displayError("hi");
     $('.places-page').show();
+    const targetButton = $('.places-page .sidenav .my-places-button');
+    const otherButtons = $('.sidenav button').not(targetButton);
+    otherButtons.removeClass('js-menu-button');
+    targetButton.toggleClass('js-menu-button');
 });
 
 $(document).on('click', '.my-areas-button', function (event) {
     event.preventDefault();
-    this.style.backgroundColor = "#AD8424";
+    // this.style.backgroundColor = "#AD8424";
     //displayError("hi");
     $('main').hide();
     $('.areas-result').hide();
     $('.js-areas-popup-list').hide();
     $('.areas-page').show();
+    const targetButton = $('.areas-page .sidenav .my-areas-button');
+    const otherButtons = $('.sidenav button').not(targetButton);
+    otherButtons.removeClass('js-menu-button');
+    targetButton.toggleClass('js-menu-button');
 });
 
 $(document).on('click', '.categories-button', function (event) {
     event.preventDefault();
-    this.style.backgroundColor = "#AD8424";
+    //this.style.backgroundColor = "#AD8424";
     //displayError("hi");
     $('main').hide();
     $('.categories-result').hide();
     $('.js-categories-popup-list').hide();
     $('.categories-page').show();
+    const targetButton = $('.categories-page .sidenav .my-categories-button');
+    const otherButtons = $('.sidenav button').not(targetButton);
+    otherButtons.removeClass('js-menu-button');
+    targetButton.toggleClass('js-menu-button');
 });
 
 $(document).on('click', '.items-page .create-new-button', function (event) {
