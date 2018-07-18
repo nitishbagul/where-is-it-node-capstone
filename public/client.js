@@ -1053,6 +1053,7 @@ $(document).on('click', '.show-registration-container', function (event) {
 
 $(document).on('click', '.about-button', function (event) {
     event.preventDefault();
+    this.style.backgroundColor = "#AD8424";
     //alert("hi");
     $('main').hide();
     $('.about-page').show();
@@ -1060,6 +1061,7 @@ $(document).on('click', '.about-button', function (event) {
 
 $(document).on('click', '.my-items-button', function (event) {
     event.preventDefault();
+    this.style.backgroundColor = "#AD8424";
     //alert("hi");
     $('main').hide();
     $('.items-page .items-result').hide();
@@ -1072,6 +1074,7 @@ $(document).on('click', '.my-items-button', function (event) {
 
 $(document).on('click', '.my-places-button', function (event) {
     event.preventDefault();
+    this.style.backgroundColor = "#AD8424";
     $('main').hide();
     $('.places-page .places-result').hide();
     $('.places-page .js-place-popup-list').hide();
@@ -1082,6 +1085,7 @@ $(document).on('click', '.my-places-button', function (event) {
 
 $(document).on('click', '.my-areas-button', function (event) {
     event.preventDefault();
+    this.style.backgroundColor = "#AD8424";
     //alert("hi");
     $('main').hide();
     $('.areas-result').hide();
@@ -1091,6 +1095,7 @@ $(document).on('click', '.my-areas-button', function (event) {
 
 $(document).on('click', '.categories-button', function (event) {
     event.preventDefault();
+    this.style.backgroundColor = "#AD8424";
     //alert("hi");
     $('main').hide();
     $('.categories-result').hide();

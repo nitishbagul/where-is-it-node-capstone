@@ -225,10 +225,11 @@ hr {
 
 .topnav {
     overflow: hidden;
-    background-color: rgb(92, 126, 193);
     /*
-    background-color: saddlebrown;
+    background-color: rgb(92, 126, 193);
 */
+    background-color: saddlebrown;
+
     line-height: 90px;
     width: 100%;
 }
@@ -285,10 +286,9 @@ hr {
 
 .sidenav button {
     display: inline-block;
+    background-color: #CFA665;
+    /* background-color: rgb(92, 112, 200);*/
     /*
-    background-color: #FC814A;*/
-    background-color: rgb(92, 112, 200);
-/*
     color: brown;*/
     color: black;
     height: 50px;
@@ -299,14 +299,16 @@ hr {
     font-size: 20px;
 }
 
+.sidenav button:hover {
+    background-color: #AD8424;
+}
+
 .content-area,
 .content-area-places,
 .content-area-areas,
 .content-area-categories {
-    background-color: rgb(144, 167, 213);
-    /*
+    /*background-color: rgb(144, 167, 213);*/
     background-color: #f2cb6f;
-*/
     padding-bottom: 80px;
     height: 500vh;
 }
@@ -322,9 +324,8 @@ hr {
     display: block;
     text-align: center;
     font-size: 42px;
-/*
-    color: #E63022;*/
-    color: lavenderblush;
+    color: #E63022;
+    /*color: lavenderblush;*/
 }
 
 .items-menu,
@@ -433,6 +434,8 @@ form span {
 
 .all-items-table td {
     display: block;
+    color: #5C090E;
+    font-weight: normal;
 }
 
 .all-items-table td:first-child {
@@ -456,7 +459,7 @@ form span {
 }
 
 .all-items-table {
-    background: #5d6883;
+    background: #FFE19E;
     color: #fff;
     border-radius: 0.4em;
     overflow: hidden;
@@ -473,7 +476,7 @@ form span {
 
 .all-items-table th,
 .all-items-table td:before {
-    color: #dd5;
+    color: #2a150d;
 }
 
 .popup h4 {
