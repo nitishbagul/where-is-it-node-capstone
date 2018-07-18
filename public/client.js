@@ -1,5 +1,11 @@
 //Step 1: Define functions, objects and variables
 
+function displayError(message) {
+    $("#messageBox span").html(message);
+    $("#messageBox").fadeIn();
+    $("#messageBox").fadeOut(10000);
+};
+
 //Execute Collpsible
 function executeCollapsible() {
     var coll = document.getElementsByClassName("collapsible");
@@ -30,7 +36,7 @@ function deleteItemElements({
     let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
     let areaName = $(".move-item-form #move-area-selection option:selected").text();
 */
-    //alert("hi");
+    //displayError("hi");
     let updatedCategoryId;
     let updatedCategoryName;
     let updatedAreaId;
@@ -51,7 +57,7 @@ function deleteItemElements({
         updatedPlaceName = "";
     }
     if (itemId == undefined) {
-        alert("Cannot delete item fields");
+        displayError("Cannot delete item fields");
     }
 
     //if the input is valid
@@ -78,7 +84,7 @@ function deleteItemElements({
             })
             //if call is succefull
             .done(function (result) {
-                //alert("Item moved to a new place");
+                //displayError("Item moved to a new place");
                 console.log(result);
                 //$('.move-item-popup').hide();
             })
@@ -103,7 +109,7 @@ function deleteItem(itemId) {
         })
         //if call is succefull
         .done(function (result) {
-            alert("deleted item");
+            displayError("deleted item");
             $(`div[data-itementry='${itemId}']`).hide();
             $(".delete-item-popup").hide();
 
@@ -129,14 +135,14 @@ function deletePlace(placeId) {
         })
         //if call is succefull
         .done(function (result) {
-            alert("deleted place");
+            displayError("deleted place");
             $(`div[data-placeentry='${placeId}']`).hide();
             $(".delete-place-popup").hide();
 
         })
         //if the call is failing
         .fail(function (jqXHR, error, errorThrown) {
-            alert("Unable to delete place");
+            displayError("Unable to delete place");
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
@@ -159,7 +165,7 @@ function deleteArea(areaId) {
         })
         //if call is succefull
         .done(function (result) {
-            alert("Area deleted succesfully");
+            displayError("Area deleted succesfully");
             $(`li[data-areaentry='${areaId}']`).hide();
             $(".delete-area-popup").hide();
 
@@ -186,7 +192,7 @@ function deleteCategory(categoryId) {
         })
         //if call is succefull
         .done(function (result) {
-            alert("Category deleted succesfully");
+            displayError("Category deleted succesfully");
             $(`li[data-categoryentry='${categoryId}']`).hide();
             $(".delete-category-popup").hide();
             removeItemsByCategory(categoryId);
@@ -317,10 +323,10 @@ function showDeleteCategoryPopup(categoryId, categoryName) {
 }
 
 function populateAreasList() {
-    //alert("hi");
+    //displayError("hi");
     var username = $('.items-page .username').text();
     if ((username == "") || (username == undefined) || (username == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -369,10 +375,10 @@ function populateAreasList() {
 }
 
 function populateCategoriesList() {
-    //alert("hi");
+    //displayError("hi");
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -420,7 +426,7 @@ function populateCategoriesList() {
 function populatePlacesList(areaId) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -469,10 +475,10 @@ function populatePlacesList(areaId) {
 }
 
 function populateAreas() {
-    //alert("hi");
+    //displayError("hi");
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -491,7 +497,7 @@ function populateAreas() {
         .done(function (result) {
             //console.log(result);
             if (result.areasOutput.length === 0) {
-                alert("No Areas found")
+                displayError("No Areas found")
             } else {
 
                 let buildTheHtmlOutput = ``;
@@ -521,10 +527,10 @@ function populateAreas() {
 }
 
 function populateCategories() {
-    //alert("hi");
+    //displayError("hi");
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -543,7 +549,7 @@ function populateCategories() {
         .done(function (result) {
             //console.log(result);
             if (result.categoriesOutput.length === 0) {
-                alert("No Categories found")
+                displayError("No Categories found")
             } else {
 
                 let buildTheHtmlOutput = ``;
@@ -573,10 +579,10 @@ function populateCategories() {
 }
 
 function populatePlaces() {
-    //alert("hi");
+    //displayError("hi");
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -595,7 +601,7 @@ function populatePlaces() {
         .done(function (result) {
             console.log(result);
             if (result.placesOutput.length === 0) {
-                alert("No Places found")
+                displayError("No Places found")
             } else {
 
                 let buildTheHtmlOutput = ``;
@@ -628,10 +634,10 @@ function populatePlaces() {
 
 
 function populateAllItems() {
-    //alert("hi");
+    //displayError("hi");
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -689,7 +695,7 @@ function populateAllItems() {
 function populateSearchedItem(itemName) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -759,7 +765,7 @@ function populateSearchedItem(itemName) {
 function populateSearchedPlace(placeName) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -778,7 +784,7 @@ function populateSearchedPlace(placeName) {
         .done(function (result) {
             // console.log(result);
             if (result.placesOutput.length === 0) {
-                alert("No places found, please refine the search.")
+                displayError("No places found, please refine the search.")
             } else {
                 let buildTheHtmlOutput = ``;
 
@@ -812,7 +818,7 @@ function populateSearchedPlace(placeName) {
 function showPlacesByArea(areaId) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -833,7 +839,7 @@ function showPlacesByArea(areaId) {
             console.log(result);
             if (result.placesOutput.length === 0) {
                 $('.show-places-popup').hide();
-                alert("No Places found");
+                displayError("No Places found");
             } else {
                 let buildTheHtmlOutput = `<h4>Showing Places - ${result.placesOutput[0].areaName}</h4>
 <hr>
@@ -862,7 +868,7 @@ function showPlacesByArea(areaId) {
 function showItemsByCategory(categoryId) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -882,7 +888,7 @@ function showItemsByCategory(categoryId) {
         .done(function (result) {
             console.log(result);
             if (result.itemsOutput.length === 0) {
-                alert("No Items found");
+                displayError("No Items found");
                 $(".categories-page .js-categories-popup-list .show-items-popup").hide();
 
             } else {
@@ -914,7 +920,7 @@ function showItemsByCategory(categoryId) {
 function removeItemsByCategory(categoryId) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -934,7 +940,7 @@ function removeItemsByCategory(categoryId) {
         .done(function (result) {
             console.log(result);
             if (result.itemsOutput.length === 0) {
-                alert("No Items found");
+                displayError("No Items found");
             } else {
 
                 $.each(result.itemsOutput, function (resultKey, resultValue) {
@@ -958,7 +964,7 @@ function removeItemsByCategory(categoryId) {
 function showItemsByPlace(placeId) {
     var userId = $('#loggedInUserId').val();
     if ((userId == "") || (userId == undefined) || (userId == null)) {
-        alert("Cannot find the user");
+        displayError("Cannot find the user");
     }
     //create the payload object (what data we send to the api call)
     const UserObject = {
@@ -978,7 +984,7 @@ function showItemsByPlace(placeId) {
         .done(function (result) {
             console.log(result);
             if (result.itemsOutput.length === 0) {
-                alert("No Items found");
+                displayError("No Items found");
                 $(".places-page .js-place-popup-list .show-items-popup").hide();
 
             } else {
@@ -1011,17 +1017,17 @@ function showItemsByPlace(placeId) {
 //Step 2: Use functions, objects and variables(Triggers)
 //when the page loads...
 $(document).ready(function () {
+    $("#messageBox").hide();
     $('main').hide();
     $('.log-in-container').hide();
     $('.register-container').hide();
     $('.welcome-page').show();
-
 });
 
 //button triggers
 $(document).on('click', '.show-login-container', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('main').hide();
     $('.register-container').hide();
     $('.log-in-container').show();
@@ -1030,7 +1036,7 @@ $(document).on('click', '.show-login-container', function (event) {
 
 $(document).on('click', '.show-registration-container', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('main').hide();
     $('.log-in-container').hide();
     $('.register-container').show();
@@ -1044,7 +1050,7 @@ $(document).on('click', '.logout-button', function (event) {
 
 $(document).on('click', '.show-registration-container', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('main').hide();
     $('.log-in-container').hide();
     $('.register-container').show();
@@ -1054,7 +1060,7 @@ $(document).on('click', '.show-registration-container', function (event) {
 $(document).on('click', '.about-button', function (event) {
     event.preventDefault();
     this.style.backgroundColor = "#AD8424";
-    //alert("hi");
+    //displayError("hi");
     $('main').hide();
     $('.about-page').show();
 });
@@ -1062,7 +1068,7 @@ $(document).on('click', '.about-button', function (event) {
 $(document).on('click', '.my-items-button', function (event) {
     event.preventDefault();
     this.style.backgroundColor = "#AD8424";
-    //alert("hi");
+    //displayError("hi");
     $('main').hide();
     $('.items-page .items-result').hide();
     $('.items-page .js-item-popup-list').hide();
@@ -1079,14 +1085,14 @@ $(document).on('click', '.my-places-button', function (event) {
     $('.places-page .places-result').hide();
     $('.places-page .js-place-popup-list').hide();
 
-    //alert("hi");
+    //displayError("hi");
     $('.places-page').show();
 });
 
 $(document).on('click', '.my-areas-button', function (event) {
     event.preventDefault();
     this.style.backgroundColor = "#AD8424";
-    //alert("hi");
+    //displayError("hi");
     $('main').hide();
     $('.areas-result').hide();
     $('.js-areas-popup-list').hide();
@@ -1096,7 +1102,7 @@ $(document).on('click', '.my-areas-button', function (event) {
 $(document).on('click', '.categories-button', function (event) {
     event.preventDefault();
     this.style.backgroundColor = "#AD8424";
-    //alert("hi");
+    //displayError("hi");
     $('main').hide();
     $('.categories-result').hide();
     $('.js-categories-popup-list').hide();
@@ -1105,7 +1111,7 @@ $(document).on('click', '.categories-button', function (event) {
 
 $(document).on('click', '.items-page .create-new-button', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('.popup').hide();
     $('.items-result').hide();
     populateAreasList();
@@ -1117,7 +1123,7 @@ $(document).on('click', '.items-page .create-new-button', function (event) {
 $(document).on('click', '.items-page .show-all-button', function (event) {
     event.preventDefault();
     populateAllItems();
-    // alert("hi");
+    // displayError("hi");
     $('.js-item-popup-list').hide();
     $('.js-single-result-area').hide();
     // console.log(username);
@@ -1130,7 +1136,7 @@ $(document).on('click', '.move-item-button', function (event) {
     let itemId = $(this).data('itemid');
     let itemName = $(this).closest('.item-options-container').prev('table').find('tbody tr:nth-of-type(2) td:nth-of-type(1)').text();
     console.log(itemId, itemName);
-    // alert("hi");
+    // displayError("hi");
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     $('.create-item-popup').hide();
@@ -1143,7 +1149,7 @@ $(document).on('click', '.move-item-button', function (event) {
 $(document).on('click', '.delete-item-button', function (event) {
     event.preventDefault();
     let itemId = $(this).data('itemid');
-    // alert("hi");
+    // displayError("hi");
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     $('.create-item-popup').hide();
@@ -1155,7 +1161,7 @@ $(document).on('click', '.delete-item-button', function (event) {
 
 $(document).on('click', '.delete-item-button', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     $('.create-item-popup').hide();
@@ -1166,7 +1172,7 @@ $(document).on('click', '.delete-item-button', function (event) {
 
 $(document).on('click', '.places-menu .create-new-button', function (event) {
     event.preventDefault();
-    //alert("hi");
+    //displayError("hi");
     $('.popup').hide();
     $('.places-result').hide();
     populateAreasList();
@@ -1176,7 +1182,7 @@ $(document).on('click', '.places-menu .create-new-button', function (event) {
 
 $(document).on('click', '.places-menu .show-all-button', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('.js-place-popup-list').hide();
     $('.js-single-place-result').hide();
     populatePlaces();
@@ -1188,7 +1194,7 @@ $(document).on('click', '.places-result .move-button', function (event) {
     event.preventDefault();
     let placeId = $(this).data('placeid');
     let placeName = $(this).closest('li').find('.collapsible').text();
-    //alert("hi");
+    //displayError("hi");
     $('.js-place-popup-list').hide();
     $('.js-all-places-result').hide();
     $('.create-place-popup').hide();
@@ -1201,7 +1207,7 @@ $(document).on('click', '.places-result .move-button', function (event) {
 
 $(document).on('click', '.places-result .all-items-button', function (event) {
     event.preventDefault();
-    //alert("hi");
+    //displayError("hi");
     let placeId = $(this).data('placeid');
     $('.js-place-popup-list').hide();
     $('.js-all-places-result').hide();
@@ -1217,7 +1223,7 @@ $(document).on('click', '.places-result .delete-button', function (event) {
     event.preventDefault();
     let placeId = $(this).data('placeid');
     let placeName = $(this).closest('li').find('.collapsible').text();
-    //alert("hi");
+    //displayError("hi");
     $('.js-place-popup-list').hide();
     $('.js-all-places-result').hide();
     $('.create-place-popup').hide();
@@ -1230,7 +1236,7 @@ $(document).on('click', '.places-result .delete-button', function (event) {
 
 $(document).on('click', '.areas-menu .create-new-button', function (event) {
     event.preventDefault();
-    //alert("hi");
+    //displayError("hi");
     $('.popup').hide();
     $('.areas-result').hide();
     $('.js-areas-popup-list').show();
@@ -1239,7 +1245,7 @@ $(document).on('click', '.areas-menu .create-new-button', function (event) {
 
 $(document).on('click', '.areas-menu .show-all-button', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('.js-areas-popup-list').hide();
     populateAreas();
     $('.areas-result').show();
@@ -1248,7 +1254,7 @@ $(document).on('click', '.areas-menu .show-all-button', function (event) {
 $(document).on('click', '.areas-result .all-places-button', function (event) {
     event.preventDefault();
     let areaId = $(this).data('areaid');
-    //alert("hi");
+    //displayError("hi");
     $('.js-place-popup-list').hide();
     $('.create-area-popup').hide();
     $('.delete-area-popup').hide();
@@ -1259,7 +1265,7 @@ $(document).on('click', '.areas-result .delete-button', function (event) {
     event.preventDefault();
     let areaId = $(this).data('areaid');
     let areaName = $(this).closest('li').find('.collapsible').text();
-    //alert("hi");
+    //displayError("hi");
     $('.js-place-popup-list').hide();
     $('.create-area-popup').hide();
     $('.show-places-popup').hide();
@@ -1270,7 +1276,7 @@ $(document).on('click', '.areas-result .delete-button', function (event) {
 
 $(document).on('click', '.categories-menu .create-new-button', function (event) {
     event.preventDefault();
-    //alert("hi");
+    //displayError("hi");
     $('.popup').hide();
     $('.categories-result').hide();
     $('.js-categories-popup-list').show();
@@ -1279,7 +1285,7 @@ $(document).on('click', '.categories-menu .create-new-button', function (event) 
 
 $(document).on('click', '.categories-menu .show-all-button', function (event) {
     event.preventDefault();
-    // alert("hi");
+    // displayError("hi");
     $('.js-categories-popup-list').hide();
     populateCategories();
     $('.categories-result').show();
@@ -1288,7 +1294,7 @@ $(document).on('click', '.categories-menu .show-all-button', function (event) {
 $(document).on('click', '.categories-result .all-items-button', function (event) {
     event.preventDefault();
     let categoryId = $(this).data('categoryid');
-    //alert("hi");
+    //displayError("hi");
     $('.js-categories-popup-list').hide();
     $('.create-category-popup').hide();
     $('.delete-category-popup').hide();
@@ -1301,7 +1307,7 @@ $(document).on('click', '.categories-result .delete-button', function (event) {
     event.preventDefault();
     let categoryId = $(this).data('categoryid');
     let categoryName = $(this).closest('li').find('.collapsible').text();
-    //alert("hi");
+    //displayError("hi");
     $('.js-categories-popup-list').hide();
     $('.create-category-popup').hide();
     $('.show-items-popup').hide();
@@ -1312,14 +1318,14 @@ $(document).on('click', '.categories-result .delete-button', function (event) {
 
 $(document).on('click', '.delete-category-form .cancel-button', function (event) {
     event.preventDefault();
-    //alert("hi");
+    //displayError("hi");
     $('.popup').hide();
 
 });
 
 /*$(document).on('click', '.create-area-selection', function (event) {
     event.preventDefault();
-    //alert("hi");
+    //displayError("hi");
     $('.js-categories-popup-list').hide();
     $('.create-category-popup').hide();
     $('.show-items-popup').hide();
@@ -1339,9 +1345,9 @@ $('.login-form').submit(function (event) {
 
     //validate the input
     if (username == "") {
-        alert('Please input user name');
+        displayError('Please input user name');
     } else if (password == "") {
-        alert('Please input password');
+        displayError('Please input password');
     }
     //if the input is valid
     else {
@@ -1378,7 +1384,7 @@ $('.login-form').submit(function (event) {
                 console.log(jqXHR);
                 console.log(error);
                 console.log(errorThrown);
-                alert('Incorrect Username or Password');
+                displayError('Incorrect Username or Password');
             });
     };
 
@@ -1394,11 +1400,11 @@ $('.register-form').submit(function (event) {
 
     //validate the input
     if (email == "") {
-        alert('Please add an email');
+        displayError('Please add an email');
     } else if (username == "") {
-        alert('Please add a user name');
+        displayError('Please add a user name');
     } else if (password == "") {
-        alert('Please add a password');
+        displayError('Please add a password');
     }
     //if the input is valid
     else {
@@ -1485,7 +1491,7 @@ $('.move-place-form').submit(function (event) {
 
     //validate the input
     if (areaName == "Select..") {
-        alert('Please add an Area');
+        displayError('Please add an Area');
     }
     //if the input is valid
     else {
@@ -1507,7 +1513,7 @@ $('.move-place-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                alert("Place moved to new area");
+                displayError("Place moved to new area");
                 console.log(result);
                 $('.move-place-popup').hide();
             })
@@ -1532,7 +1538,7 @@ $('.move-item-form').submit(function (event) {
 
     //validate the input
     if (areaName == "Select.." || areaName == "" || areaName == undefined) {
-        alert('Invalid Area selected');
+        displayError('Invalid Area selected');
     }
     //if the input is valid
     else {
@@ -1556,7 +1562,7 @@ $('.move-item-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                alert("Item moved to a new place");
+                displayError("Item moved to a new place");
                 console.log(result);
                 $('.move-item-popup').hide();
             })
@@ -1614,13 +1620,13 @@ $('.create-item-form').submit(function (event) {
 
     //validate the input
     if (itemName == "") {
-        alert('Please add an item');
+        displayError('Please add an item');
     } else if (areaName == "Select..") {
-        alert('Please add an Area');
+        displayError('Please add an Area');
     } else if (placeName == "Select..") {
-        alert('Please add a Place');
+        displayError('Please add a Place');
     } else if (categoryName == "Select..") {
-        alert('Please add a Place');
+        displayError('Please add a Place');
     }
     //if the input is valid
     else {
@@ -1651,7 +1657,7 @@ $('.create-item-form').submit(function (event) {
                 //console.log(result);
                 $("#item_name").val("");
                 $('.create-item-popup').hide();
-                alert("Item created succesfully");
+                displayError("Item created succesfully");
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -1674,7 +1680,7 @@ $('.create-area-form').submit(function (event) {
 
     //validate the input
     if (areaName == "") {
-        alert('Please add an item');
+        displayError('Please add an item');
     }
     //if the input is valid
     else {
@@ -1697,7 +1703,7 @@ $('.create-area-form').submit(function (event) {
             //if call is succefull
             .done(function (result) {
                 //console.log(result);
-                alert("Area created");
+                displayError("Area created");
                 $('#area_name').val('');
                 $('.create-area-popup').hide();
             })
@@ -1722,7 +1728,7 @@ $('.create-category-form').submit(function (event) {
 
     //validate the input
     if (categoryName == "") {
-        alert('Category name cannot be empty');
+        displayError('Category name cannot be empty');
     }
     //if the input is valid
     else {
@@ -1744,7 +1750,7 @@ $('.create-category-form').submit(function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                alert('Category Created');
+                displayError('Category Created');
                 //console.log(result);
                 $('#category_name').val('');
                 $('.create-category-popup').hide();
@@ -1771,9 +1777,9 @@ $('.create-place-form').submit(function (event) {
 
     //validate the input
     if (placeName == "") {
-        alert('Please add an item');
+        displayError('Please add an item');
     } else if (areaName == "Select..") {
-        alert('Please add an Area');
+        displayError('Please add an Area');
     }
     //if the input is valid
     else {
@@ -1798,7 +1804,7 @@ $('.create-place-form').submit(function (event) {
             //if call is succefull
             .done(function (result) {
                 console.log(result);
-                alert("place created succefuly");
+                displayError("place created succefuly");
                 $("#place_name").val("");
                 $('.create-place-popup').hide();
             })
