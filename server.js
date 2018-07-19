@@ -251,6 +251,7 @@ app.put('/items/:id', (req, res) => {
 });
 
 //Removing some fields
+//PUT
 app.put('/items/remove/:id', (req, res) => {
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         const message = "Id in the request and body should match";
@@ -520,6 +521,36 @@ app.put('/places/:id', (req, res) => {
         }));
 });
 
+//Removing some fields
+//PUT
+app.put('/places/remove/:id', (req, res) => {
+    if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        const message = "Id in the request and body should match";
+        console.error(message);
+        return res.status(400).json({
+            message: message
+        });
+    }
+
+    const toRemove = {};
+    const updateableFields = ['areaName', 'areaId'];
+
+    updateableFields.forEach(field => {
+        if (field in req.body) {
+            toRemove[field] = req.body[field];
+        }
+    });
+
+    Places
+        .findByIdAndUpdate(req.params.id, {
+            $unset: toRemove
+        })
+        .then(items => res.status(204).json(items))
+        .catch(err => res.status(500).json({
+            message: 'Inernal server error'
+        }));
+});
+
 // GET
 // all places by user
 app.get('/places/:user', function (req, res) {
@@ -725,7 +756,7 @@ app.get('/areas/get/all/:id', function (req, res) {
 
 //DELETE
 app.delete('/area/:id', function (req, res) {
-    Items.findByIdAndRemove(req.params.id).exec().then(function (area) {
+    Areas.findByIdAndRemove(req.params.id).exec().then(function (area) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({

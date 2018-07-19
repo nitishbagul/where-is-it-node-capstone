@@ -148,9 +148,9 @@ function deletePlaceElements({
         //make the api call using the payload above
         $.ajax({
                 type: 'PUT',
-                url: `/items/remove/${itemId}`,
+                url: `/places/remove/${placeId}`,
                 dataType: 'json',
-                data: JSON.stringify(newItemObject),
+                data: JSON.stringify(newPlaceObject),
                 contentType: 'application/json'
             })
             //if call is succefull
@@ -241,7 +241,7 @@ function deleteArea(areaId) {
             $(`li[data-areaentry='${areaId}']`).hide();
             $(".delete-area-popup").hide();
             removeItemsByArea(areaId);
-            //removePlacesByArea(placeId);
+            removePlacesByArea(areaId);
 
         })
         //if the call is failing
@@ -1014,16 +1014,13 @@ function removeItemsByCategory(categoryId) {
         .done(function (result) {
             console.log(result);
             if (result.itemsOutput.length === 0) {
-                displayError("No Items found");
-            } else {
-
+                //displayError("No Items found");
                 $.each(result.itemsOutput, function (resultKey, resultValue) {
                     deleteItemElements({
                         itemId: resultValue._id,
                         categoryId: categoryId
                     });
                 });
-
             }
 
         })
@@ -1058,18 +1055,14 @@ function removeItemsByArea(areaId) {
         .done(function (result) {
             console.log(result);
             if (result.itemsOutput.length === 0) {
-                displayError("No Items found");
-            } else {
-
+                //displayError("No Items found");
                 $.each(result.itemsOutput, function (resultKey, resultValue) {
                     deleteItemElements({
                         itemId: resultValue._id,
                         areaId: areaId
                     });
                 });
-
             }
-
         })
         //if the call is failing
         .fail(function (jqXHR, error, errorThrown) {
@@ -1102,18 +1095,14 @@ function removePlacesByArea(areaId) {
         .done(function (result) {
             console.log(result);
             if (result.placesOutput.length === 0) {
-                displayError("No Places found");
-            } else {
-
+                //displayError("No Places found");
                 $.each(result.placesOutput, function (resultKey, resultValue) {
                     deletePlaceElements({
                         placeId: resultValue._id,
                         areaId: areaId
                     });
                 });
-
             }
-
         })
         //if the call is failing
         .fail(function (jqXHR, error, errorThrown) {
