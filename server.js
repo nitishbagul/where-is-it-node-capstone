@@ -395,6 +395,30 @@ app.get('/items/get/all/:id/:categoryId', function (req, res) {
         });
 });
 
+//all items by area ID
+app.get('/items/get/all/by/area/:id/:areaId', function (req, res) {
+
+    Items
+        .find()
+        .then(function (items) {
+            let itemsOutput = [];
+            items.map(function (item) {
+                if (item.loggedInUserId == req.params.id && item.areaId == req.params.areaId) {
+                    itemsOutput.push(item);
+                }
+            });
+            res.json({
+                itemsOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
 //all items by place ID
 app.get('/items/get/all/by/place/:id/:placeId', function (req, res) {
 

@@ -113,6 +113,62 @@ function deleteItemElements({
 
 }
 
+function deletePlaceElements({
+    areaId,
+    placeId
+} = {}) {
+    /*let itemId = $(this).data('itemid');
+    let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
+    let placeName = $(".move-item-form #move-place-selection option:selected").text();
+    let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
+    let areaName = $(".move-item-form #move-area-selection option:selected").text();
+*/
+    //displayError("hi");
+    let updatedAreaId;
+    let updatedAreaName;
+    //validate the input
+    if (areaId !== undefined) {
+        updatedAreaId = "";
+        updatedAreaName = "";
+    }
+    if (placeId == undefined) {
+        displayError("Cannot delete place fields");
+    }
+
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const newPlaceObject = {
+            id: placeId,
+            areaId: updatedAreaId,
+            areaName: updatedAreaName
+        };
+        console.log(newPlaceObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'PUT',
+                url: `/items/remove/${itemId}`,
+                dataType: 'json',
+                data: JSON.stringify(newItemObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                //displayError("Item moved to a new place");
+                console.log(result);
+                //$('.move-item-popup').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+}
+
 //Delete Item
 function deleteItem(itemId) {
     //make the api call using the payload above
@@ -153,6 +209,7 @@ function deletePlace(placeId) {
             displayError("deleted place");
             $(`div[data-placeentry='${placeId}']`).hide();
             $(".delete-place-popup").hide();
+            removeItemsByPlace(placeId);
 
         })
         //if the call is failing
@@ -183,6 +240,8 @@ function deleteArea(areaId) {
             displayError("Area deleted succesfully");
             $(`li[data-areaentry='${areaId}']`).hide();
             $(".delete-area-popup").hide();
+            removeItemsByArea(areaId);
+            //removePlacesByArea(placeId);
 
         })
         //if the call is failing
@@ -962,6 +1021,138 @@ function removeItemsByCategory(categoryId) {
                     deleteItemElements({
                         itemId: resultValue._id,
                         categoryId: categoryId
+                    });
+                });
+
+            }
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function removeItemsByArea(areaId) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        displayError("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId,
+        area: areaId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/items/get/all/by/area/${userId}/${areaId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.itemsOutput.length === 0) {
+                displayError("No Items found");
+            } else {
+
+                $.each(result.itemsOutput, function (resultKey, resultValue) {
+                    deleteItemElements({
+                        itemId: resultValue._id,
+                        areaId: areaId
+                    });
+                });
+
+            }
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function removePlacesByArea(areaId) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        displayError("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId,
+        area: areaId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/places/get/all/${userId}/${areaId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.placesOutput.length === 0) {
+                displayError("No Places found");
+            } else {
+
+                $.each(result.placesOutput, function (resultKey, resultValue) {
+                    deletePlaceElements({
+                        placeId: resultValue._id,
+                        areaId: areaId
+                    });
+                });
+
+            }
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function removeItemsByPlace(placeId) {
+    var userId = $('#loggedInUserId').val();
+    if ((userId == "") || (userId == undefined) || (userId == null)) {
+        displayError("Cannot find the user");
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: userId,
+        place: placeId
+    };
+    //console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/items/get/all/by/place/${userId}/${placeId}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.itemsOutput.length === 0) {
+                displayError("No Items found");
+            } else {
+
+                $.each(result.itemsOutput, function (resultKey, resultValue) {
+                    deleteItemElements({
+                        itemId: resultValue._id,
+                        placeId: placeId
                     });
                 });
 

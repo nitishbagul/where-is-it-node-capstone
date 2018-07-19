@@ -324,12 +324,12 @@ hr {
 }
 
 .js-menu-button {
-    background-color: #AD8424 !important;
+    background-color: #AD8557 !important;
 }
 
-.sidenav button:hover {
+/*.sidenav button:hover {
     background-color: #AD8424;
-}
+}*/
 
 .content-area,
 .content-area-places,
@@ -649,8 +649,8 @@ form span {
     border: none;
     outline: none;
     font-size: 18px;
-    background-color: #5967a2;
-    color: #F2F1EF;
+    background-color: #CFA671;
+    color: darkred;
 }
 
 .js-all-places-result ul,
@@ -668,7 +668,7 @@ form span {
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #8CC2D8;
+    background-color: #FFE19E;
 }
 
 .collapse-content * {
