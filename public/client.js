@@ -6,20 +6,6 @@ function displayError(message) {
     $("#messageBox").fadeOut(10000);
 };
 
-/*function handleMenuButtonClicks() {
-    $('.sidenav button').on('click', event => {
-        // save reference to this bulb,
-        const targetButton = $(event.currentTarget);
-        // and reference to all other bulbs
-        const otherButtons = $('.sidenav button').not(targetButton);
-
-        // Remove 'bulb-on' class from other bulbs
-        otherButtons.removeClass('js-menu-button');
-        // toggle the presence of 'bulb-on' on this bulb;
-        targetButton.toggleClass('js-menu-button');
-    });
-}*/
-
 
 //Execute Collpsible
 function executeCollapsible() {
@@ -45,12 +31,6 @@ function deleteItemElements({
     areaId,
     placeId
 } = {}) {
-    /*let itemId = $(this).data('itemid');
-    let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
-    let placeName = $(".move-item-form #move-place-selection option:selected").text();
-    let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
-    let areaName = $(".move-item-form #move-area-selection option:selected").text();
-*/
     //displayError("hi");
     let updatedCategoryId;
     let updatedCategoryName;
@@ -117,12 +97,6 @@ function deletePlaceElements({
     areaId,
     placeId
 } = {}) {
-    /*let itemId = $(this).data('itemid');
-    let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
-    let placeName = $(".move-item-form #move-place-selection option:selected").text();
-    let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
-    let areaName = $(".move-item-form #move-area-selection option:selected").text();
-*/
     //displayError("hi");
     let updatedAreaId;
     let updatedAreaName;
@@ -1324,7 +1298,7 @@ $(document).on('click', '.categories-button', function (event) {
     $('.categories-result').hide();
     $('.js-categories-popup-list').hide();
     $('.categories-page').show();
-    const targetButton = $('.categories-page .sidenav .my-categories-button');
+    const targetButton = $('.categories-page .sidenav .categories-button');
     const otherButtons = $('.sidenav button').not(targetButton);
     otherButtons.removeClass('js-menu-button');
     targetButton.toggleClass('js-menu-button');
