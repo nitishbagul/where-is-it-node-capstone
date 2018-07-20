@@ -315,8 +315,10 @@ function showDeleteAreaPopup(areaId, areaName) {
     //console.log(buildTheHtmlOutput);
 
     //use the HTML output to show it in all items table
-    $(".areas-page .delete-area-form").html(buildTheHtmlOutput);
-    $('.delete-area-form').data('areaid', areaId);
+    $(`.areas-page .delete-area-form[data-areaid=${areaId}]`).html(buildTheHtmlOutput);
+    //$('.delete-area-form').data('areaid', areaId);
+    $(`.js-areas-popup-list[data-areaid=${areaId}]`).show();
+    $(`.delete-area-popup[data-areaid=${areaId}]`).show();
 
 }
 
@@ -558,7 +560,26 @@ function populateAreas() {
                     buildTheHtmlOutput += `<button class="collapsible">${resultValue.areaName}</button>`;
                     buildTheHtmlOutput += `<div class="collapse-content">
 <button role="button" class="all-places-button" data-areaid=${resultValue._id}>Show Places</button>
-<button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>
+<button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>`;
+                    buildTheHtmlOutput += `<div class="js-areas-popup-list" data-areaid=${resultValue._id}>
+
+<div class="delete-area-popup popup" data-areaid=${resultValue._id}>
+<form class="delete-area-form" data-areaid=${resultValue._id}>
+</form>
+</div>
+
+<div class="show-places-popup popup" data-areaid=${resultValue._id}>
+
+<i class="fas fa-times close-icon"></i>
+<h4>Showing Places</h4>
+<hr>
+<ul>
+</ul>
+
+</div>
+
+</div>
+
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
@@ -924,10 +945,12 @@ function showPlacesByArea(areaId) {
                     buildTheHtmlOutput += `<li>${resultValue.placeName}</li>`;
                 });
                 buildTheHtmlOutput += `</ul>`;
+                console.log(buildTheHtmlOutput);
                 //use the HTML output to show it in all items table
-                $(".areas-page .js-areas-popup-list .show-places-popup").html(buildTheHtmlOutput);
-                $('.js-areas-popup-list').show();
-                $('.show-places-popup').show();
+                $(`.areas-page .js-areas-popup-list .show-places-popup`).html(buildTheHtmlOutput);
+                //$(`.categories-page .delete-category-form[data-categoryid=${categoryId}]`).html(buildTheHtmlOutput);
+                $(`.js-areas-popup-list[data-areaid=${areaId}]`).show();
+                $(`.show-places-popup[data-areaid=${areaId}]`).show();
 
             }
 
@@ -1493,8 +1516,8 @@ $(document).on('click', '.areas-result .delete-button', function (event) {
     $('.create-area-popup').hide();
     $('.show-places-popup').hide();
     showDeleteAreaPopup(areaId, areaName);
-    $('.js-areas-popup-list').show();
-    $('.delete-area-popup').show();
+    //$('.js-areas-popup-list').show();
+    //$('.delete-area-popup').show();
 });
 
 $(document).on('click', '.categories-menu .create-new-button', function (event) {
@@ -1791,6 +1814,7 @@ $('.move-item-form').submit(function (event) {
 
 $('.delete-area-form').submit(function (event) {
 
+    alert("hi");
     event.preventDefault();
     let areaId = $(this).data('areaid');
     console.log(areaId);
@@ -1803,7 +1827,7 @@ $('.delete-category-form').submit(function (event) {
 
     event.preventDefault();
     let categoryId = $(this).data('categoryid');
-    //console.log(areaId);
+    console.log(categoryId);
     deleteCategory(categoryId);
     //deleteItemCategory(categoryId);
     //$('.items-result').show();
