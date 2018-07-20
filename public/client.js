@@ -3,7 +3,7 @@
 function displayError(message) {
     $("#messageBox span").html(message);
     $("#messageBox").fadeIn();
-    $("#messageBox").fadeOut(10000);
+    $("#messageBox").fadeOut(4000);
 };
 
 
@@ -14,6 +14,7 @@ function executeCollapsible() {
 
     for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function () {
+            $('.popup').hide();
             this.classList.toggle("active");
             var content = this.nextElementSibling;
             if (content.style.display === "block") {
@@ -365,8 +366,10 @@ function showDeleteCategoryPopup(categoryId, categoryName) {
     //console.log(buildTheHtmlOutput);
 
     //use the HTML output to show it in all items table
-    $(".categories-page .delete-category-form").html(buildTheHtmlOutput);
-    $('.delete-category-form').data('categoryid', categoryId);
+    $(`.categories-page .delete-category-form[data-categoryid=${categoryId}]`).html(buildTheHtmlOutput);
+    $(`.js-categories-popup-list[data-categoryentry=${categoryId}]`).show();
+    $(`.delete-category-popup[data-categoryid=${categoryId}]`).show();
+    //$('.delete-category-form').data('categoryid', categoryId);
 
 }
 
@@ -607,7 +610,31 @@ function populateCategories() {
                     buildTheHtmlOutput += `<button class="collapsible">${resultValue.categoryName}</button>`;
                     buildTheHtmlOutput += `<div class="collapse-content">
 <button role="button" class="all-items-button" data-categoryid=${resultValue._id}>Show Items</button>
-<button role="button" class="delete-button" data-categoryid=${resultValue._id}>Delete</button>
+<button role="button" class="delete-button" data-categoryid=${resultValue._id}>Delete</button>`;
+                    buildTheHtmlOutput += `<div class="js-categories-popup-list" data-categoryentry=${resultValue._id}>
+
+
+<div class="delete-category-popup popup" data-categoryid=${resultValue._id}>
+<form class="delete-category-form" data-categoryid=${resultValue._id}>
+<i class="fas fa-times close-icon"></i>
+<h4>Deleting Category: Travel</h4>
+<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button">Delete</button>
+<button role="button" class="delete-button">Cancel</button>
+</fieldset>
+</form>
+</div>
+
+<div class="show-items-popup popup">
+<h4>Showing Items - Travel</h4>
+<hr>
+<ul>
+</ul>
+
+</div>
+
+</div>
+
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
@@ -952,7 +979,8 @@ function showItemsByCategory(categoryId) {
                 buildTheHtmlOutput += `</ul>`;
                 //use the HTML output to show it in all items table
                 $(".categories-page .js-categories-popup-list .show-items-popup").html(buildTheHtmlOutput);
-                $('.js-categories-popup-list').show();
+                //$('.js-categories-popup-list').show();
+                $(`.js-categories-popup-list[data-categoryentry=${categoryId}]`).show();
                 $('.show-items-popup').show();
             }
 
@@ -1507,8 +1535,8 @@ $(document).on('click', '.categories-result .delete-button', function (event) {
     $('.create-category-popup').hide();
     $('.show-items-popup').hide();
     showDeleteCategoryPopup(categoryId, categoryName);
-    $('.js-categories-popup-list').show();
-    $('.delete-category-popup').show();
+    //$('.js-categories-popup-list').show();
+    //$('.delete-category-popup').show();
 });
 
 $(document).on('click', '.delete-category-form .cancel-button', function (event) {
@@ -1517,16 +1545,6 @@ $(document).on('click', '.delete-category-form .cancel-button', function (event)
     $('.popup').hide();
 
 });
-
-/*$(document).on('click', '.create-area-selection', function (event) {
-    event.preventDefault();
-    //displayError("hi");
-    $('.js-categories-popup-list').hide();
-    $('.create-category-popup').hide();
-    $('.show-items-popup').hide();
-    $('.js-categories-popup-list').show();
-    $('.delete-category-popup').show();
-});*/
 
 
 
