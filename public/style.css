@@ -21,6 +21,7 @@
 html,
 body {
     height: 100%;
+
 }
 
 body {
@@ -30,6 +31,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: 'Roboto', sans-serif;
 }
 
 .demoMessage {
@@ -83,7 +85,7 @@ body {
 }
 
 h1 {
-    color: #024C24;
+    color: #E63022;
     padding: 10px 0;
     /* margin-bottom: 10px; */
     font-size: 50px;
@@ -91,9 +93,8 @@ h1 {
 }
 
 .banner-text {
-    color: #021D59;
+    color: #E63022;
     font-size: 20px;
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -197,7 +198,7 @@ label {
 #registerPassword {
     display: block;
     margin-bottom: 15px;
-    width: 70%;
+    width: 100%;
     height: 55px;
     border: 2px solid #c4c6c5;
     border-radius: 5px;
@@ -207,7 +208,7 @@ label {
 .log-in-button,
 .register-button {
     margin-top: 15px;
-    width: 70%;
+    width: 100%;
     margin-bottom: 50px;
     height: 55px;
     background-color: #35ce59;
@@ -221,10 +222,16 @@ label {
 
 /*About Page Styles*/
 
+.about-content {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
 .about-page p {
     font-size: 20px;
     padding: 10px 10px;
-    font-family: helvetica;
+    /*font-family: helvetica;*/
     line-height: 49.5px;
     color: #292929;
 }

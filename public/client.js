@@ -328,7 +328,7 @@ function showDeletePlacePopup(placeId, placeName) {
 
     buildTheHtmlOutput += `<h4>Deleting Place: ${placeName}</h4>`;
     buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button" data-placeid=${placeId}>Delete</button>
+<button role="button" type="submit" class="delete-place-button" data-placeid=${placeId}>Delete</button>
 <button role="button" class="cancel-button" data-placeid=${placeId}>Cancel</button>
 </fieldset>`;
     //console.log(buildTheHtmlOutput);
@@ -1757,7 +1757,7 @@ $('.delete-item-form').submit(function (event) {
     $('.places-page .js-single-result-area').show();
 });*/
 
-$('.delete-place-form').on('submit', '.delete-place-form', function (event) {
+$(document).on('submit', '.delete-place-form', function (event) {
     event.preventDefault();
     alert("hi");
     let placeId = $(this).data('placeid');
