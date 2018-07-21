@@ -334,18 +334,20 @@ function showDeletePlacePopup(placeId, placeName) {
     //console.log(buildTheHtmlOutput);
 
     //use the HTML output to show it in all items table
-    $(".places-page .delete-place-form").html(buildTheHtmlOutput);
-    $('.delete-place-form').data('placeid', placeId);
+    $(`.places-page .delete-place-form[data-placeid=${placeId}]`).html(buildTheHtmlOutput);
+    //$('.delete-place-form').data('placeid', placeId);
+    $(`.js-place-popup-list[data-placeid=${placeId}]`).show();
+    $(`.delete-place-popup[data-placeid=${placeId}]`).show();
 
 }
 
 function showMovePlacePopup(placeId, placeName) {
-    //console.log(placeId, placeName);
-    //console.log(buildTheHtmlOutput);
-    $(".places-page .move-place-form h4").text(`Moving Place: ${placeName}`);
-    $(".places-page .move-place-form .move-button").data('placeid', placeId);
-    $('.move-place-form').data('placeid', placeId);
+    $(`.places-page .move-place-form[data-placeid=${placeId}] h4`).text(`Moving Place: ${placeName}`);
+    //$(".places-page .move-place-form .move-button").data('placeid', placeId);
+    //$('.move-place-form').data('placeid', placeId);
     populateAreasList();
+    $(`.js-place-popup-list[data-placeid=${placeId}]`).show();
+    $(`.move-place-popup[data-placeid=${placeId}]`).show();
 }
 
 function showMoveItemPopup(itemId, itemName) {
@@ -709,7 +711,52 @@ function populatePlaces() {
 <p>Current Area: ${resultValue.areaName}</p>
 <button role="button" class="move-button" data-placeid=${resultValue._id}>Move</button>
 <button role="button" class="all-items-button" data-placeid=${resultValue._id}>Show Items</button>
-<button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>
+<button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>`;
+                    buildTheHtmlOutput += `<div class="js-place-popup-list" data-placeid=${resultValue._id}>
+<div class="move-place-popup popup" data-placeid=${resultValue._id}>
+<form class="move-place-form" data-placeid=${resultValue._id}>
+<h4>Moving Place: Main Drawer</h4>
+<fieldset name="place-info" class="place-info">
+
+<div class="area-select-container">
+<label for="move-area-selection">Area</label>
+<select id="move-area-selection" name="area-selection">
+<option value="0">Select..</option>
+<option value="1">Garage</option>
+<option value="2">Bedroom</option>
+</select>
+</div>
+
+<button role="button" type="submit" class="move-button" data-placeid=${resultValue._id}>Move</button>
+
+</fieldset>
+</form>
+</div>
+
+<div class="delete-place-popup popup" data-placeid=${resultValue._id}>
+<form class="delete-place-form" data-placeid=${resultValue._id}>
+<i class="fas fa-times close-icon"></i>
+<h4>Deleting Place: Main Drawer</h4>
+<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button">Delete</button>
+<button role="button" class="delete-button">Cancel</button>
+</fieldset>
+</form>
+</div>
+
+<div class="show-items-popup popup" data-placeid=${resultValue._id}>
+
+<i class="fas fa-times close-icon"></i>
+<h4>Showing Items - Main Cupboard</h4>
+<hr>
+<ul>
+
+</ul>
+
+</div>
+
+</div>
+
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
@@ -1219,9 +1266,9 @@ function showItemsByPlace(placeId) {
                 });
                 buildTheHtmlOutput += `</ul>`;
                 //use the HTML output to show it in all items table
-                $(".places-page .js-place-popup-list .show-items-popup").html(buildTheHtmlOutput);
-                $('.js-place-popup-list').show();
-                $('.show-items-popup').show();
+                $(`.places-page .js-place-popup-list .show-items-popup[data-placeid=${placeId}]`).html(buildTheHtmlOutput);
+                $(`.js-place-popup-list[data-placeid=${placeId}]`).show();
+                $(`.show-items-popup[data-placeid=${placeId}]`).show();
             }
 
         })
@@ -1442,13 +1489,13 @@ $(document).on('click', '.places-result .move-button', function (event) {
     let placeName = $(this).closest('li').find('.collapsible').text();
     //displayError("hi");
     $('.js-place-popup-list').hide();
-    $('.js-all-places-result').hide();
+    //$('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.delete-place-popup').hide();
     $('.show-items-popup').hide();
     showMovePlacePopup(placeId, placeName);
-    $('.js-place-popup-list').show();
-    $('.move-place-popup').show();
+    // $('.js-place-popup-list').show();
+    //$('.move-place-popup').show();
 });
 
 $(document).on('click', '.places-result .all-items-button', function (event) {
@@ -1456,7 +1503,7 @@ $(document).on('click', '.places-result .all-items-button', function (event) {
     //displayError("hi");
     let placeId = $(this).data('placeid');
     $('.js-place-popup-list').hide();
-    $('.js-all-places-result').hide();
+    //$('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.delete-place-popup').hide();
     $('.move-place-popup').hide();
@@ -1471,13 +1518,13 @@ $(document).on('click', '.places-result .delete-button', function (event) {
     let placeName = $(this).closest('li').find('.collapsible').text();
     //displayError("hi");
     $('.js-place-popup-list').hide();
-    $('.js-all-places-result').hide();
+    //$('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.show-items-popup').hide();
     $('.move-place-popup').hide();
     showDeletePlacePopup(placeId, placeName);
-    $('.js-place-popup-list').show();
-    $('.delete-place-popup').show();
+    //$('.js-place-popup-list').show();
+    //$('.delete-place-popup').show();
 });
 
 $(document).on('click', '.areas-menu .create-new-button', function (event) {
@@ -1699,15 +1746,37 @@ $('.delete-item-form').submit(function (event) {
     $('.items-page .js-single-result-area').show();
 });
 
-$('.delete-place-form').submit(function (event) {
+/*$('.delete-place-form').submit(function (event) {
 
     event.preventDefault();
+    alert("hi");
+    let placeId = $(this).data('placeid');
+    //console.log(itemId);
+    deletePlace(placeId);
+    $('.places-result').show();
+    $('.places-page .js-single-result-area').show();
+});*/
+
+$('.delete-place-form').on('submit', '.delete-place-form', function (event) {
+    event.preventDefault();
+    alert("hi");
     let placeId = $(this).data('placeid');
     //console.log(itemId);
     deletePlace(placeId);
     $('.places-result').show();
     $('.places-page .js-single-result-area').show();
 });
+
+/*$('.delete-place-form').submit(function (event) {
+
+    event.preventDefault();
+    alert("hi");
+    let placeId = $(this).data('placeid');
+    //console.log(itemId);
+    deletePlace(placeId);
+    $('.places-result').show();
+    $('.places-page .js-single-result-area').show();
+});*/
 
 $('.move-place-form').submit(function (event) {
     event.preventDefault();
