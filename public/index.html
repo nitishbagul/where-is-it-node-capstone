@@ -50,8 +50,8 @@
                     </div>
                 </div>
 
-                <div class="log-in-container">
-                    <form class="login-form">
+                <div class="log-in-container all-forms-container">
+                    <form class="login-form all-forms">
                         <h2 class="log-in-text">Log in</h2>
                         <fieldset name="user-info" class="user-info">
 
@@ -67,8 +67,8 @@
                     </form>
                 </div>
 
-                <div class="register-container">
-                    <form class="register-form">
+                <div class="register-container all-forms-container">
+                    <form class="register-form all-forms">
                         <h2 class="register-text">Register</h2>
                         <fieldset name="user-info" class="user-info">
 
@@ -241,8 +241,8 @@
             <div class="js-item-popup-list">
 
 
-                <div class="create-item-popup popup" id="createItem">
-                    <form class="create-item-form">
+                <div class="create-item-popup all-forms-container" id="createItem">
+                    <form class="create-item-form all-forms">
                         <h4>Create Item</h4>
                         <fieldset name="item-info" class="item-info">
 
@@ -377,28 +377,9 @@
             </section>
 
             <div class="js-place-popup-list">
-                <!--<div class="move-place-popup popup">
-                    <form class="move-place-form" data-placeid="">
-                        <h4>Moving Place: Main Drawer</h4>
-                        <fieldset name="place-info" class="place-info">
 
-                            <div class="area-select-container">
-                                <label for="move-area-selection">Area</label>
-                                <select id="move-area-selection" name="area-selection">
-                                    <option value="0">Select..</option>
-                                    <option value="1">Garage</option>
-                                    <option value="2">Bedroom</option>
-                                </select>
-                            </div>
-
-                            <button role="button" type="submit" class="move-button" data-placeid="">Move</button>
-
-                        </fieldset>
-                    </form>
-                </div>-->
-
-                <div class="create-place-popup popup">
-                    <form class="create-place-form" action="/create/" method="post">
+                <div class="create-place-popup popup all-forms-container">
+                    <form class="create-place-form all-forms">
                         <i class="fas fa-times close-icon"></i>
                         <h4>Create Place</h4>
                         <fieldset name="place-info" class="place-info">
@@ -422,31 +403,6 @@
                         </fieldset>
                     </form>
                 </div>
-
-                <!--   <div class="delete-place-popup popup">
-                    <form class="delete-place-form" data-placeid="">
-                        <i class="fas fa-times close-icon"></i>
-                        <h4>Deleting Place: Main Drawer</h4>
-                        <fieldset name="delete-info" class="delete-info">
-                            <button role="button" type="submit" class="delete-button">Delete</button>
-                            <button role="button" class="delete-button">Cancel</button>
-                        </fieldset>
-                    </form>
-                </div>
-
-                <div class="show-items-popup popup">
-
-                    <i class="fas fa-times close-icon"></i>
-                    <h4>Showing Items - Main Cupboard</h4>
-                    <hr>
-                    <ul>
-                        <li>Second Car Key</li>
-<li>Gift Card - Visa</li>
-<li>Skipping Rope</li>
-<li>Insurance Papers</li>
-                    </ul>
-
-                </div>-->
 
             </div>
 
@@ -490,34 +446,6 @@
                     <div class="js-all-areas-result">
                         <h3>My Areas</h3>
                         <ul class="areas-list-all">
-                            <!--
-                                <li>
-                                    <button class="collapsible">Living Room</button>
-                                    <div class="collapse-content">
-                                        <p>Holds <span>10</span> places</p>
-                                        <button role="button" class="all-places-button">Show Places</button>
-                                        <button role="button" class="delete-button">Delete</button>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <button class="collapsible">Garage</button>
-                                    <div class="collapse-content">
-                                        <p>Holds <span>10</span> places</p>
-                                        <button role="button" class="all-places-button">Show Places</button>
-                                        <button role="button" class="delete-button">Delete</button>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <button class="collapsible">Master Bedroom</button>
-                                    <div class="collapse-content">
-                                        <p>Holds <span>10</span> places</p>
-                                        <button role="button" class="all-places-button">Show Places</button>
-                                        <button role="button" class="delete-button">Delete</button>
-                                    </div>
-                                </li>
-                                -->
                         </ul>
 
                     </div>
@@ -528,9 +456,8 @@
 
             <div class="js-areas-popup-list">
 
-                <div class="create-area-popup popup">
-                    <form class="create-area-form">
-                        <i class="fas fa-times close-icon"></i>
+                <div class="create-area-popup all-forms-container">
+                    <form class="create-area-form all-forms">
                         <h4>Create Area</h4>
                         <fieldset name="area-info" class="area-info">
 
@@ -545,29 +472,17 @@
                     </form>
                 </div>
 
-                <div class="delete-area-popup popup">
-                    <form class="delete-area-form" data-areaid="">
-                        <!--
-                            <i class="fas fa-times close-icon"></i>
-                            <h4>Deleting Area: Garage</h4>
-                            <fieldset name="delete-info" class="delete-info">
-                                <button role="button" type="submit" class="delete-button">Delete</button>
-                                <button role="button" type="submit" class="delete-button">Cancel</button>
-                            </fieldset>
-                            -->
+                <div class="delete-area-popup popup all-forms-container">
+                    <form class="delete-area-form all-forms" data-areaid="">
+
                     </form>
                 </div>
 
                 <div class="show-places-popup popup">
 
-                    <i class="fas fa-times close-icon"></i>
                     <h4>Showing Places - Bedroom</h4>
                     <hr>
                     <ul>
-                        <!--<li>Wardrobe</li>
-<li>Main cupboard</li>
-<li>Small Bookshelf</li>
-<li>Study Desk Drawer</li>-->
                     </ul>
 
                 </div>
@@ -616,32 +531,6 @@
                     <div class="js-all-categories-result">
                         <h3>My Categories</h3>
                         <ul class="categories-list-all">
-                            <li>
-                                <!--<button class="collapsible">Travel</button>
-                                <div class="collapse-content">
-                                    <p>Holds <span>10</span> items</p>
-                                    <button role="button" class="all-items-button">Show Items</button>
-                                    <button role="button" class="delete-button">Delete</button>
-                                </div>-->
-                            </li>
-
-                            <li>
-                                <!-- <button class="collapsible">Documents</button>
-                                <div class="collapse-content">
-                                    <p>Holds <span>10</span> places</p>
-                                    <button role="button" class="all-items-button">Show Places</button>
-                                    <button role="button" class="delete-button">Delete</button>
-                                </div>-->
-                            </li>
-
-                            <li>
-                                <!--<button class="collapsible">Personal Care</button>
-<div class="collapse-content">
-    <p>Holds <span>10</span> places</p>
-    <button role="button" class="all-items-button">Show Places</button>
-    <button role="button" class="delete-button">Delete</button>
-</div>-->
-                            </li>
                         </ul>
 
                     </div>
@@ -652,9 +541,8 @@
 
             <div class="js-categories-popup-list">
 
-                <div class="create-category-popup popup">
-                    <form class="create-category-form" action="/create/" method="post">
-                        <i class="fas fa-times close-icon"></i>
+                <div class="create-category-popup all-forms-container">
+                    <form class="create-category-form all-forms">
                         <h4>Create Category</h4>
                         <fieldset name="category-info" class="category-info">
 
@@ -668,30 +556,6 @@
                         </fieldset>
                     </form>
                 </div>
-
-                <!--<div class="delete-category-popup popup">
-    <form class="delete-category-form" data-categoryid="">
-        <i class="fas fa-times close-icon"></i>
-        <h4>Deleting Category: Travel</h4>
-        <fieldset name="delete-info" class="delete-info">
-            <button role="button" type="submit" class="delete-button">Delete</button>
-            <button role="button" class="delete-button">Cancel</button>
-        </fieldset>
-    </form>
-</div>-->
-
-                <!--   <div class="show-items-popup popup">
-                    <h4>Showing Items - Travel</h4>
-                    <hr>
-                    <ul>
-                        <li>Travel Shaving Kit</li>
-<li>Immigration Documents</li>
-<li>Battery</li>
-<li>Vest Pouch</li>
-                    </ul>
-
-                </div>-->
-
             </div>
 
         </section>
