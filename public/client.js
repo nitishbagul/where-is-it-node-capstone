@@ -182,7 +182,7 @@ function deletePlace(placeId) {
         //if call is succefull
         .done(function (result) {
             displayError("deleted place");
-            $(`div[data-placeentry='${placeId}']`).hide();
+            $(`li[data-placeentry='${placeId}']`).hide();
             $(".delete-place-popup").hide();
             removeItemsByPlace(placeId);
 
@@ -884,10 +884,53 @@ function populateSearchedItem(itemName) {
 <button class="move-item-button" data-itemid=${resultValue._id}>Move</button>
 <button class="delete-item-button" data-itemid=${resultValue._id}>Delete</button>
 </div>`;
-                buildTheHtmlOutput += '</div>';
+                buildTheHtmlOutput += `<div class="js-item-popup-list" data-itemid=${resultValue._id}>
+<div class="move-item-popup popup" data-itemid=${resultValue._id}>
+<form class="move-item-form" data-itemid=${resultValue._id}>
+<h4>Moving Item</h4>
+<fieldset name="item-info" class="item-info">
+
+<div class="area-select-container">
+<label for="move-area-selection">Area</label>
+<select id="move-area-selection" name="area-selection">
+<option value="0">Select..</option>
+</select>
+</div>
+
+<div class="place-select-container">
+<label for="move-place-selection">Place</label>
+<select id="move-place-selection" name="place-selection">
+<option value="0">Select..</option>
+<!--<option value="1">Moving Drawer/D4</option>
+<option value="2">Cupboard/C2</option>-->
+</select>
+</div>
+
+<button role="button" type="submit" class="move-button">Move</button>
+
+</fieldset>
+</form>
+</div>
+
+<div class="delete-item-popup popup" data-itemid=${resultValue._id}>
+<form class="delete-item-form" data-itemid="">
+<i class="fas fa-times close-icon"></i>
+<h4 class="delete-item-heading">Deleting Item: Gift Card</h4>
+<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button">Delete</button>
+<button role="button" class="delete-button">Cancel</button>
+</fieldset>
+</form>
+</div>
+
+</div>`;
+                buildTheHtmlOutput += `</div>`;
             });
             //use the HTML output to show it in all items table
             $(".js-single-result-area .single-item-container").html(buildTheHtmlOutput);
+            $('.items-result .js-item-popup-list').hide();
+            $('.items-result').show();
+            $('.js-single-result-area').show();
 
 
         })
@@ -1246,7 +1289,8 @@ function removeItemsByPlace(placeId) {
         .done(function (result) {
             console.log(result);
             if (result.itemsOutput.length === 0) {
-                displayError("No Items found");
+                //displayError("No Items found");
+                return
             } else {
 
                 $.each(result.itemsOutput, function (resultKey, resultValue) {
@@ -1771,8 +1815,6 @@ $('#itemsLookupForm').submit(function (event) {
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     populateSearchedItem(itemSearchText);
-    $('.items-result').show();
-    $('.js-single-result-area').show();
 });
 
 $('.delete-item-form').submit(function (event) {
@@ -1798,7 +1840,7 @@ $('.delete-item-form').submit(function (event) {
 
 $(document).on('submit', '.delete-place-form', function (event) {
     event.preventDefault();
-    alert("hi");
+    //alert("hi");
     let placeId = $(this).data('placeid');
     //console.log(itemId);
     deletePlace(placeId);
@@ -1813,10 +1855,9 @@ $(document).on('submit', '.move-place-form', function (event) {
     let placeId = $(this).data('placeid');
     let areaId = $(`.move-place-form[data-placeid=${placeId}] #move-area-selection option:selected`).data('areaid');
 
-    //let areaName = $(`.move-place-form[data-placeid=${placeId}] #move-area-selection option:selected`).text();
     let areaName = $(this).find('#move-area-selection option:selected').text();
     console.log(areaName);
-    //const placeName = $("#create-place-selection option:selected").text();
+
 
     //validate the input
     if (areaName == "Select..") {
