@@ -285,14 +285,16 @@ function showDeleteItemPopup(itemId) {
 
             buildTheHtmlOutput += `<h4 class="delete-item-heading">Deleting Item: ${result.itemName}</h4>`;
             buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button" data-itemid=${result._id}>Delete</button>
+<button role="button" type="submit" class="delete-item-form-button" data-itemid=${result._id}>Delete</button>
 <button role="button" class="cancel-button" data-itemid=${result._id}>Cancel</button>
 </fieldset>`;
             //console.log(buildTheHtmlOutput);
 
             //use the HTML output to show it in all items table
-            $(".items-page .delete-item-form").html(buildTheHtmlOutput);
-            $('.delete-item-form').data('itemid', result._id);
+            $(`.items-page .delete-item-form[data-itemid=${itemId}]`).html(buildTheHtmlOutput);
+            //$('.delete-item-form').data('itemid', result._id);
+            $(`.js-item-popup-list[data-itemid=${itemId}]`).show();
+            $(`.delete-item-popup[data-itemid=${itemId}]`).show();
 
         })
         //if the call is failing
@@ -353,10 +355,12 @@ function showMovePlacePopup(placeId, placeName) {
 function showMoveItemPopup(itemId, itemName) {
     //console.log(itemId, itemName);
     //console.log(buildTheHtmlOutput);
-    $(".items-page .move-item-form h4").text(`Moving Item: ${itemName}`);
-    $(".items-page .move-item-form .move-button").data('itemid', itemId);
-    $('.move-item-form').data('itemid', itemId);
+    $(`.items-page .move-item-form[data-itemid=${itemId}] h4`).text(`Moving Item: ${itemName}`);
+    //$(".items-page .move-item-form .move-button").data('itemid', itemId);
+    //$('.move-item-form').data('itemid', itemId);
     populateAreasList();
+    $(`.js-item-popup-list[data-itemid=${itemId}]`).show();
+    $(`.move-item-popup[data-itemid=${itemId}]`).show();
 }
 
 function showDeleteCategoryPopup(categoryId, categoryName) {
@@ -892,33 +896,33 @@ function populateSearchedItem(itemName) {
 
 <div class="area-select-container">
 <label for="move-area-selection">Area</label>
-<select id="move-area-selection" name="area-selection">
+<select id="move-area-selection" name="area-selection" data-itemid=${resultValue._id}>
 <option value="0">Select..</option>
 </select>
 </div>
 
 <div class="place-select-container">
 <label for="move-place-selection">Place</label>
-<select id="move-place-selection" name="place-selection">
+<select id="move-place-selection" name="place-selection" data-itemid=${resultValue._id}>
 <option value="0">Select..</option>
 <!--<option value="1">Moving Drawer/D4</option>
 <option value="2">Cupboard/C2</option>-->
 </select>
 </div>
 
-<button role="button" type="submit" class="move-button">Move</button>
+<button role="button" type="submit" class="move-button" data-itemid=${resultValue._id}>Move</button>
 
 </fieldset>
 </form>
 </div>
 
 <div class="delete-item-popup popup" data-itemid=${resultValue._id}>
-<form class="delete-item-form" data-itemid="">
+<form class="delete-item-form" data-itemid=${resultValue._id}>
 <i class="fas fa-times close-icon"></i>
 <h4 class="delete-item-heading">Deleting Item: Gift Card</h4>
 <fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button">Delete</button>
-<button role="button" class="delete-button">Cancel</button>
+<button role="button" type="submit" class="delete-item-form-button">Delete</button>
+<button role="button" class="cancel-button">Cancel</button>
 </fieldset>
 </form>
 </div>
@@ -1518,8 +1522,7 @@ $(document).on('click', '.move-item-button', function (event) {
     $('.create-item-popup').hide();
     $('.delete-item-popup').hide();
     showMoveItemPopup(itemId, itemName);
-    $('.js-item-popup-list').show();
-    $('.move-item-popup').show();
+
 });
 
 $(document).on('click', '.delete-item-button', function (event) {
@@ -1531,11 +1534,9 @@ $(document).on('click', '.delete-item-button', function (event) {
     $('.create-item-popup').hide();
     $('.move-item-popup').hide();
     showDeleteItemPopup(itemId);
-    $('.js-item-popup-list').show();
-    $('.delete-item-popup').show();
 });
 
-$(document).on('click', '.delete-item-button', function (event) {
+/*$(document).on('click', '.delete-item-button', function (event) {
     event.preventDefault();
     // displayError("hi");
     $('.js-item-popup-list').hide();
@@ -1544,7 +1545,7 @@ $(document).on('click', '.delete-item-button', function (event) {
     $('.move-item-popup').hide();
     $('.js-item-popup-list').show();
     $('.delete-item-popup').show();
-});
+});*/
 
 $(document).on('click', '.places-menu .create-new-button', function (event) {
     event.preventDefault();
@@ -1817,7 +1818,7 @@ $('#itemsLookupForm').submit(function (event) {
     populateSearchedItem(itemSearchText);
 });
 
-$('.delete-item-form').submit(function (event) {
+$(document).on('submit', '.delete-item-form', function (event) {
 
     event.preventDefault();
     let itemId = $(this).data('itemid');
@@ -1897,14 +1898,19 @@ $(document).on('submit', '.move-place-form', function (event) {
 
 });
 
-$('.move-item-form').submit(function (event) {
+$(document).on('submit', '.move-item-form', function (event) {
     event.preventDefault();
     //take the input from the user
     let itemId = $(this).data('itemid');
-    let placeId = $(".move-item-form #move-place-selection option:selected").data('itemid');
-    let placeName = $(".move-item-form #move-place-selection option:selected").text();
-    let areaId = $(".move-item-form #move-area-selection option:selected").data('areaid');
-    let areaName = $(".move-item-form #move-area-selection option:selected").text();
+    console.log(itemId);
+    let placeId = $(this).find("#move-place-selection option:selected").data('placeid');
+    console.log(placeId);
+    let placeName = $(this).find("#move-place-selection option:selected").text();
+    console.log(placeName);
+    let areaId = $(this).find("#move-area-selection option:selected").data('areaid');
+    console.log(areaId);
+    let areaName = $(this).find("#move-area-selection option:selected").text();
+    console.log(areaName);
 
     //validate the input
     if (areaName == "Select.." || areaName == "" || areaName == undefined) {
