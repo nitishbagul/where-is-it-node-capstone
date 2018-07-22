@@ -200,7 +200,7 @@ function deletePlace(placeId) {
 
 //Delete Area
 function deleteArea(areaId) {
-    console.log(areaId);
+    //console.log(areaId);
     event.preventDefault();
 
     //make the api call using the payload above
@@ -309,7 +309,7 @@ function showDeleteAreaPopup(areaId, areaName) {
 
     buildTheHtmlOutput += `<h4>Deleting Area: ${areaName}</h4>`;
     buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button" data-areaid=${areaId}>Delete</button>
+<button role="button" type="submit" class="delete-area-button" data-areaid=${areaId}>Delete</button>
 <button role="button" class="cancel-button" data-areaid=${areaId}>Cancel</button>
 </fieldset>`;
     //console.log(buildTheHtmlOutput);
@@ -364,7 +364,7 @@ function showDeleteCategoryPopup(categoryId, categoryName) {
 
     buildTheHtmlOutput += `<h4>Deleting Category: ${categoryName}</h4>`;
     buildTheHtmlOutput += `<fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button" data-categoryid=${categoryId}>Delete</button>
+<button role="button" type="submit" class="delete-category-button" data-categoryid=${categoryId}>Delete</button>
 <button role="button" class="cancel-button" data-categoryid=${categoryId}>Cancel</button>
 </fieldset>`;
     //console.log(buildTheHtmlOutput);
@@ -639,12 +639,6 @@ function populateCategories() {
 
 <div class="delete-category-popup popup" data-categoryid=${resultValue._id}>
 <form class="delete-category-form" data-categoryid=${resultValue._id}>
-<i class="fas fa-times close-icon"></i>
-<h4>Deleting Category: Travel</h4>
-<fieldset name="delete-info" class="delete-info">
-<button role="button" type="submit" class="delete-button">Delete</button>
-<button role="button" class="delete-button">Cancel</button>
-</fieldset>
 </form>
 </div>
 
@@ -715,7 +709,7 @@ function populatePlaces() {
                     buildTheHtmlOutput += `<div class="js-place-popup-list" data-placeid=${resultValue._id}>
 <div class="move-place-popup popup" data-placeid=${resultValue._id}>
 <form class="move-place-form" data-placeid=${resultValue._id}>
-<h4>Moving Place: Main Drawer</h4>
+<h4>Moving Place:</h4>
 <fieldset name="place-info" class="place-info">
 
 <div class="area-select-container">
@@ -727,7 +721,7 @@ function populatePlaces() {
 </select>
 </div>
 
-<button role="button" type="submit" class="move-button" data-placeid=${resultValue._id}>Move</button>
+<button role="button" type="submit" class="move-place-button" data-placeid=${resultValue._id}>Move</button>
 
 </fieldset>
 </form>
@@ -938,7 +932,52 @@ function populateSearchedPlace(placeName) {
 <p>Current Area: ${resultValue.areaName}</p>
 <button role="button" class="move-button" data-placeid=${resultValue._id}>Move</button>
 <button role="button" class="all-items-button" data-placeid=${resultValue._id}>Show Items</button>
-<button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>
+<button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>`;
+                    buildTheHtmlOutput += `<div class="js-place-popup-list" data-placeid=${resultValue._id}>
+<div class="move-place-popup popup" data-placeid=${resultValue._id}>
+<form class="move-place-form" data-placeid=${resultValue._id}>
+<h4>Moving Place:</h4>
+<fieldset name="place-info" class="place-info">
+
+<div class="area-select-container">
+<label for="move-area-selection">Area</label>
+<select id="move-area-selection" name="area-selection">
+<option value="0">Select..</option>
+<option value="1">Garage</option>
+<option value="2">Bedroom</option>
+</select>
+</div>
+
+<button role="button" type="submit" class="move-place-button" data-placeid=${resultValue._id}>Move</button>
+
+</fieldset>
+</form>
+</div>
+
+<div class="delete-place-popup popup" data-placeid=${resultValue._id}>
+<form class="delete-place-form" data-placeid=${resultValue._id}>
+<i class="fas fa-times close-icon"></i>
+<h4>Deleting Place: Main Drawer</h4>
+<fieldset name="delete-info" class="delete-info">
+<button role="button" type="submit" class="delete-button">Delete</button>
+<button role="button" class="delete-button">Cancel</button>
+</fieldset>
+</form>
+</div>
+
+<div class="show-items-popup popup" data-placeid=${resultValue._id}>
+
+<i class="fas fa-times close-icon"></i>
+<h4>Showing Items - Main Cupboard</h4>
+<hr>
+<ul>
+
+</ul>
+
+</div>
+
+</div>
+
 </div>`;
                     buildTheHtmlOutput += `</li>`;
                 });
@@ -1767,31 +1806,16 @@ $(document).on('submit', '.delete-place-form', function (event) {
     $('.places-page .js-single-result-area').show();
 });
 
-/*$('.delete-place-form').submit(function (event) {
 
-    event.preventDefault();
-    alert("hi");
-    let placeId = $(this).data('placeid');
-    //console.log(itemId);
-    deletePlace(placeId);
-    $('.places-result').show();
-    $('.places-page .js-single-result-area').show();
-});*/
-
-$('.move-place-form').submit(function (event) {
-    event.preventDefault();
-    /*let placeId = $(this).data('placeid');
-    let areaId = $(".move-place-form #move-area-selection option:selected").data('areaid');
-    let areaName = $(".move-place-form #move-area-selection option:selected").text();
-    //console.log(itemId);
-    movePlace(placeId, areaId, areaName);
-    //$('.places-result').show();
-    //$('.places-page .js-single-result-area').show();*/
+$(document).on('submit', '.move-place-form', function (event) {
     event.preventDefault();
     //take the input from the user
     let placeId = $(this).data('placeid');
-    let areaId = $(".move-place-form #move-area-selection option:selected").data('areaid');
-    let areaName = $(".move-place-form #move-area-selection option:selected").text();
+    let areaId = $(`.move-place-form[data-placeid=${placeId}] #move-area-selection option:selected`).data('areaid');
+
+    //let areaName = $(`.move-place-form[data-placeid=${placeId}] #move-area-selection option:selected`).text();
+    let areaName = $(this).find('#move-area-selection option:selected').text();
+    console.log(areaName);
     //const placeName = $("#create-place-selection option:selected").text();
 
     //validate the input
@@ -1881,18 +1905,15 @@ $('.move-item-form').submit(function (event) {
 
 });
 
-$('.delete-area-form').submit(function (event) {
+$(document).on('submit', '.delete-area-form', function (event) {
 
-    alert("hi");
     event.preventDefault();
     let areaId = $(this).data('areaid');
     console.log(areaId);
     deleteArea(areaId);
-    //$('.items-result').show();
-    //$('.js-single-result-area').show();
 });
 
-$('.delete-category-form').submit(function (event) {
+$(document).on('submit', '.delete-category-form', function (event) {
 
     event.preventDefault();
     let categoryId = $(this).data('categoryid');
