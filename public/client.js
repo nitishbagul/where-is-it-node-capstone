@@ -419,8 +419,8 @@ function populateAreasList() {
             });
             //use the HTML output to show it in all items table
             $(".items-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
-            $(".places-page .area-select-container #create-area-selection").html(buildTheHtmlOutput);
-            $(".places-page .area-select-container #move-area-selection").html(buildTheHtmlOutput);
+            $(".places-page .area-select-container #place-create-area-selection").html(buildTheHtmlOutput);
+            $(".places-page .area-select-container #place-move-area-selection").html(buildTheHtmlOutput);
             $(".items-page .area-select-container #move-area-selection").html(buildTheHtmlOutput);
 
         })
@@ -2143,8 +2143,8 @@ $('.create-place-form').submit(function (event) {
     event.preventDefault();
     //take the input from the user
     const placeName = $("#place_name").val();
-    const areaName = $(".places-page #create-area-selection option:selected").text();
-    const areaId = $(".places-page #create-area-selection option:selected").data('areaid');
+    const areaName = $(".places-page #place-create-area-selection option:selected").text();
+    const areaId = $(".places-page #place-create-area-selection option:selected").data('areaid');
     const loggedInUserName = $('.places-page .username').text();
     const loggedInUserId = $('#loggedInUserId').val();
     // console.log(itemName + areaName + placeName + categoryName);
@@ -2199,6 +2199,12 @@ $(document).on('change', '.create-item-form #create-area-selection', function (e
     populatePlacesList(selectedAreaId);
 
 });
+
+/*$(document).on('change', '.create-place-form #place-create-area-selection', function (event) {
+    var selectedAreaId = $('#place-create-area-selection option:selected').data('areaid');
+    populatePlacesList(selectedAreaId);
+
+});*/
 
 $(document).on('change', '.move-item-form #move-area-selection', function (event) {
     var selectedAreaId = $('#move-area-selection option:selected').data('areaid');
