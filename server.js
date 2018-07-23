@@ -1,5 +1,4 @@
 const User = require('./models/user');
-const Entry = require('./models/entry');
 const Items = require('./models/items');
 const Places = require('./models/places');
 const Areas = require('./models/areas');

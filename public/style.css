@@ -669,7 +669,7 @@ form span {
     border: none;
     outline: none;
     font-size: 18px;
-    background-color: #CFA671;
+    background-color: #FFE19E;
     color: darkred;
 }
 
@@ -688,7 +688,7 @@ form span {
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #FFE19E;
+    background-color: lightgoldenrodyellow;
 }
 
 .collapse-content * {
