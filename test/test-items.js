@@ -85,10 +85,8 @@ describe('where-is-it-node-capstone', function () {
             return chai.request(app)
                 .get('/items/get/all/1234')
                 .then(function (_res) {
-                    console.log(_res.body);
                     res = _res;
                     expect(res).to.have.status(200);
-                    console.log(res.body.itemsOutput);
                     return Items.count();
                 })
                 .then(function (count) {
@@ -118,8 +116,6 @@ describe('where-is-it-node-capstone', function () {
                 })
 
                 .then(function (item) {
-                    console.log(item);
-                    console.log(resItem);
                     expect(resItem.itemName).to.equal(item.itemName);
                     expect(resItem.areaName).to.equal(item.areaName);
                     expect(resItem.areaId).to.equal(item.areaId);
@@ -134,14 +130,11 @@ describe('where-is-it-node-capstone', function () {
 
         it('should add a new item', function () {
             const newItem = generateItemsData();
-            console.log(newItem);
 
             return chai.request(app)
                 .post('/items/create')
                 .send(newItem)
                 .then(function (res) {
-                    console.log("Actual Response");
-                    console.log(res);
                     expect(res).to.have.status(200);
                     expect(res).to.be.json;
                     expect(res.body).to.be.a('object');
@@ -158,8 +151,6 @@ describe('where-is-it-node-capstone', function () {
                     return Items.findById(res.body._id);
                 })
                 .then(function (item) {
-                    console.log(item);
-                    console.log(newItem);
                     expect(item.itemName).to.equal(newItem.itemName);
                     expect(item.areaName).to.equal(newItem.areaName);
                     expect(item.areaId).to.equal(newItem.areaId);
@@ -170,5 +161,62 @@ describe('where-is-it-node-capstone', function () {
                 });
         });
 
+    });
+
+    describe('PUT endpoint', function () {
+
+        it('should update item fields you send over', function () {
+            const updateItem = {
+                placeName: 'fofoplace',
+                placeId: 'fofoplaceid',
+                areaName: 'fofoarea',
+                areaId: 'fofoareaid'
+            };
+
+            return Items
+                .findOne()
+                .then(function (item) {
+                    updateItem.id = item._id;
+
+                    // make request then inspect it to make sure it reflects
+                    // data we sent
+                    return chai.request(app)
+                        .put(`/items/${item._id}`)
+                        .send(updateItem);
+                })
+                .then(function (res) {
+                    expect(res).to.have.status(204);
+
+                    return Items.findById(updateItem.id);
+                })
+                .then(function (itemElement) {
+                    expect(itemElement.placeName).to.equal(updateItem.placeName);
+                    expect(itemElement.placeId).to.equal(updateItem.placeId);
+                    expect(itemElement.areaName).to.equal(updateItem.areaName);
+                    expect(itemElement.areaId).to.equal(updateItem.areaId);
+                });
+        });
+    });
+
+    describe('DELETE endpoint', function () {
+
+        it('delete an item by id', function () {
+            let anyItem;
+
+            return Items
+                .findOne()
+                .then(function (_resItem) {
+                    anyItem = _resItem;
+                    return chai.request(app).delete(`/item/${anyItem._id}`);
+                })
+                .then(function (res) {
+                    expect(res).to.have.status(204);
+                    return Items.findById(anyItem._id);
+                })
+                .then(function (_resItem) {
+                    expect(_resItem).to.be.null;
+                });
+
+        });
     });
 });
