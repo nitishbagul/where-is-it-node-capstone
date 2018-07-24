@@ -72,7 +72,7 @@ describe('where-is-it-node-capstone', function () {
 
     afterEach(function () {
         return tearDownDb();
-    });
+    });*
 
     after(function () {
         return closeServer();
