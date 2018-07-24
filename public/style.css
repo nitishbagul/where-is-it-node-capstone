@@ -154,8 +154,20 @@ button {
     display: inline-block;
 }
 
-/*.log-in-container,
-.register-container*/
+.log-in-container,
+.register-container {
+    width: 60%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+}
 
 .all-forms-container {
     width: 60%;
@@ -172,15 +184,21 @@ button {
 }
 
 .all-forms h2,
-.all-forms h4 {
+.all-forms h4,
+.login-form h2,
+.login-form h4,
+.register-form h2,
+.register-form h4 {
     margin: auto;
     text-align: center;
-    font-size: 30px;
+    font-size: 23px;
     font-weight: 200;
     color: #525654;
 }
 
-.all-forms fieldset {
+.all-forms fieldset,
+.login-form fieldset,
+.register-form fieldset {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -192,8 +210,8 @@ button {
 label {
     margin-bottom: 10px;
     font-weight: 500;
-/*
-    padding-left: 12px;*/
+    font-size: 18px;
+    /* padding-left: 12px; */
 }
 
 /*#loginUserName,
@@ -202,7 +220,9 @@ label {
 #registerUserName,
 #registerPassword*/
 
-.all-forms fieldset input {
+.all-forms fieldset input,
+.login-form fieldset input,
+.register-form fieldset input {
     display: block;
     margin-bottom: 15px;
     width: 100%;
@@ -219,9 +239,8 @@ label {
     height: 55px;
 }
 
-/*.log-in-button,
-.register-button*/
-
+.log-in-button,
+.register-button,
 .all-forms-container button {
     margin-top: 15px;
     width: 100%;
@@ -539,7 +558,7 @@ form span {
 }
 
 .popup {
-    width: 30%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid brown;
@@ -645,7 +664,6 @@ form span {
 
 .places-list-all li,
 .areas-list-all li {
-    color: #551700;
     font-size: 18px;
     border-radius: 3px;
     font-weight: 500px;
@@ -760,14 +778,34 @@ form span {
         color: red;
     }
     .feature-list button {
-        width: 23%;
+        width: 32%;
+    }
+    .log-in-container,
+    .register-container {
+        width: 75%;
+
+    }
+    .collapse-content .all-forms-container {
+        width: 90%;
+    }
+    .all-forms h2,
+    .all-forms h4,
+    .login-form h2,
+    .login-form h4,
+    .register-form h2,
+    .register-form h4 {
+        font-size: 22px;
+
     }
     .items-menu-buttons {
         padding-top: 5px;
         padding-bottom: 5px;
         padding-right: 15px;
     }
-    .items-menu-buttons button {
+    .items-menu-buttons button,
+    .places-menu-buttons button,
+    .areas-menu-buttons button,
+    .categories-menu-buttons button {
         width: 100%;
         height: 50px;
         margin-bottom: 5px;
@@ -796,6 +834,12 @@ form span {
     .create-area-popup input,
     .create-category-popup input {
         width: 50%;
+    }
+
+    .places-list-all,
+    .areas-list-all,
+    .categories-list-all {
+        width: 70%;
     }
 
     .popup {
@@ -865,9 +909,31 @@ form span {
     registerPassword {
         width: 100%;
     }
+    .all-forms h2,
+    .all-forms h4,
+    .login-form h2,
+    .login-form h4,
+    .register-form h2,
+    .register-form h4 {
+
+        font-size: 21px;
+
+    }
+
+    .all-forms fieldset {
+
+        text-align: center;
+
+    }
+
     .log-in-container button,
     .register-container button {
         width: 100%;
+    }
+    .log-in-container,
+    .register-container,
+    .all-forms-container {
+        width: 90%;
     }
     .main-window {
         width: 100%;
@@ -883,13 +949,12 @@ form span {
     }
 
 
-  /*  .collapse-content button {
+    /*  .collapse-content button {
       display: block;
       margin-left: auto;
       margin-right: auto;
       width: 70%;
   }*/
-
     .about-page p {
         font-size: 16px;
 

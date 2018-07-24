@@ -2108,7 +2108,7 @@ $('.create-item-form').submit(function (event) {
     } else if (placeName == "Select..") {
         displayError('Please add a Place');
     } else if (categoryName == "Select..") {
-        displayError('Please add a Place');
+        displayError('Please add a Category');
     }
     //if the input is valid
     else {
