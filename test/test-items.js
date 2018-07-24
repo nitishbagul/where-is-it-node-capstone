@@ -95,7 +95,7 @@ describe('where-is-it-node-capstone', function () {
         });
 
         it('should return all the items with right fields', function () {
-            let resBlogPost;
+            //let resBlogPost;
             return chai.request(app)
                 .get('/items/get/all/1234')
                 .then(function (res) {
