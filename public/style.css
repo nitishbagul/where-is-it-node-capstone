@@ -188,9 +188,12 @@ button {
     width: 100%;
 }
 
+
 label {
     margin-bottom: 10px;
     font-weight: 500;
+/*
+    padding-left: 12px;*/
 }
 
 /*#loginUserName,
@@ -696,12 +699,12 @@ form span {
     margin-bottom: 10px;
 }
 
-.collapse-content button {
+/*.collapse-content button {
     width: 30%;
     height: 40px;
     background-color: #815849;
     color: white;
-}
+}*/
 
 .collapse-content p {
     color: #3C2109;
@@ -880,12 +883,12 @@ form span {
     }
 
 
-    .collapse-content button {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 70%;
-    }
+  /*  .collapse-content button {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 70%;
+  }*/
 
     .about-page p {
         font-size: 16px;

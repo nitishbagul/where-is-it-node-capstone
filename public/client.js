@@ -15,6 +15,7 @@ function executeCollapsible() {
     for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function () {
             $('.popup').hide();
+            $('.all-forms-container').hide();
             this.classList.toggle("active");
             var content = this.nextElementSibling;
             if (content.style.display === "block") {
@@ -617,8 +618,8 @@ function populateAreas() {
 <button role="button" class="delete-button" data-areaid=${resultValue._id}>Delete</button>`;
                     buildTheHtmlOutput += `<div class="js-areas-popup-list" data-areaid=${resultValue._id}>
 
-<div class="delete-area-popup popup" data-areaid=${resultValue._id}>
-<form class="delete-area-form" data-areaid=${resultValue._id}>
+<div class="delete-area-popup all-forms-container" data-areaid=${resultValue._id}>
+<form class="delete-area-form all-forms" data-areaid=${resultValue._id}>
 </form>
 </div>
 
@@ -689,8 +690,8 @@ function populateCategories() {
                     buildTheHtmlOutput += `<div class="js-categories-popup-list" data-categoryentry=${resultValue._id}>
 
 
-<div class="delete-category-popup popup" data-categoryid=${resultValue._id}>
-<form class="delete-category-form" data-categoryid=${resultValue._id}>
+<div class="delete-category-popup all-forms-container" data-categoryid=${resultValue._id}>
+<form class="delete-category-form all-forms" data-categoryid=${resultValue._id}>
 </form>
 </div>
 
@@ -759,8 +760,8 @@ function populatePlaces() {
 <button role="button" class="all-items-button" data-placeid=${resultValue._id}>Show Items</button>
 <button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>`;
                     buildTheHtmlOutput += `<div class="js-place-popup-list" data-placeid=${resultValue._id}>
-<div class="move-place-popup popup" data-placeid=${resultValue._id}>
-<form class="move-place-form" data-placeid=${resultValue._id}>
+<div class="move-place-popup all-forms-container" data-placeid=${resultValue._id}>
+<form class="move-place-form all-forms" data-placeid=${resultValue._id}>
 <h4>Moving Place:</h4>
 <fieldset name="place-info" class="place-info">
 
@@ -779,8 +780,8 @@ function populatePlaces() {
 </form>
 </div>
 
-<div class="delete-place-popup popup" data-placeid=${resultValue._id}>
-<form class="delete-place-form" data-placeid=${resultValue._id}>
+<div class="delete-place-popup all-forms-container" data-placeid=${resultValue._id}>
+<form class="delete-place-form all-forms" data-placeid=${resultValue._id}>
 <i class="fas fa-times close-icon"></i>
 <h4>Deleting Place: Main Drawer</h4>
 <fieldset name="delete-info" class="delete-info">
@@ -936,8 +937,8 @@ function populateSearchedItem(itemName) {
 <button class="delete-item-button" data-itemid=${resultValue._id}>Delete</button>
 </div>`;
                 buildTheHtmlOutput += `<div class="js-item-popup-list" data-itemid=${resultValue._id}>
-<div class="move-item-popup popup" data-itemid=${resultValue._id}>
-<form class="move-item-form" data-itemid=${resultValue._id}>
+<div class="move-item-popup all-forms-container" data-itemid=${resultValue._id}>
+<form class="move-item-form all-forms" data-itemid=${resultValue._id}>
 <h4>Moving Item</h4>
 <fieldset name="item-info" class="item-info">
 
@@ -963,9 +964,8 @@ function populateSearchedItem(itemName) {
 </form>
 </div>
 
-<div class="delete-item-popup popup" data-itemid=${resultValue._id}>
-<form class="delete-item-form" data-itemid=${resultValue._id}>
-<i class="fas fa-times close-icon"></i>
+<div class="delete-item-popup all-forms-container" data-itemid=${resultValue._id}>
+<form class="delete-item-form all-forms" data-itemid=${resultValue._id}>
 <h4 class="delete-item-heading">Deleting Item: Gift Card</h4>
 <fieldset name="delete-info" class="delete-info">
 <button role="button" type="submit" class="delete-item-form-button">Delete</button>
@@ -1027,8 +1027,8 @@ function populateSearchedPlace(placeName) {
 <button role="button" class="all-items-button" data-placeid=${resultValue._id}>Show Items</button>
 <button role="button" class="delete-button" data-placeid=${resultValue._id}>Delete</button>`;
                     buildTheHtmlOutput += `<div class="js-place-popup-list" data-placeid=${resultValue._id}>
-<div class="move-place-popup popup" data-placeid=${resultValue._id}>
-<form class="move-place-form" data-placeid=${resultValue._id}>
+<div class="move-place-popup all-forms-container" data-placeid=${resultValue._id}>
+<form class="move-place-form all-forms" data-placeid=${resultValue._id}>
 <h4>Moving Place:</h4>
 <fieldset name="place-info" class="place-info">
 
@@ -1047,8 +1047,8 @@ function populateSearchedPlace(placeName) {
 </form>
 </div>
 
-<div class="delete-place-popup popup" data-placeid=${resultValue._id}>
-<form class="delete-place-form" data-placeid=${resultValue._id}>
+<div class="delete-place-popup all-forms-container" data-placeid=${resultValue._id}>
+<form class="delete-place-form all-forms" data-placeid=${resultValue._id}>
 <i class="fas fa-times close-icon"></i>
 <h4>Deleting Place: Main Drawer</h4>
 <fieldset name="delete-info" class="delete-info">
