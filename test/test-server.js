@@ -1,4 +1,4 @@
-const {
+/*const {
     app,
     runServer,
     closeServer
@@ -8,10 +8,10 @@ var chai = require('chai');
 
 var chaiHttp = require('chai-http');
 
-var entry = require('../models/items.js');
-var entry = require('../models/places.js');
-var entry = require('../models/areas.js');
-var entry = require('../models/categories.js');
+var items = require('../models/items.js');
+var places = require('../models/places.js');
+var areas = require('../models/areas.js');
+var categories = require('../models/categories.js');
 
 var should = chai.should();
 
@@ -44,33 +44,21 @@ describe('where-is-it-node-capstone', function () {
             }));
     });
 
-/*    it('Should Get All Item entries', function () {
 
-        chai.request(app)
-            .get('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
-            .then(function (res) {
-                res.should.have.status(201);
-                done();
-            })
-            .catch(err => console.log({
-                err
-            }));
-    });*/
-
-   /* it('Should Update an item', function () {
+    it('Should Update an item', function () {
         chai.request(app)
             .put('/items/:id')
             .send({
-            itemName: "autotest-item",
-            placeName: "autotest-place",
-            placeId: "place123-autotest",
-            areaName: "autotest-area",
-            areaId: "area123-autotest",
-            categoryName: "autotest-category",
-            categoryId: "category123-autotest",
-            loggedInUserName: "user-autotest",
-            loggedInUserId: "user@autotest.com"
-        })
+                itemName: "autotest-item",
+                placeName: "autotest-place",
+                placeId: "place123-autotest",
+                areaName: "autotest-area",
+                areaId: "area123-autotest",
+                categoryName: "autotest-category",
+                categoryId: "category123-autotest",
+                loggedInUserName: "user-autotest",
+                loggedInUserId: "user@autotest.com"
+            })
             .then(function (res) {
                 res.should.have.status(201);
                 done();
@@ -78,7 +66,7 @@ describe('where-is-it-node-capstone', function () {
             .catch(err => console.log({
                 err
             }));
-    });*/
+    });
 
     it('should add a place on POST', function () {
         chai.request(app)
@@ -140,42 +128,55 @@ describe('where-is-it-node-capstone', function () {
             .catch(err => console.log({
                 err
             }));
+    });*/
+/* it('Should Update an entry', function () {
+     chai.request(app)
+         .put('/entry/:id') //<-------????? Put request to '/entry/:id'
+         .then(function (res) {
+             res.should.have.status(201);
+             done();
+         })
+         .catch(err => console.log({
+             err
+         }));
+ });
+ it('Should Delete an entry', function () {
+
+     chai.request(app)
+         .delete('/entry/:id')
+         .then(function (res) {
+             res.should.have.status(201);
+             done();
+         })
+         .catch(err => console.log({
+             err
+         }));
+
+ });
+ it('Should Get All Users entries', function () {
+
+     chai.request(app)
+         .get('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
+         .then(function (res) {
+             res.should.have.status(201);
+             done();
+         })
+         .catch(err => console.log({
+             err
+         }));
+ });*/
+
+/*    it('Should Get All Item entries', function () {
+
+        chai.request(app)
+            .get('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
+            .then(function (res) {
+                res.should.have.status(201);
+                done();
+            })
+            .catch(err => console.log({
+                err
+            }));
     });
-    /* it('Should Update an entry', function () {
-         chai.request(app)
-             .put('/entry/:id') //<-------????? Put request to '/entry/:id'
-             .then(function (res) {
-                 res.should.have.status(201);
-                 done();
-             })
-             .catch(err => console.log({
-                 err
-             }));
-     });
-     it('Should Delete an entry', function () {
 
-         chai.request(app)
-             .delete('/entry/:id')
-             .then(function (res) {
-                 res.should.have.status(201);
-                 done();
-             })
-             .catch(err => console.log({
-                 err
-             }));
-
-     });
-     it('Should Get All Users entries', function () {
-
-         chai.request(app)
-             .get('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
-             .then(function (res) {
-                 res.should.have.status(201);
-                 done();
-             })
-             .catch(err => console.log({
-                 err
-             }));
-     });*/
-
-});
+});*/
