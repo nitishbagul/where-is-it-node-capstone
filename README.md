@@ -6,13 +6,13 @@ The WhereIsIt app allowes users to create a list of items and move them to a pla
 
 Home Page View | Login Page View
 :-------------------------:|:-------------------------:
-![Home Page View](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Home Page View.png)  |  ![Login Page View](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Login Page View.png)
+![Home Page View](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/home-page-view.png)  |  ![Login Page View](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/login-page-view.png)
 About Page | Items Page
-![About Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/About Page.png) | ![Items Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Items Page.png)
+![About Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/about-page.png) | ![Items Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/items-page.png)
 Create Item  | Places Page
-![Create Item](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Create Item.png) | ![Places Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Places Page.png)
+![Create Item](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/create-item.png) | ![Places Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/places-page.png)
 Areas Page | Categories Page
-![Areas Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Areas Page.png) | ![Categories Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Categories Page.png)
+![Areas Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/areas-page.png) | ![Categories Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/categories-page.png)
 
 ## Use Cases
 1. User should be able to create a list of items that they want to track.
