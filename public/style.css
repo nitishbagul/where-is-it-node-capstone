@@ -211,14 +211,8 @@ label {
     margin-bottom: 10px;
     font-weight: 500;
     font-size: 18px;
-    /* padding-left: 12px; */
 }
 
-/*#loginUserName,
-#loginPassword,
-#registerEmail,
-#registerUserName,
-#registerPassword*/
 
 .all-forms fieldset input,
 .login-form fieldset input,
@@ -291,11 +285,7 @@ hr {
 
 .topnav {
     overflow: hidden;
-    /*
-    background-color: rgb(92, 126, 193);
-*/
     background-color: saddlebrown;
-
     line-height: 90px;
     width: 100%;
 }
@@ -342,23 +332,16 @@ hr {
 }
 
 .sidenav {
-    /* z-index: 1000; */
     background-color: #90A89B;
-    /* padding: 10px 10px; */
     text-align: center;
-    /*height: 50px;*/
     font-size: 0;
 }
 
 .sidenav button {
     display: inline-block;
     background-color: #CFA665;
-    /* background-color: rgb(92, 112, 200);*/
-    /*
-    color: brown;*/
     color: black;
     height: 50px;
-    /* padding: 10px 15px; */
     width: 20%;
     margin: 0;
     border-radius: 0;
@@ -369,33 +352,19 @@ hr {
     background-color: #AD8557 !important;
 }
 
-/*.sidenav button:hover {
-    background-color: #AD8424;
-}*/
-
 .content-area,
 .content-area-places,
 .content-area-areas,
 .content-area-categories {
-    /*background-color: rgb(144, 167, 213);*/
     background-color: #f2cb6f;
     padding-bottom: 80px;
-    /*height: 500vh;*/
 }
-
-/*Items Page Properties*/
-
-/*main {
-    margin-top: 20px;
-}
-*/
 
 .entity-heading {
     display: block;
     text-align: center;
     font-size: 42px;
     color: #E63022;
-    /*color: lavenderblush;*/
 }
 
 .items-menu,
@@ -700,11 +669,6 @@ form span {
     list-style: none;
 }
 
-/*.active,
-.collapse-content:hover {
-    background-color: #52b5dd;
-}*/
-
 .collapse-content {
     padding: 0 18px;
     display: none;
@@ -716,13 +680,6 @@ form span {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-/*.collapse-content button {
-    width: 30%;
-    height: 40px;
-    background-color: #815849;
-    color: white;
-}*/
 
 .collapse-content p {
     color: #3C2109;
@@ -968,26 +925,11 @@ footer a:hover {
         border-bottom: brown;
     }
 
-
-    /*  .collapse-content button {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 70%;
-  }*/
     .about-page p {
         font-size: 16px;
 
     }
 
-    .content-area,
-    .content-area-places,
-    .content-area-areas,
-    .content-area-categories {
-
-        /*
-        height: 500vh;*/
-    }
 }
 
 

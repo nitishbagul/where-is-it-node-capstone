@@ -387,7 +387,6 @@ function showDeletePlacePopup(placeId, placeName) {
 
     //use the HTML output to show it in all items table
     $(`.places-page .delete-place-form[data-placeid=${placeId}]`).html(buildTheHtmlOutput);
-    //$('.delete-place-form').data('placeid', placeId);
     $(`.js-place-popup-list[data-placeid=${placeId}]`).show();
     $(`.delete-place-popup[data-placeid=${placeId}]`).show();
 
@@ -395,19 +394,14 @@ function showDeletePlacePopup(placeId, placeName) {
 
 function showMovePlacePopup(placeId, placeName) {
     $(`.places-page .move-place-form[data-placeid=${placeId}] h4`).text(`Moving Place: ${placeName}`);
-    //$(".places-page .move-place-form .move-button").data('placeid', placeId);
-    //$('.move-place-form').data('placeid', placeId);
     populateAreasList();
     $(`.js-place-popup-list[data-placeid=${placeId}]`).show();
     $(`.move-place-popup[data-placeid=${placeId}]`).show();
 }
 
 function showMoveItemPopup(itemId, itemName) {
-    //console.log(itemId, itemName);
     //console.log(buildTheHtmlOutput);
     $(`.items-page .move-item-form[data-itemid=${itemId}] h4`).text(`Moving Item: ${itemName}`);
-    //$(".items-page .move-item-form .move-button").data('itemid', itemId);
-    //$('.move-item-form').data('itemid', itemId);
     populateAreasList();
     $(`.js-item-popup-list[data-itemid=${itemId}]`).show();
     $(`.move-item-popup[data-itemid=${itemId}]`).show();
@@ -426,7 +420,6 @@ function showDeleteCategoryPopup(categoryId, categoryName) {
     $(`.categories-page .delete-category-form[data-categoryid=${categoryId}]`).html(buildTheHtmlOutput);
     $(`.js-categories-popup-list[data-categoryentry=${categoryId}]`).show();
     $(`.delete-category-popup[data-categoryid=${categoryId}]`).show();
-    //$('.delete-category-form').data('categoryid', categoryId);
 
 }
 
@@ -440,7 +433,6 @@ function populateAreasList() {
     const UserObject = {
         user: username
     };
-    //console.log(UserObject);
     //make the api call using the payload above
     $.ajax({
             type: 'GET',
@@ -1165,7 +1157,6 @@ function showItemsByCategory(categoryId) {
                 buildTheHtmlOutput += `</ul>`;
                 //use the HTML output to show it in all items table
                 $(".categories-page .js-categories-popup-list .show-items-popup").html(buildTheHtmlOutput);
-                //$('.js-categories-popup-list').show();
                 $(`.js-categories-popup-list[data-categoryentry=${categoryId}]`).show();
                 $('.show-items-popup').show();
             }
@@ -1338,7 +1329,8 @@ function removeItemsByPlace(placeId) {
                 $.each(result.itemsOutput, function (resultKey, resultValue) {
                     deleteItemElements({
                         itemId: resultValue._id,
-                        placeId: placeId
+                        placeId: placeId,
+                        areaId: resultValue.areaId
                     });
                 });
 
@@ -1504,13 +1496,8 @@ $(document).on('click', '.show-registration-container', function (event) {
 
 $(document).on('click', '.about-button', function (event) {
     event.preventDefault();
-    //this.style.backgroundColor = "#AD8424";
-    //displayError("hi");
     $('main').hide();
     $('.about-page').show();
-    /*$("body").css({
-    "background": ""
-});*/
     $("body").css({
         "background": "#f2cb6f"
     });
@@ -1526,19 +1513,10 @@ $(document).on('click', '.about-button', function (event) {
 
 $(document).on('click', '.my-items-button', function (event) {
     event.preventDefault();
-    // this.style.backgroundColor = "#AD8424";
-    //displayError("hi");
     $('main').hide();
     $('.items-page .items-result').hide();
     $('.items-page .js-item-popup-list').hide();
-    // $('main').hide();
-    //$('main').hide();
-
     $('.items-page').show();
-    /* $('body').removeAttr('background');
- $("body").css({
-     "background": ""
- });*/
     $("body").css({
         "background": "#f2cb6f"
     });
@@ -1551,12 +1529,9 @@ $(document).on('click', '.my-items-button', function (event) {
 
 $(document).on('click', '.my-places-button', function (event) {
     event.preventDefault();
-    //this.style.backgroundColor = "#AD8424";
     $('main').hide();
     $('.places-page .places-result').hide();
     $('.places-page .js-place-popup-list').hide();
-
-    //displayError("hi");
     $('.places-page').show();
     $("body").css({
         "background": "#f2cb6f"
@@ -1569,8 +1544,6 @@ $(document).on('click', '.my-places-button', function (event) {
 
 $(document).on('click', '.my-areas-button', function (event) {
     event.preventDefault();
-    // this.style.backgroundColor = "#AD8424";
-    //displayError("hi");
     $('main').hide();
     $('.areas-result').hide();
     $('.js-areas-popup-list').hide();
@@ -1586,12 +1559,9 @@ $(document).on('click', '.my-areas-button', function (event) {
 
 $(document).on('click', '.categories-button', function (event) {
     event.preventDefault();
-    //this.style.backgroundColor = "#AD8424";
-    //displayError("hi");
     $('main').hide();
     $('.categories-result').hide();
     $('.js-categories-popup-list').hide();
-
     $('.categories-page').show();
     $("body").css({
         "background": "#f2cb6f"
@@ -1649,17 +1619,6 @@ $(document).on('click', '.delete-item-button', function (event) {
     showDeleteItemPopup(itemId);
 });
 
-/*$(document).on('click', '.delete-item-button', function (event) {
-    event.preventDefault();
-    // displayError("hi");
-    $('.js-item-popup-list').hide();
-    $('.js-all-result-area').hide();
-    $('.create-item-popup').hide();
-    $('.move-item-popup').hide();
-    $('.js-item-popup-list').show();
-    $('.delete-item-popup').show();
-});*/
-
 $(document).on('click', '.places-menu .create-new-button', function (event) {
     event.preventDefault();
     //displayError("hi");
@@ -1684,15 +1643,11 @@ $(document).on('click', '.places-result .move-button', function (event) {
     event.preventDefault();
     let placeId = $(this).data('placeid');
     let placeName = $(this).closest('li').find('.collapsible').text();
-    //displayError("hi");
     $('.js-place-popup-list').hide();
-    //$('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.delete-place-popup').hide();
     $('.show-items-popup').hide();
     showMovePlacePopup(placeId, placeName);
-    // $('.js-place-popup-list').show();
-    //$('.move-place-popup').show();
 });
 
 $(document).on('click', '.places-result .all-items-button', function (event) {
@@ -1700,13 +1655,11 @@ $(document).on('click', '.places-result .all-items-button', function (event) {
     //displayError("hi");
     let placeId = $(this).data('placeid');
     $('.js-place-popup-list').hide();
-    //$('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.delete-place-popup').hide();
     $('.move-place-popup').hide();
     showItemsByPlace(placeId);
-    //$('.js-place-popup-list').show();
-    //$('.show-items-popup').show();
+
 });
 
 $(document).on('click', '.places-result .delete-button', function (event) {
@@ -1715,13 +1668,10 @@ $(document).on('click', '.places-result .delete-button', function (event) {
     let placeName = $(this).closest('li').find('.collapsible').text();
     //displayError("hi");
     $('.js-place-popup-list').hide();
-    //$('.js-all-places-result').hide();
     $('.create-place-popup').hide();
     $('.show-items-popup').hide();
     $('.move-place-popup').hide();
     showDeletePlacePopup(placeId, placeName);
-    //$('.js-place-popup-list').show();
-    //$('.delete-place-popup').show();
 });
 
 $(document).on('click', '.areas-menu .create-new-button', function (event) {
@@ -1760,8 +1710,6 @@ $(document).on('click', '.areas-result .delete-button', function (event) {
     $('.create-area-popup').hide();
     $('.show-places-popup').hide();
     showDeleteAreaPopup(areaId, areaName);
-    //$('.js-areas-popup-list').show();
-    //$('.delete-area-popup').show();
 });
 
 $(document).on('click', '.categories-menu .create-new-button', function (event) {
@@ -1789,8 +1737,6 @@ $(document).on('click', '.categories-result .all-items-button', function (event)
     $('.create-category-popup').hide();
     $('.delete-category-popup').hide();
     showItemsByCategory(categoryId);
-    //$('.js-categories-popup-list').show();
-    //$('.show-items-popup').show();
 });
 
 $(document).on('click', '.categories-result .delete-button', function (event) {
@@ -1802,17 +1748,7 @@ $(document).on('click', '.categories-result .delete-button', function (event) {
     $('.create-category-popup').hide();
     $('.show-items-popup').hide();
     showDeleteCategoryPopup(categoryId, categoryName);
-    //$('.js-categories-popup-list').show();
-    //$('.delete-category-popup').show();
 });
-
-/*$(document).on('click', '.delete-category-form .cancel-button', function (event) {
-    event.preventDefault();
-    //displayError("hi");
-    $('.popup').hide();
-
-});*/
-
 
 
 //form trigger
@@ -1854,10 +1790,6 @@ $('.login-form').submit(function (event) {
                 $("body").css({
                     "background": "#f2cb6f"
                 });
-                /* $('section').hide();
-                 $('.navbar').show();
-                 $('#user-dashboard').show();
-                 populateUserDashboardDate(result.username);*/
                 $('.username').text(result.username);
                 $('#loggedInUserId').val(result._id);
 
@@ -2079,9 +2011,6 @@ $(document).on('submit', '.delete-category-form', function (event) {
     let categoryId = $(this).data('categoryid');
     console.log(categoryId);
     deleteCategory(categoryId);
-    //deleteItemCategory(categoryId);
-    //$('.items-result').show();
-    //$('.js-single-result-area').show();
 });
 
 $('#placesLookupForm').submit(function (event) {
