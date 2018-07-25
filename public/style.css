@@ -89,7 +89,7 @@ h1 {
     padding: 10px 0;
     /* margin-bottom: 10px; */
     font-size: 50px;
-    font-family: 'Walter Turncoat', cursive;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .banner-text {
@@ -310,7 +310,7 @@ hr {
 .nav-logo h2 {
     font-size: 26px;
     color: #FEFEFE;
-    font-family: 'Walter Turncoat', cursive;
+    font-family: Verdana, Geneva, sans-serif;
     margin-left: 10px;
 }
 
@@ -740,19 +740,13 @@ footer a:hover {
 
 /*ipad landscape / small laptop*/
 
-@media only screen and (max-width: 1024px) {
-    body {
-        color: blue;
-    }
-}
+@media only screen and (max-width: 1024px) {}
 
 
 /*ipad potrait*/
 
 @media only screen and (max-width: 768px) {
-    body {
-        color: red;
-    }
+
     .feature-list button {
         width: 32%;
     }
@@ -832,15 +826,6 @@ footer a:hover {
     .about-page p {
         font-size: 18px;
 
-    }
-
-    .content-area,
-    .content-area-places,
-    .content-area-areas,
-    .content-area-categories {
-
-        /*
-        height: 500vh;*/
     }
 
 }
@@ -936,12 +921,8 @@ footer a:hover {
 /*iPhone portrait*/
 
 @media only screen and (max-width: 320px) {
-    body {
-        color: purple;
-    }
     .all-items-table {
         min-width: 0px;
-
     }
 }
 

@@ -161,7 +161,7 @@
                         <button class="create-new-button">Create</button>
                         <button class="show-all-button">Show All</button>
                     </div>
-                    <form id="itemsLookupForm">
+                    <form id="itemsLookupForm" role="search">
                         <span>Find My</span>
                         <input id="itemSearchField" type="text" name="searchfield" placeholder="keys" required>
                         <button id="searchItem" role="button" type="submit">Search</button>
@@ -170,7 +170,7 @@
                 </div>
 
 
-                <section class="items-result">
+                <section class="items-result" aria-live="assertive">
 
                     <div class="js-all-result-area">
                         <table class="all-items-table">
@@ -262,7 +262,7 @@
                         <button class="create-new-button">Create</button>
                         <button class="show-all-button">Show All</button>
                     </div>
-                    <form id="placesLookupForm">
+                    <form id="placesLookupForm" role="search">
                         <span>Find My</span>
                         <input id="placeSearchField" type="text" name="searchfield" placeholder="Drawer" required>
                         <button id="searchPlace" role="button" type="submit">Search</button>
@@ -270,7 +270,7 @@
                     <p> *Use the search to move/delete places</p>
                 </div>
 
-                <section class="places-result">
+                <section class="places-result" aria-live="assertive">
                     <div class="js-all-places-result">
                         <h3>My places</h3>
                         <ul class="places-list-all">
@@ -352,7 +352,7 @@
                     </div>
                 </div>
 
-                <section class="areas-result">
+                <section class="areas-result" aria-live="assertive">
                     <div class="js-all-areas-result">
                         <h3>My Areas</h3>
                         <ul class="areas-list-all">
@@ -437,7 +437,7 @@
                     </div>
                 </div>
 
-                <section class="categories-result">
+                <section class="categories-result" aria-live="assertive">
                     <div class="js-all-categories-result">
                         <h3>My Categories</h3>
                         <ul class="categories-list-all">
@@ -470,7 +470,7 @@
 
         </section>
     </main>
-    <footer>
+    <footer role="contentinfo">
         <ul>
             <li class="icon">
                 <a href="https://www.linkedin.com/in/nitishbagul/" target="blank">

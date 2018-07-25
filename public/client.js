@@ -1580,6 +1580,7 @@ $(document).on('click', '.items-page .create-new-button', function (event) {
     populateAreasList();
     populateCategoriesList();
     $('.js-item-popup-list').show();
+    $(".create-item-popup #item_name").val("");
     $('.create-item-popup').show();
 });
 
@@ -1626,6 +1627,7 @@ $(document).on('click', '.places-menu .create-new-button', function (event) {
     $('.places-result').hide();
     populateAreasList();
     $('.js-place-popup-list').show();
+    $('.create-place-popup #place_name').val('');
     $('.create-place-popup').show();
 });
 
@@ -1680,6 +1682,7 @@ $(document).on('click', '.areas-menu .create-new-button', function (event) {
     $('.popup').hide();
     $('.areas-result').hide();
     $('.js-areas-popup-list').show();
+    $('.create-area-popup #area_name').val('');
     $('.create-area-popup').show();
 });
 
@@ -1718,6 +1721,7 @@ $(document).on('click', '.categories-menu .create-new-button', function (event) 
     $('.popup').hide();
     $('.categories-result').hide();
     $('.js-categories-popup-list').show();
+    $('.create-category-popup #category_name').val('');
     $('.create-category-popup').show();
 });
 
