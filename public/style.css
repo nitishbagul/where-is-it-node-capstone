@@ -754,11 +754,30 @@ form span {
     margin-bottom: 12px;
 }
 
-/*.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-}*/
+footer ul {
+    width: 50%;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+footer li {
+    display: inline-block;
+    width: auto;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+footer a {
+    color: white;
+    font-size: 120%;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: grey;
+}
+
 
 /*Media Queries*/
 
@@ -863,7 +882,7 @@ form span {
     .content-area-areas,
     .content-area-categories {
 
-/*
+        /*
         height: 500vh;*/
     }
 
@@ -966,7 +985,7 @@ form span {
     .content-area-areas,
     .content-area-categories {
 
-/*
+        /*
         height: 500vh;*/
     }
 }
