@@ -553,24 +553,19 @@ function populatePlacesList(areaId) {
         //if call is succefull
         .done(function (result) {
             console.log(result);
-            /*if (result.entriesOutput.length === 0) {
-                                    $('#no-entry').show();
-                                } else {
-                                    $('#no-entry').hide();
-                                }
+            if (result.placesOutput.length === 0) {
+                displayError("No Places found. Choose different area or create a place");
+            } else {
+                let buildTheHtmlOutput = ``;
 
-                                //empty the user-list container before populating it dynamically
-                                $('#user-list').html("");
-                                htmlUserDashboard(result);*/
+                $.each(result.placesOutput, function (resultKey, resultValue) {
+                    buildTheHtmlOutput += `<option data-placeid=${resultValue._id}>${resultValue.placeName}</option>`;
+                });
+                //use the HTML output to show it in all items table
+                $(".items-page .place-select-container #create-place-selection").html(buildTheHtmlOutput);
+                $(".items-page .move-item-form .place-select-container .move-place-selection").html(buildTheHtmlOutput);
 
-            let buildTheHtmlOutput = ``;
-
-            $.each(result.placesOutput, function (resultKey, resultValue) {
-                buildTheHtmlOutput += `<option data-placeid=${resultValue._id}>${resultValue.placeName}</option>`;
-            });
-            //use the HTML output to show it in all items table
-            $(".items-page .place-select-container #create-place-selection").html(buildTheHtmlOutput);
-            $(".items-page .move-item-form .place-select-container .move-place-selection").html(buildTheHtmlOutput);
+            }
 
         })
         //if the call is failing
@@ -844,33 +839,30 @@ function populateAllItems() {
         //if call is succefull
         .done(function (result) {
             //console.log(result);
-            /*if (result.entriesOutput.length === 0) {
-                    $('#no-entry').show();
-                } else {
-                    $('#no-entry').hide();
-                }
-
-                //empty the user-list container before populating it dynamically
-                $('#user-list').html("");
-                htmlUserDashboard(result);*/
-            let buildTheHtmlOutput = `<tr>
+            if (result.itemsOutput.length === 0) {
+                displayError("No Items to show. Create Area and Place first")
+            } else {
+                let buildTheHtmlOutput = `<tr>
 <th>Name</th>
 <th>Place</th>
 <th>Area</th>
 <th>Category</th>
 </tr>`;
 
-            $.each(result.itemsOutput, function (resultKey, resultValue) {
-                //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
-                buildTheHtmlOutput += `<tr>`;
-                buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
-                buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
-                buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
-                buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
-                buildTheHtmlOutput += `</tr>`;
-            });
-            //use the HTML output to show it in all items table
-            $(".js-all-result-area .all-items-table").html(buildTheHtmlOutput);
+                $.each(result.itemsOutput, function (resultKey, resultValue) {
+                    //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+                    buildTheHtmlOutput += `<tr>`;
+                    buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
+                    buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
+                    buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
+                    buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
+                    buildTheHtmlOutput += `</tr>`;
+                });
+                //use the HTML output to show it in all items table
+                $(".js-all-result-area .all-items-table").html(buildTheHtmlOutput);
+            }
+
+
 
         })
         //if the call is failing
@@ -902,22 +894,15 @@ function populateSearchedItem(itemName) {
         //if call is succefull
         .done(function (result) {
             // console.log(result);
-            /*if (result.entriesOutput.length === 0) {
-                        $('#no-entry').show();
-                    } else {
-                        $('#no-entry').hide();
-                    }
-
-                    //empty the user-list container before populating it dynamically
-                    $('#user-list').html("");
-                    htmlUserDashboard(result);*/
-
-            let buildTheHtmlOutput = ``;
+            if (result.itemsOutput.length === 0) {
+                displayError("No items found. Please refine your search");
+            } else {
+                let buildTheHtmlOutput = ``;
 
 
-            $.each(result.itemsOutput, function (resultKey, resultValue) {
-                buildTheHtmlOutput += `<div data-itementry=${resultValue._id}>`;
-                buildTheHtmlOutput += `<table class="all-items-table">
+                $.each(result.itemsOutput, function (resultKey, resultValue) {
+                    buildTheHtmlOutput += `<div data-itementry=${resultValue._id}>`;
+                    buildTheHtmlOutput += `<table class="all-items-table">
 <tr>
 <th>Name</th>
 <th>Place</th>
@@ -925,18 +910,18 @@ function populateSearchedItem(itemName) {
 <th>Category</th>
 </tr>`;
 
-                buildTheHtmlOutput += `<tr>`;
-                buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
-                buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
-                buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
-                buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
-                buildTheHtmlOutput += `</tr>`;
-                buildTheHtmlOutput += `</table>`;
-                buildTheHtmlOutput += `<div class="item-options-container">
+                    buildTheHtmlOutput += `<tr>`;
+                    buildTheHtmlOutput += `<td data-th="Name">${resultValue.itemName}</td>`;
+                    buildTheHtmlOutput += `<td data-th="Place">${resultValue.placeName}</td>`;
+                    buildTheHtmlOutput += `<td data-th="Area">${resultValue.areaName}</td>`;
+                    buildTheHtmlOutput += `<td data-th="Category">${resultValue.categoryName}</td>`;
+                    buildTheHtmlOutput += `</tr>`;
+                    buildTheHtmlOutput += `</table>`;
+                    buildTheHtmlOutput += `<div class="item-options-container">
 <button class="move-item-button" data-itemid=${resultValue._id}>Move</button>
 <button class="delete-item-button" data-itemid=${resultValue._id}>Delete</button>
 </div>`;
-                buildTheHtmlOutput += `<div class="js-item-popup-list" data-itemid=${resultValue._id}>
+                    buildTheHtmlOutput += `<div class="js-item-popup-list" data-itemid=${resultValue._id}>
 <div class="move-item-popup all-forms-container" data-itemid=${resultValue._id}>
 <form class="move-item-form all-forms" data-itemid=${resultValue._id}>
 <h4>Moving Item</h4>
@@ -974,14 +959,14 @@ function populateSearchedItem(itemName) {
 </div>
 
 </div>`;
-                buildTheHtmlOutput += `</div>`;
-            });
-            //use the HTML output to show it in all items table
-            $(".js-single-result-area .single-item-container").html(buildTheHtmlOutput);
-            $('.items-result .js-item-popup-list').hide();
-            $('.items-result').show();
-            $('.js-single-result-area').show();
-
+                    buildTheHtmlOutput += `</div>`;
+                });
+                //use the HTML output to show it in all items table
+                $(".js-single-result-area .single-item-container").html(buildTheHtmlOutput);
+                $('.items-result .js-item-popup-list').hide();
+                $('.items-result').show();
+                $('.js-single-result-area').show();
+            }
 
         })
         //if the call is failing
@@ -2121,11 +2106,11 @@ $('.create-item-form').submit(function (event) {
     //validate the input
     if (itemName == "") {
         displayError('Please add an item');
-    } else if (areaName == "Select..") {
+    } else if (areaName == "Select.." || areaName == undefined || areaName == "") {
         displayError('Please add an Area');
-    } else if (placeName == "Select..") {
+    } else if (placeName == "Select.." || placeName == undefined || placeName == "") {
         displayError('Please add a Place');
-    } else if (categoryName == "Select..") {
+    } else if (categoryName == "Select.." || categoryName == undefined || categoryName == "") {
         displayError('Please add a Category');
     }
     //if the input is valid
@@ -2326,11 +2311,6 @@ $(document).on('change', '.create-item-form #create-area-selection', function (e
 
 });
 
-/*$(document).on('change', '.create-place-form #place-create-area-selection', function (event) {
-    var selectedAreaId = $('#place-create-area-selection option:selected').data('areaid');
-    populatePlacesList(selectedAreaId);
-
-});*/
 
 $(document).on('change', '.move-item-form .move-area-selection', function (event) {
     var selectedAreaId = $('.move-area-selection option:selected').data('areaid');
