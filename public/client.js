@@ -1473,6 +1473,7 @@ $(document).on('click', '.show-login-container', function (event) {
     // displayError("hi");
     $('main').hide();
     $('.register-container').hide();
+    $('.features-container').hide();
     $('.log-in-container').show();
     $('.welcome-page').show();
 });
@@ -1482,6 +1483,7 @@ $(document).on('click', '.show-registration-container', function (event) {
     // displayError("hi");
     $('main').hide();
     $('.log-in-container').hide();
+    $('.features-container').hide();
     $('.register-container').show();
     $('.welcome-page').show();
 });
@@ -2313,7 +2315,7 @@ $(document).on('change', '.create-item-form #create-area-selection', function (e
 
 
 $(document).on('change', '.move-item-form .move-area-selection', function (event) {
-    var selectedAreaId = $('.move-area-selection option:selected').data('areaid');
+    var selectedAreaId = $(this).find('option:selected').data('areaid');
     populatePlacesList(selectedAreaId);
 
 });

@@ -1,18 +1,18 @@
 # Where Is It node capstone
 
-The WhereIsIt app allowes users to create a list of items and move them to a placeholder so that the items are easily spotabe whenever needed.
+The WhereIsIt app allowes users to create a list of items and move them to a placeholder so that the items are easily found whenever needed.
 
 ## Screenshots
 
-Home Page View | Login Page View #2
+Home Page View | Login Page View
 :-------------------------:|:-------------------------:
-![Home Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/home-page.jpg)  |  ![Login Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/login.jpg)
-User Dashboard | Seen Entry
-![User Dashboard](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/user-dashboard.jpg) | ![Seen Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/seen-entry.jpg)
-Add Entry  | Edit Entry
-![Add Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/add-entry.jpg) | ![Edit Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/edit-entry.jpg)
-Delete Entry |
-![Delete Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/delete-entry.jpg) |
+![Home Page View](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Home Page View.png)  |  ![Login Page View](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Login Page View.png)
+About Page | Items Page
+![About Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/About Page.png) | ![Items Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Items Page.png)
+Create Item  | Places Page
+![Create Item](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Create Item.png) | ![Places Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Places Page.png)
+Areas Page | Categories Page
+![Areas Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Areas Page.png) | ![Categories Page](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/Categories Page.png)
 
 ## Use Cases
 1. User should be able to create a list of items that they want to track.
@@ -34,8 +34,8 @@ You can access a working prototype of the app here: https://where-is-it-node-cap
 ## Functionality
 The app's functionality includes:
 * Every User has the ability to create an account that stores information unique to them
-* User can Add Entries, Update Entries, and Delete Entries
-* User can sort entries by: Date & Type (Read, Seen, Performed)
+* User can Add, delete and update - Items, Places, Areas and Categories
+* User can search items and places
 
 ## Technology
 * Front-End: HTML5 | CSS3 | JavaScript ES6 | jQuery
@@ -48,5 +48,5 @@ App is strongly built to be usuable on mobile devices, as well as responsive acr
 
 ## Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
-* Google Maps integrated to view all entries by location
-* Featured Theaters of the World Section
+* Reminders and email notifications about the status of the items
+* Supporting multiple categories for single item
