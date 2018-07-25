@@ -380,7 +380,7 @@ hr {
     /*background-color: rgb(144, 167, 213);*/
     background-color: #f2cb6f;
     padding-bottom: 80px;
-    height: 500vh;
+    /*height: 500vh;*/
 }
 
 /*Items Page Properties*/
@@ -863,7 +863,8 @@ form span {
     .content-area-areas,
     .content-area-categories {
 
-        height: 500vh;
+/*
+        height: 500vh;*/
     }
 
 }
@@ -965,7 +966,8 @@ form span {
     .content-area-areas,
     .content-area-categories {
 
-        height: 500vh;
+/*
+        height: 500vh;*/
     }
 }
 

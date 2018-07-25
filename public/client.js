@@ -1521,6 +1521,12 @@ $(document).on('click', '.about-button', function (event) {
     //displayError("hi");
     $('main').hide();
     $('.about-page').show();
+    /*$("body").css({
+    "background": ""
+});*/
+    $("body").css({
+        "background": "#f2cb6f"
+    });
     const targetButton = $('.about-page .sidenav .about-button');
     // and reference to all other bulbs
     const otherButtons = $('.sidenav button').not(targetButton);
@@ -1542,6 +1548,13 @@ $(document).on('click', '.my-items-button', function (event) {
     //$('main').hide();
 
     $('.items-page').show();
+    /* $('body').removeAttr('background');
+ $("body").css({
+     "background": ""
+ });*/
+    $("body").css({
+        "background": "#f2cb6f"
+    });
 
     const targetButton = $('.items-page .sidenav .my-items-button');
     const otherButtons = $('.sidenav button').not(targetButton);
@@ -1558,6 +1571,9 @@ $(document).on('click', '.my-places-button', function (event) {
 
     //displayError("hi");
     $('.places-page').show();
+    $("body").css({
+        "background": "#f2cb6f"
+    });
     const targetButton = $('.places-page .sidenav .my-places-button');
     const otherButtons = $('.sidenav button').not(targetButton);
     otherButtons.removeClass('js-menu-button');
@@ -1572,6 +1588,9 @@ $(document).on('click', '.my-areas-button', function (event) {
     $('.areas-result').hide();
     $('.js-areas-popup-list').hide();
     $('.areas-page').show();
+    $("body").css({
+        "background": "#f2cb6f"
+    });
     const targetButton = $('.areas-page .sidenav .my-areas-button');
     const otherButtons = $('.sidenav button').not(targetButton);
     otherButtons.removeClass('js-menu-button');
@@ -1585,7 +1604,11 @@ $(document).on('click', '.categories-button', function (event) {
     $('main').hide();
     $('.categories-result').hide();
     $('.js-categories-popup-list').hide();
+
     $('.categories-page').show();
+    $("body").css({
+        "background": "#f2cb6f"
+    });
     const targetButton = $('.categories-page .sidenav .categories-button');
     const otherButtons = $('.sidenav button').not(targetButton);
     otherButtons.removeClass('js-menu-button');
@@ -1841,6 +1864,9 @@ $('.login-form').submit(function (event) {
                 // console.log(result);
                 $('main').hide();
                 $('.about-page').show();
+                $("body").css({
+                    "background": "#f2cb6f"
+                });
                 /* $('section').hide();
                  $('.navbar').show();
                  $('#user-dashboard').show();
@@ -1899,6 +1925,9 @@ $('.register-form').submit(function (event) {
                 // console.log(result);
                 $('main').hide();
                 $('.about-page').show();
+                $("body").css({
+                    "background": "#f2cb6f"
+                });
                 $('.username').text(result.username);
                 $('#loggedInUserId').val(result._id);
             })
@@ -1930,17 +1959,6 @@ $(document).on('submit', '.delete-item-form', function (event) {
     $('.items-result').show();
     $('.items-page .js-single-result-area').show();
 });
-
-/*$('.delete-place-form').submit(function (event) {
-
-    event.preventDefault();
-    alert("hi");
-    let placeId = $(this).data('placeid');
-    //console.log(itemId);
-    deletePlace(placeId);
-    $('.places-result').show();
-    $('.places-page .js-single-result-area').show();
-});*/
 
 $(document).on('submit', '.delete-place-form', function (event) {
     event.preventDefault();
