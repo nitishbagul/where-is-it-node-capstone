@@ -1871,6 +1871,7 @@ $('#itemsLookupForm').submit(function (event) {
     $('.js-item-popup-list').hide();
     $('.js-all-result-area').hide();
     populateSearchedItem(itemSearchText);
+    $('.items-content #itemSearchField').val("");
 });
 
 $(document).on('submit', '.delete-item-form', function (event) {
@@ -2023,6 +2024,7 @@ $('#placesLookupForm').submit(function (event) {
     $('.js-place-popup-list').hide();
     $('.js-all-places-result').hide();
     populateSearchedPlace(placeSearchText);
+    $('.places-content #placeSearchField').val("");
 });
 
 $('.create-item-form').submit(function (event) {
