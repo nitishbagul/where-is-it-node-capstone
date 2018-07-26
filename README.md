@@ -1,6 +1,6 @@
 # Where Is It node capstone
 
-The WhereIsIt app allowes users to create a list of items and move them to a placeholder so that the items are easily found whenever needed.
+The WhereIsIt app allows users to create a list of items and move them to a placeholder so that the items are easily found whenever needed.
 
 ## Screenshots
 
