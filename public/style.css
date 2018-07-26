@@ -519,7 +519,7 @@ form span {
 }
 
 .popup h4 {
-    color: #FFFACD;
+    color: saddlebrown;
     font-weight: unset;
     font-size: 19px;
     margin-top: 10px;
@@ -533,7 +533,7 @@ form span {
     border: 1px solid brown;
     text-align: center;
     margin-top: 20px;
-    background-color: #cc5c47;
+    background-color: rgb(242, 203, 111);
     border-radius: 8px;
     padding: 10px 10px;
 }
