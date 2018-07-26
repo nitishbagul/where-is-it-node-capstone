@@ -834,9 +834,6 @@ footer a:hover {
 /*iPhone landscape*/
 
 @media only screen and (max-width: 480px) {
-    body {
-        color: green;
-    }
 
     .nav-logo,
     .nav-list {
