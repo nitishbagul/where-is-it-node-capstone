@@ -26,7 +26,7 @@ Areas Page | Categories Page
 ![UI Flow handwritten draft](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/User-flow-WhereIsIt_1.jpg)
 
 ???### Wireframe _main
-![Wireframe _Main](https://github.com/KatiLong/node-capstone/blob/master/github-images/wireframe-v1.jpg)
+![Wireframe _Main](https://github.com/nitishbagul/where-is-it-node-capstone/blob/master/github-images/wireframes.jpg)
 
 ## Working Prototype
 You can access a working prototype of the app here: https://where-is-it-node-capstone.herokuapp.com/
