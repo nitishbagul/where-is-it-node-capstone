@@ -290,6 +290,11 @@ hr {
     width: 100%;
 }
 
+.logo-text {
+    height: 120px;
+    width: 159px;
+}
+
 .nav-logo {
     vertical-align: middle;
     display: inline-block;
@@ -303,7 +308,7 @@ hr {
     line-height: normal;
     padding: 3px 5px;
     float: right;
-    margin-top: 18px;
+    margin-top: 36px;
     margin-right: 10px;
 }
 
